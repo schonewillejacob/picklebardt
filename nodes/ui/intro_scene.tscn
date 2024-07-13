@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://da3wql8d3gobs"]
+
+[ext_resource type="Script" path="res://nodes/ui/intro_scene.gd" id="1_jatua"]
+[ext_resource type="PackedScene" uid="uid://c2kgyu7dbn4u6" path="res://nodes/ui/gui/menu_home.tscn" id="2_fkqfm"]
+
+[node name="introScene" type="Node2D"]
+script = ExtResource("1_jatua")
+
+[node name="MenuHome" parent="." instance=ExtResource("2_fkqfm")]
