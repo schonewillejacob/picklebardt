@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c2kgyu7dbn4u6"]
+
+[node name="MenuHome" type="AspectRatioContainer"]
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.025
+anchor_right = 0.975
+anchor_bottom = 0.975
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
