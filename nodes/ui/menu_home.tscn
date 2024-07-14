@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2kgyu7dbn4u6"]
+[gd_scene load_steps=14 format=3 uid="uid://c2kgyu7dbn4u6"]
 
 [ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/gui/menu_theme.tres" id="1_b3fml"]
-[ext_resource type="Script" path="res://nodes/ui/reactive_container.gd" id="2_f2cpx"]
 [ext_resource type="Script" path="res://nodes/ui/gui/menu.gd" id="3_lf6t4"]
 [ext_resource type="Script" path="res://nodes/ui/expanding_options_header.gd" id="4_vy8ym"]
 [ext_resource type="FontFile" uid="uid://bqpc54kwlsemi" path="res://nodes/fonts/ttfs/LBRITEI.TTF" id="5_juo0n"]
@@ -38,33 +37,22 @@ font_color = Color(0.321569, 0.321569, 0.321569, 1)
 outline_size = 2
 outline_color = Color(0.25098, 0.372549, 0.360784, 1)
 
-[node name="ReactiveContainer" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme = ExtResource("1_b3fml")
-script = ExtResource("2_f2cpx")
-
-[node name="menu" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="menu" type="VBoxContainer"]
+offset_right = 986.0
+offset_bottom = 1193.0
 pivot_offset = Vector2(540, 960)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_b3fml")
+alignment = 1
 script = ExtResource("3_lf6t4")
 metadata/_edit_use_anchors_ = true
 
-[node name="expanding_options_header" type="HBoxContainer" parent="menu"]
+[node name="expanding_options_header" type="HBoxContainer" parent="."]
 layout_mode = 2
 script = ExtResource("4_vy8ym")
 
-[node name="End" type="Button" parent="menu/expanding_options_header"]
+[node name="End" type="Button" parent="expanding_options_header"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
@@ -75,7 +63,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_8l3nl")
 theme_override_styles/focus = SubResource("StyleBoxLine_253ex")
 text = "×"
 
-[node name="Options" type="Button" parent="menu/expanding_options_header"]
+[node name="Options" type="Button" parent="expanding_options_header"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_dllt3")
@@ -83,67 +71,67 @@ theme_override_font_sizes/font_size = 100
 text = "⚙"
 flat = true
 
-[node name="title" type="HBoxContainer" parent="menu"]
+[node name="title" type="HBoxContainer" parent="."]
 layout_mode = 2
 alignment = 1
 
-[node name="pickle" type="Label" parent="menu/title"]
+[node name="pickle" type="Label" parent="title"]
 layout_mode = 2
 text = "pickle"
 label_settings = SubResource("LabelSettings_84tu0")
 
-[node name="bardt" type="Label" parent="menu/title"]
+[node name="bardt" type="Label" parent="title"]
 layout_mode = 2
 text = "bardt"
 label_settings = SubResource("LabelSettings_0ekuy")
 
-[node name="spacer3" type="Control" parent="menu"]
+[node name="spacer3" type="Control" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="buttons" type="VBoxContainer" parent="menu"]
+[node name="buttons" type="VBoxContainer" parent="."]
 layout_mode = 2
 alignment = 1
 
-[node name="manageParticipants" type="Button" parent="menu/buttons"]
+[node name="manageParticipants" type="Button" parent="buttons"]
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 theme = ExtResource("1_b3fml")
 theme_override_styles/normal = SubResource("StyleBoxFlat_611ud")
 text = "MANAGE PARTICIPANTS"
 
-[node name="changeRules" type="Button" parent="menu/buttons"]
+[node name="changeRules" type="Button" parent="buttons"]
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 text = "CHANGE RULESET"
 
-[node name="spacer2" type="Control" parent="menu"]
+[node name="spacer2" type="Control" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="menu"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
-[node name="spacer" type="Control" parent="menu/HBoxContainer"]
+[node name="spacer" type="Control" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="menu/HBoxContainer"]
+[node name="Button" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 90
 text = "GENERATE BRACKET"
 
-[node name="spacer2" type="Control" parent="menu/HBoxContainer"]
+[node name="spacer2" type="Control" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="spacer" type="Control" parent="menu"]
+[node name="spacer" type="Control" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="menu"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 2
 text = "v0.1.0"
 label_settings = SubResource("LabelSettings_npeq0")
