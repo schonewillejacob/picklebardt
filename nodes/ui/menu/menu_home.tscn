@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://c2kgyu7dbn4u6"]
 
-[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/gui/menu_theme.tres" id="1_b3fml"]
-[ext_resource type="Script" path="res://nodes/ui/gui/menu.gd" id="3_lf6t4"]
-[ext_resource type="Script" path="res://nodes/ui/expanding_options_header.gd" id="4_vy8ym"]
+[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu/menu_theme.tres" id="1_b3fml"]
+[ext_resource type="Script" path="res://nodes/ui/menu/menu.gd" id="3_lf6t4"]
+[ext_resource type="Script" path="res://nodes/ui/menu/expanding_options_header.gd" id="4_vy8ym"]
 [ext_resource type="FontFile" uid="uid://bqpc54kwlsemi" path="res://nodes/fonts/ttfs/LBRITEI.TTF" id="5_juo0n"]
 [ext_resource type="FontFile" uid="uid://byiibonho3vmb" path="res://nodes/fonts/ttfs/OLDENGL.TTF" id="6_nwvg2"]
 [ext_resource type="FontFile" uid="uid://c7xsy1psk1pxi" path="res://nodes/fonts/ttfs/micross.ttf" id="7_vadmv"]
@@ -136,3 +136,5 @@ layout_mode = 2
 text = "v0.1.0"
 label_settings = SubResource("LabelSettings_npeq0")
 horizontal_alignment = 2
+
+[connection signal="pressed" from="expanding_options_header/End" to="." method="_on_end_pressed"]
