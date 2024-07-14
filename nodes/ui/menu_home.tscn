@@ -1,37 +1,53 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2kgyu7dbn4u6"]
+[gd_scene load_steps=15 format=3 uid="uid://c2kgyu7dbn4u6"]
 
-[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/fonts/menu_theme.tres" id="1_5ocf3"]
-[ext_resource type="FontFile" uid="uid://bqpc54kwlsemi" path="res://nodes/fonts/ttfs/LBRITEI.TTF" id="2_2bba1"]
-[ext_resource type="Script" path="res://nodes/ui/gui/menu.gd" id="2_ginjf"]
-[ext_resource type="Script" path="res://nodes/ui/gui/expanding_options_header.gd" id="2_wdik3"]
-[ext_resource type="FontFile" uid="uid://byiibonho3vmb" path="res://nodes/fonts/ttfs/OLDENGL.TTF" id="3_yfoib"]
-[ext_resource type="FontFile" uid="uid://c7xsy1psk1pxi" path="res://nodes/fonts/ttfs/micross.ttf" id="4_w8kwt"]
+[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/gui/menu_theme.tres" id="1_b3fml"]
+[ext_resource type="Script" path="res://nodes/ui/reactive_container.gd" id="2_f2cpx"]
+[ext_resource type="Script" path="res://nodes/ui/gui/menu.gd" id="3_lf6t4"]
+[ext_resource type="Script" path="res://nodes/ui/expanding_options_header.gd" id="4_vy8ym"]
+[ext_resource type="FontFile" uid="uid://bqpc54kwlsemi" path="res://nodes/fonts/ttfs/LBRITEI.TTF" id="5_juo0n"]
+[ext_resource type="FontFile" uid="uid://byiibonho3vmb" path="res://nodes/fonts/ttfs/OLDENGL.TTF" id="6_nwvg2"]
+[ext_resource type="FontFile" uid="uid://c7xsy1psk1pxi" path="res://nodes/fonts/ttfs/micross.ttf" id="7_vadmv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8l3nl"]
+bg_color = Color(0.643137, 0.372549, 0.360784, 1)
+skew = Vector2(0.1, 0)
+corner_radius_bottom_right = 16
+expand_margin_left = 64.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_253ex"]
+color = Color(0, 0.584314, 0.584314, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_dllt3"]
+spacing_top = 16
 
 [sub_resource type="LabelSettings" id="LabelSettings_84tu0"]
-font = ExtResource("2_2bba1")
+font = ExtResource("5_juo0n")
 font_size = 156
 
 [sub_resource type="LabelSettings" id="LabelSettings_0ekuy"]
-font = ExtResource("3_yfoib")
+font = ExtResource("6_nwvg2")
 font_size = 250
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_611ud"]
+bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_npeq0"]
-font = ExtResource("4_w8kwt")
+font = ExtResource("7_vadmv")
 font_size = 32
 font_color = Color(0.321569, 0.321569, 0.321569, 1)
 outline_size = 2
 outline_color = Color(0.25098, 0.372549, 0.360784, 1)
 
-[node name="control" type="Control"]
+[node name="ReactiveContainer" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(540, 960)
 size_flags_vertical = 4
-theme = ExtResource("1_5ocf3")
+theme = ExtResource("1_b3fml")
+script = ExtResource("2_f2cpx")
 
 [node name="menu" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -41,20 +57,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(540, 960)
-script = ExtResource("2_ginjf")
+script = ExtResource("3_lf6t4")
 metadata/_edit_use_anchors_ = true
 
 [node name="expanding_options_header" type="HBoxContainer" parent="menu"]
 layout_mode = 2
-size_flags_vertical = 3
-script = ExtResource("2_wdik3")
+script = ExtResource("4_vy8ym")
 
-[node name="spacer" type="Control" parent="menu/expanding_options_header"]
+[node name="End" type="Button" parent="menu/expanding_options_header"]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_8l3nl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8l3nl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8l3nl")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_8l3nl")
+theme_override_styles/focus = SubResource("StyleBoxLine_253ex")
+text = "×"
 
-[node name="Button" type="TextureButton" parent="menu/expanding_options_header"]
+[node name="Options" type="Button" parent="menu/expanding_options_header"]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_dllt3")
+theme_override_font_sizes/font_size = 100
+text = "⚙"
+flat = true
 
 [node name="title" type="HBoxContainer" parent="menu"]
 layout_mode = 2
@@ -81,25 +108,14 @@ alignment = 1
 [node name="manageParticipants" type="Button" parent="menu/buttons"]
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
+theme = ExtResource("1_b3fml")
+theme_override_styles/normal = SubResource("StyleBoxFlat_611ud")
 text = "MANAGE PARTICIPANTS"
-
-[node name="generateBracket" type="Button" parent="menu/buttons"]
-custom_minimum_size = Vector2(0, 256)
-layout_mode = 2
-size_flags_vertical = 7
-text = "GENERATE BRACKET"
-text_overrun_behavior = 3
-icon_alignment = 1
 
 [node name="changeRules" type="Button" parent="menu/buttons"]
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 text = "CHANGE RULESET"
-
-[node name="appSettings" type="Button" parent="menu/buttons"]
-custom_minimum_size = Vector2(0, 256)
-layout_mode = 2
-text = "APP SETTINGS"
 
 [node name="spacer2" type="Control" parent="menu"]
 layout_mode = 2
@@ -117,7 +133,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 90
-text = "E X I T"
+text = "GENERATE BRACKET"
 
 [node name="spacer2" type="Control" parent="menu/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
