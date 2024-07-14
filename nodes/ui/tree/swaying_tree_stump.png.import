@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cl8l3t1dvp0rg"
-path="res://.godot/imported/tree_top.png-0d2dbd6813a1007bb145790c92be3a1b.ctex"
+uid="uid://c0dl5ppqepru5"
+path="res://.godot/imported/swaying_tree_stump.png-1838dec2114f948d536c706c61222b41.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://nodes/ui/tree/tree_top.png"
-dest_files=["res://.godot/imported/tree_top.png-0d2dbd6813a1007bb145790c92be3a1b.ctex"]
+source_file="res://nodes/ui/tree/swaying_tree_stump.png"
+dest_files=["res://.godot/imported/swaying_tree_stump.png-1838dec2114f948d536c706c61222b41.ctex"]
 
 [params]
 

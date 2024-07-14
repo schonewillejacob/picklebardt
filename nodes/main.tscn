@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8od6smjfrks5"]
 
 [ext_resource type="PackedScene" uid="uid://c2kgyu7dbn4u6" path="res://nodes/ui/menu/menu_home.tscn" id="1_02isb"]
-[ext_resource type="PackedScene" uid="uid://0mhkhf54a1w2" path="res://nodes/ui/tree/Tree.tscn" id="2_kxdwm"]
+[ext_resource type="PackedScene" uid="uid://0mhkhf54a1w2" path="res://nodes/ui/tree/SwayingTree.tscn" id="2_kxdwm"]
 
 [node name="main" type="Node2D"]
 
@@ -9,7 +9,6 @@
 
 [node name="Tree" parent="gui" instance=ExtResource("2_kxdwm")]
 position = Vector2(870, 1789)
-scale = Vector2(1, 1)
 
 [node name="Tree" parent="gui/Tree" instance=ExtResource("2_kxdwm")]
 position = Vector2(1.7885, -221.995)
