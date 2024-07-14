@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2kgyu7dbn4u6"]
+[gd_scene load_steps=10 format=3 uid="uid://c2kgyu7dbn4u6"]
 
 [ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/fonts/menu_theme.tres" id="1_5ocf3"]
 [ext_resource type="FontFile" uid="uid://bqpc54kwlsemi" path="res://nodes/fonts/ttfs/LBRITEI.TTF" id="2_2bba1"]
+[ext_resource type="Script" path="res://nodes/ui/gui/menu.gd" id="2_ginjf"]
 [ext_resource type="Script" path="res://nodes/ui/gui/expanding_options_header.gd" id="2_wdik3"]
 [ext_resource type="FontFile" uid="uid://byiibonho3vmb" path="res://nodes/fonts/ttfs/OLDENGL.TTF" id="3_yfoib"]
 [ext_resource type="FontFile" uid="uid://c7xsy1psk1pxi" path="res://nodes/fonts/ttfs/micross.ttf" id="4_w8kwt"]
@@ -40,6 +41,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(540, 960)
+script = ExtResource("2_ginjf")
 metadata/_edit_use_anchors_ = true
 
 [node name="expanding_options_header" type="HBoxContainer" parent="menu"]
