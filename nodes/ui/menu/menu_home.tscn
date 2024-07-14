@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2kgyu7dbn4u6"]
+[gd_scene load_steps=15 format=3 uid="uid://c2kgyu7dbn4u6"]
 
 [ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu/menu_theme.tres" id="1_b3fml"]
 [ext_resource type="Script" path="res://nodes/ui/menu/menu.gd" id="3_lf6t4"]
+[ext_resource type="AudioStream" uid="uid://pdy2d5wo4qcc" path="res://sounds/exit.wav" id="4_d4g7t"]
 [ext_resource type="Script" path="res://nodes/ui/menu/expanding_options_header.gd" id="4_vy8ym"]
 [ext_resource type="FontFile" uid="uid://bqpc54kwlsemi" path="res://nodes/fonts/ttfs/LBRITEI.TTF" id="5_juo0n"]
 [ext_resource type="FontFile" uid="uid://byiibonho3vmb" path="res://nodes/fonts/ttfs/OLDENGL.TTF" id="6_nwvg2"]
@@ -67,6 +68,7 @@ text = "×"
 wait_time = 1.5
 
 [node name="endSound" type="AudioStreamPlayer" parent="expanding_options_header/End"]
+stream = ExtResource("4_d4g7t")
 
 [node name="Options" type="Button" parent="expanding_options_header"]
 custom_minimum_size = Vector2(150, 150)
