@@ -3,33 +3,56 @@
 [ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu/menu_theme.tres" id="1_b3fml"]
 [ext_resource type="Script" path="res://nodes/ui/menu/menu.gd" id="3_lf6t4"]
 [ext_resource type="AudioStream" uid="uid://pdy2d5wo4qcc" path="res://sounds/exit.wav" id="4_d4g7t"]
-[ext_resource type="Script" path="res://nodes/ui/menu/expanding_options_header.gd" id="4_vy8ym"]
 [ext_resource type="FontFile" uid="uid://bqpc54kwlsemi" path="res://nodes/fonts/ttfs/LBRITEI.TTF" id="5_juo0n"]
 [ext_resource type="FontFile" uid="uid://byiibonho3vmb" path="res://nodes/fonts/ttfs/OLDENGL.TTF" id="6_nwvg2"]
 [ext_resource type="FontFile" uid="uid://c7xsy1psk1pxi" path="res://nodes/fonts/ttfs/micross.ttf" id="7_vadmv"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8l3nl"]
-bg_color = Color(0.643137, 0.372549, 0.360784, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pa5p8"]
+bg_color = Color(0.807843, 0.321569, 0.34902, 1)
 skew = Vector2(0.1, 0)
-corner_radius_bottom_right = 16
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
 expand_margin_left = 64.0
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_253ex"]
-color = Color(0, 0.584314, 0.584314, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iege"]
+bg_color = Color(0.686695, 0.409237, 0.398639, 1)
+skew = Vector2(0.1, 0)
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
+expand_margin_left = 64.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ax3sx"]
+bg_color = Color(0.686695, 0.409237, 0.398639, 1)
+skew = Vector2(0.1, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
+expand_margin_left = 64.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5olbp"]
+bg_color = Color(0.807843, 0.321569, 0.34902, 1)
+skew = Vector2(0.1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
+expand_margin_left = 64.0
 
 [sub_resource type="FontVariation" id="FontVariation_dllt3"]
 spacing_top = 16
 
 [sub_resource type="LabelSettings" id="LabelSettings_84tu0"]
 font = ExtResource("5_juo0n")
-font_size = 156
+font_size = 180
 
 [sub_resource type="LabelSettings" id="LabelSettings_0ekuy"]
 font = ExtResource("6_nwvg2")
-font_size = 250
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_611ud"]
-bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+font_size = 256
 
 [sub_resource type="LabelSettings" id="LabelSettings_npeq0"]
 font = ExtResource("7_vadmv")
@@ -49,34 +72,46 @@ alignment = 1
 script = ExtResource("3_lf6t4")
 metadata/_edit_use_anchors_ = true
 
-[node name="expanding_options_header" type="HBoxContainer" parent="."]
+[node name="staticSpacer" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-script = ExtResource("4_vy8ym")
 
-[node name="End" type="Button" parent="expanding_options_header"]
-custom_minimum_size = Vector2(150, 150)
+[node name="expandingOptionsHeader" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="End" type="Button" parent="expandingOptionsHeader" groups=["menu_buttons"]]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
-theme_override_styles/normal = SubResource("StyleBoxFlat_8l3nl")
-theme_override_styles/hover = SubResource("StyleBoxFlat_8l3nl")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_8l3nl")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_8l3nl")
-theme_override_styles/focus = SubResource("StyleBoxLine_253ex")
+theme_override_styles/normal = SubResource("StyleBoxFlat_pa5p8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0iege")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ax3sx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_5olbp")
 text = "×"
 
-[node name="endTimer" type="Timer" parent="expanding_options_header/End"]
-wait_time = 1.5
+[node name="endTimer" type="Timer" parent="expandingOptionsHeader/End"]
+wait_time = 0.9
 
-[node name="endSound" type="AudioStreamPlayer" parent="expanding_options_header/End"]
+[node name="endSound" type="AudioStreamPlayer" parent="expandingOptionsHeader/End"]
 stream = ExtResource("4_d4g7t")
 
-[node name="Options" type="Button" parent="expanding_options_header"]
+[node name="spacer4" type="Control" parent="expandingOptionsHeader"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Options" type="Button" parent="expandingOptionsHeader" groups=["menu_buttons"]]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 theme_override_fonts/font = SubResource("FontVariation_dllt3")
 theme_override_font_sizes/font_size = 100
 text = "⚙"
 flat = true
+
+[node name="expandingSpacer" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="title" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -92,27 +127,26 @@ layout_mode = 2
 text = "bardt"
 label_settings = SubResource("LabelSettings_0ekuy")
 
-[node name="spacer3" type="Control" parent="."]
+[node name="staticSpacer2" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="buttons" type="VBoxContainer" parent="."]
 layout_mode = 2
 alignment = 1
 
-[node name="manageParticipants" type="Button" parent="buttons"]
+[node name="manageParticipants" type="Button" parent="buttons" groups=["menu_buttons"]]
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 theme = ExtResource("1_b3fml")
-theme_override_styles/normal = SubResource("StyleBoxFlat_611ud")
 text = "MANAGE PARTICIPANTS"
 
-[node name="changeRules" type="Button" parent="buttons"]
+[node name="changeRules" type="Button" parent="buttons" groups=["menu_buttons"]]
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 text = "CHANGE RULESET"
 
-[node name="spacer2" type="Control" parent="."]
+[node name="expandingSpacer2" type="Control" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -120,21 +154,21 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
-[node name="spacer" type="Control" parent="HBoxContainer"]
+[node name="staticSpacer" type="Control" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="generateBracket" type="Button" parent="HBoxContainer" groups=["menu_buttons"]]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 90
 text = "GENERATE BRACKET"
 
-[node name="spacer2" type="Control" parent="HBoxContainer"]
+[node name="staticSpacer2" type="Control" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 
-[node name="spacer" type="Control" parent="."]
+[node name="expandingSpacer3" type="Control" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -144,4 +178,5 @@ text = "v0.1.0"
 label_settings = SubResource("LabelSettings_npeq0")
 horizontal_alignment = 2
 
-[connection signal="pressed" from="expanding_options_header/End" to="." method="_on_end_pressed"]
+[connection signal="pressed" from="expandingOptionsHeader/End" to="." method="_on_end_pressed"]
+[connection signal="pressed" from="expandingOptionsHeader/Options" to="." method="_on_options_pressed"]

@@ -2,7 +2,7 @@ extends Node2D
 class_name SwayingTree
 
 var stack_height : int = 0
-const STACK_DELTA = Vector2(0.1,0.1)
+const STACK_DELTA = Vector2(0.075,0.075)
 const RAND_OFFSET_SCALE : float = 1.0
 
 # Called when the node enters the scene tree for the first time.
@@ -13,12 +13,11 @@ func _ready():
 
 func try_swaying():
 	stack_height += 1
-	scale =  scale - (STACK_DELTA * stack_height)
+	scale =  scale - (STACK_DELTA * (stack_height*2))
 	
 	$top.visible = true
 	$stump.visible = false
 	
 	# Pseudorandom but consistantly positive
 	# Creates offset effect
-	$AnimationPlayer.play("sway")
 	$AnimationPlayer.seek(randf() * RAND_OFFSET_SCALE)

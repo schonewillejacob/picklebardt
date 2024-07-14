@@ -8,13 +8,20 @@
 [node name="gui" type="CanvasLayer" parent="."]
 
 [node name="Tree" parent="gui" instance=ExtResource("2_kxdwm")]
-position = Vector2(870, 1789)
+position = Vector2(1022, 2386)
+scale = Vector2(4, 4)
 
 [node name="Tree" parent="gui/Tree" instance=ExtResource("2_kxdwm")]
-position = Vector2(1.7885, -221.995)
+position = Vector2(1.53609, -137.995)
 
 [node name="Tree" parent="gui/Tree/Tree" instance=ExtResource("2_kxdwm")]
-position = Vector2(7.74673, -188.865)
+position = Vector2(2.94484, -169.472)
+
+[node name="Tree" parent="gui/Tree/Tree/Tree" instance=ExtResource("2_kxdwm")]
+position = Vector2(-2.37241, -160.414)
+
+[node name="Tree" parent="gui/Tree/Tree/Tree/Tree" instance=ExtResource("2_kxdwm")]
+position = Vector2(-4.69474, -121.139)
 
 [node name="menu" parent="gui" instance=ExtResource("1_02isb")]
 anchors_preset = 15
