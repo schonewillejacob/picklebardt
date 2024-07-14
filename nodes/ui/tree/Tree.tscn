@@ -27,7 +27,7 @@ _data = {
 }
 
 [node name="Tree" type="Node2D"]
-rotation = -0.0125613
+rotation = -0.00388474
 script = ExtResource("1_6x6yw")
 
 [node name="stump" type="Sprite2D" parent="."]

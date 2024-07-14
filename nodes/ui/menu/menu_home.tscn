@@ -63,6 +63,11 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_8l3nl")
 theme_override_styles/focus = SubResource("StyleBoxLine_253ex")
 text = "×"
 
+[node name="endTimer" type="Timer" parent="expanding_options_header/End"]
+wait_time = 1.5
+
+[node name="endSound" type="AudioStreamPlayer" parent="expanding_options_header/End"]
+
 [node name="Options" type="Button" parent="expanding_options_header"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
