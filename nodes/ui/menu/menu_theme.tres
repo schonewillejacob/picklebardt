@@ -1,7 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://qkvjcwtwjvf7"]
-
-[ext_resource type="FontFile" uid="uid://dshnsx4ueiv2b" path="res://nodes/fonts/ttfs/LBRITE.TTF" id="1_0710q"]
-
-[resource]
-default_font = ExtResource("1_0710q")
-default_font_size = 64
