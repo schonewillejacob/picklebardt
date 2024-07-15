@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://kqsxcarsialw"]
+
+[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_home/menu_theme.tres" id="1_1qjpu"]
+[ext_resource type="Script" path="res://nodes/ui/menu_participants/menu_participants.gd" id="1_fw60b"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fw60b")
+position_away = Vector2(500, 500)
+
+[node name="menu_participants" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="staticSpacer" type="Control" parent="menu_participants"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="menu_participants"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="set_1" type="ScrollContainer" parent="menu_participants/TabContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu_participants/TabContainer/set_1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="staticSpacer" type="Control" parent="menu_participants/TabContainer/set_1/VBoxContainer"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+
+[node name="add_player" type="Button" parent="menu_participants/TabContainer/set_1/VBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme = ExtResource("1_1qjpu")
+text = "ADD PLAYER"
+
+[node name="_" type="Control" parent="menu_participants/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2
+
+[node name="+" type="Button" parent="menu_participants/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="staticSpacer2" type="Control" parent="menu_participants"]
+custom_minimum_size = Vector2(45, 45)
+layout_mode = 2

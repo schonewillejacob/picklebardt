@@ -1,0 +1,206 @@
+[gd_scene load_steps=17 format=3 uid="uid://c2kgyu7dbn4u6"]
+
+[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_home/menu_theme.tres" id="1_kt0w3"]
+[ext_resource type="Script" path="res://nodes/ui/menu_home/menu_home.gd" id="2_o4ovo"]
+[ext_resource type="AudioStream" uid="uid://c7f6td0l0h1fo" path="res://sounds/select.wav" id="3_15ojn"]
+[ext_resource type="AudioStream" uid="uid://buncr3abmxsi6" path="res://sounds/hover.wav" id="4_gbhxy"]
+[ext_resource type="AudioStream" uid="uid://pdy2d5wo4qcc" path="res://sounds/end.wav" id="5_lm5pq"]
+[ext_resource type="FontFile" uid="uid://bqpc54kwlsemi" path="res://nodes/fonts/ttfs/LBRITEI.TTF" id="6_7m6ao"]
+[ext_resource type="FontFile" uid="uid://byiibonho3vmb" path="res://nodes/fonts/ttfs/OLDENGL.TTF" id="7_l14xd"]
+[ext_resource type="FontFile" uid="uid://c7xsy1psk1pxi" path="res://nodes/fonts/ttfs/micross.ttf" id="8_m8dc7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pa5p8"]
+bg_color = Color(0.807843, 0.321569, 0.34902, 1)
+skew = Vector2(0.1, 0)
+corner_radius_top_left = 32
+corner_radius_bottom_right = 32
+expand_margin_left = 64.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iege"]
+bg_color = Color(0.686695, 0.409237, 0.398639, 1)
+skew = Vector2(0.1, 0)
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
+expand_margin_left = 64.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ax3sx"]
+bg_color = Color(0.686695, 0.409237, 0.398639, 1)
+skew = Vector2(0.1, 0)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
+expand_margin_left = 64.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5olbp"]
+bg_color = Color(0.807843, 0.321569, 0.34902, 1)
+skew = Vector2(0.1, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
+expand_margin_left = 64.0
+
+[sub_resource type="FontVariation" id="FontVariation_dllt3"]
+spacing_top = 16
+
+[sub_resource type="LabelSettings" id="LabelSettings_84tu0"]
+font = ExtResource("6_7m6ao")
+font_size = 180
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ekuy"]
+font = ExtResource("7_l14xd")
+font_size = 256
+
+[sub_resource type="LabelSettings" id="LabelSettings_npeq0"]
+font = ExtResource("8_m8dc7")
+font_size = 32
+font_color = Color(0.321569, 0.321569, 0.321569, 1)
+outline_size = 2
+outline_color = Color(0.25098, 0.372549, 0.360784, 1)
+
+[node name="menu_home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_o4ovo")
+position_away = Vector2(-500, -500)
+
+[node name="vbox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(540, 960)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_kt0w3")
+alignment = 1
+
+[node name="staticSpacer" type="Control" parent="vbox"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="systemButtons" type="HBoxContainer" parent="vbox"]
+layout_mode = 2
+
+[node name="End" type="Button" parent="vbox/systemButtons" groups=["menu_buttons"]]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxFlat_pa5p8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0iege")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ax3sx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_5olbp")
+text = "×"
+
+[node name="endTimer" type="Timer" parent="vbox/systemButtons/End"]
+wait_time = 0.9
+
+[node name="spacer4" type="Control" parent="vbox/systemButtons"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Options" type="Button" parent="vbox/systemButtons" groups=["menu_buttons"]]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVariation_dllt3")
+theme_override_font_sizes/font_size = 100
+text = "⚙"
+flat = true
+
+[node name="expandingSpacer" type="Control" parent="vbox"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="title" type="HBoxContainer" parent="vbox"]
+layout_mode = 2
+alignment = 1
+
+[node name="pickle" type="Label" parent="vbox/title"]
+layout_mode = 2
+text = "pickle"
+label_settings = SubResource("LabelSettings_84tu0")
+
+[node name="bardt" type="Label" parent="vbox/title"]
+layout_mode = 2
+text = "bardt"
+label_settings = SubResource("LabelSettings_0ekuy")
+
+[node name="staticSpacer2" type="Control" parent="vbox"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="buttons" type="VBoxContainer" parent="vbox"]
+layout_mode = 2
+alignment = 1
+
+[node name="manageParticipants" type="Button" parent="vbox/buttons" groups=["menu_buttons"]]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+theme = ExtResource("1_kt0w3")
+text = "MANAGE PARTICIPANTS"
+
+[node name="changeRules" type="Button" parent="vbox/buttons" groups=["menu_buttons"]]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+text = "CHANGE RULESET"
+
+[node name="expandingSpacer2" type="Control" parent="vbox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="generateBracketHbox" type="HBoxContainer" parent="vbox"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="staticSpacer" type="Control" parent="vbox/generateBracketHbox"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="generateBracket" type="Button" parent="vbox/generateBracketHbox" groups=["menu_buttons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 90
+text = "GENERATE BRACKET"
+
+[node name="staticSpacer2" type="Control" parent="vbox/generateBracketHbox"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="expandingSpacer3" type="Control" parent="vbox"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="vbox"]
+layout_mode = 2
+text = "v0.1.0"
+label_settings = SubResource("LabelSettings_npeq0")
+horizontal_alignment = 2
+
+[node name="selectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_15ojn")
+
+[node name="hoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gbhxy")
+
+[node name="endSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lm5pq")
+
+[connection signal="pressed" from="vbox/systemButtons/End" to="." method="_on_end_pressed"]
+[connection signal="timeout" from="vbox/systemButtons/End/endTimer" to="." method="_on_end_timer_timeout"]
+[connection signal="pressed" from="vbox/systemButtons/Options" to="vbox" method="_on_options_pressed"]
+[connection signal="pressed" from="vbox/buttons/manageParticipants" to="." method="_on_manage_participants_pressed"]
+[connection signal="pressed" from="vbox/buttons/changeRules" to="." method="_on_change_rules_pressed"]
+[connection signal="pressed" from="vbox/generateBracketHbox/generateBracket" to="." method="_on_generate_bracket_pressed"]
