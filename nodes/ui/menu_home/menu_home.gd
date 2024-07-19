@@ -1,31 +1,24 @@
 extends LerpContainer
-# Splash screen, prototyping menus:
+# Splash menus
 
-
-@onready var exitBufferTimer = $vbox/systemButtons/End/endTimer
-@onready var endSound = $endSound
+signal ManageParticipants
 
 func _ready():
-	modulate.a = 1
+	lerp_direction = 1
 	position_target = position_in_place
 
 # Signals #####################################################
 func _on_change_rules_pressed():
 	pass # Replace with function body.
-	
-func _on_end_pressed():
-	#play sound
-	endSound.play()
-	exitBufferTimer.start()
 
-func _on_end_timer_timeout():
-	get_tree().quit()
 
 func _on_generate_bracket_pressed():
 	pass # Replace with function body.
 
 func _on_manage_participants_pressed():
-	toggle_position_target()
+	lerp_direction = -1
+	emit_signal("ManageParticipants")
+	emit_signal("FadeOut")
 
 func _on_options_pressed():
 	pass # Replace with function body.

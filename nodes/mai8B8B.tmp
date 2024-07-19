@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8od6smjfrks5"]
+[gd_scene load_steps=5 format=3 uid="uid://b8od6smjfrks5"]
 
 [ext_resource type="PackedScene" uid="uid://c2kgyu7dbn4u6" path="res://nodes/ui/menu_home/menu_home.tscn" id="1_02isb"]
 [ext_resource type="Script" path="res://nodes/ui/gui.gd" id="1_ube6d"]
 [ext_resource type="PackedScene" uid="uid://0mhkhf54a1w2" path="res://nodes/ui/tree/SwayingTree.tscn" id="2_kxdwm"]
 [ext_resource type="PackedScene" uid="uid://kqsxcarsialw" path="res://nodes/ui/menu_participants/menu_participants.tscn" id="4_jq3h8"]
-[ext_resource type="PackedScene" uid="uid://b17wpmhyxw1ag" path="res://nodes/ui/menu_system/menu_system.tscn" id="5_iih8f"]
 
 [node name="main" type="Node2D"]
 
@@ -34,5 +33,3 @@ root_node = NodePath("../..")
 metadata/_edit_use_anchors_ = true
 
 [node name="menu_home" parent="gui" instance=ExtResource("1_02isb")]
-
-[node name="menu_system" parent="gui" instance=ExtResource("5_iih8f")]
