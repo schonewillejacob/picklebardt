@@ -4,25 +4,31 @@ class_name LerpContainer
 @export var position_in_place : Vector2
 @export var position_away : Vector2
 var position_target : Vector2
-var lerping : int = 0 # [-1,1]
+var lerp_direction : int = 0 # [-1,1]
+
+const FADE_OUT_RATE : float = 0.95
+const FADE_IN_RATE : float = 0.7
+const MODULATE_VISIBLE_THRESHOLD : float = 0.2
+
+signal FadeOut
+signal FadeIn
 
 func _ready():
-	position_in_place = position
+	# positioning logic
+	# Holds UI imn position.
+	position_in_place = get_position()
 	position_target = position_away
-	modulate.a = 0
+	modulate.a = -1
+	
 
 func _process(delta):
-	# Can we move?
-	position = lerp(position, position_target, .90)
-	#if position != position_target:
-		#modulate.a = clamp( modulate.a + (0.006 * lerping), 0, 1)
-
-func toggle_position_target() -> void:
-	match position_target:
-		position_in_place:
-			position_target = position_away
-			lerping = -1
-		position_away:
-			position_target = position_in_place
-			lerping = 1
-
+	if lerp_direction > 0:
+		#set_position(lerp(get_position(), position_target, .99))
+		modulate.a = clamp( modulate.a + (FADE_IN_RATE * lerp_direction * delta), 0, 1)
+	elif lerp_direction < 0:
+		modulate.a = clamp( modulate.a + (FADE_OUT_RATE * lerp_direction * delta), 0, 1)
+	
+	if modulate.a < MODULATE_VISIBLE_THRESHOLD:
+		visible = false
+	else:
+		visible = true
