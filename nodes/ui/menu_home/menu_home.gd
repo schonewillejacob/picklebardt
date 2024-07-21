@@ -3,6 +3,7 @@ extends LerpContainer
 
 signal ManageParticipants
 signal GenerateBracket
+signal ChangeRules
 
 func _ready():
 	lerp_direction = 1
@@ -12,7 +13,7 @@ func _ready():
 
 # Signals #####################################################
 func _on_change_rules_pressed():
-	pass # Replace with function body.
+	emit_signal("ChangeRules")
 
 func _on_generate_bracket_pressed():
 	emit_signal("GenerateBracket")

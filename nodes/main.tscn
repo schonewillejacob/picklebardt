@@ -40,9 +40,8 @@ metadata/_edit_use_anchors_ = true
 [node name="menuSystem" parent="gui" instance=ExtResource("5_iih8f")]
 
 [node name="menuBracket" parent="gui" instance=ExtResource("6_mpegv")]
-position_in_place = Vector2(0, 0)
-position_away = Vector2(0, 0)
 
+[connection signal="ChangeRules" from="gui/menuHome" to="gui" method="_on_home_changeRules"]
 [connection signal="GenerateBracket" from="gui/menuHome" to="gui" method="_on_home_generateBracket"]
 [connection signal="ManageParticipants" from="gui/menuHome" to="gui" method="_on_home_manageParticipants"]
 [connection signal="onBack" from="gui/menuSystem" to="gui" method="_on_system_onBack"]
