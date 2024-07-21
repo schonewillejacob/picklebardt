@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8od6smjfrks5"]
+
+[ext_resource type="PackedScene" uid="uid://c2kgyu7dbn4u6" path="res://nodes/ui/menu_home/menu_home.tscn" id="1_02isb"]
+[ext_resource type="Script" path="res://nodes/ui/gui.gd" id="1_ube6d"]
+[ext_resource type="PackedScene" uid="uid://0mhkhf54a1w2" path="res://nodes/ui/tree/SwayingTree.tscn" id="2_kxdwm"]
+[ext_resource type="PackedScene" uid="uid://kqsxcarsialw" path="res://nodes/ui/menu_participants/menu_participants.tscn" id="4_jq3h8"]
+[ext_resource type="PackedScene" uid="uid://b17wpmhyxw1ag" path="res://nodes/ui/menu_system/menu_system.tscn" id="5_iih8f"]
+[ext_resource type="PackedScene" uid="uid://bdup2ka6o4cv0" path="res://nodes/ui/menu_bracket/menu_bracket.tscn" id="6_mpegv"]
+
+[node name="main" type="Node2D"]
+
+[node name="gui" type="CanvasLayer" parent="."]
+script = ExtResource("1_ube6d")
+
+[node name="tree" parent="gui" instance=ExtResource("2_kxdwm")]
+position = Vector2(1022, 2386)
+scale = Vector2(4, 4)
+
+[node name="Tree" parent="gui/tree" instance=ExtResource("2_kxdwm")]
+position = Vector2(1.53609, -137.995)
+
+[node name="Tree" parent="gui/tree/Tree" instance=ExtResource("2_kxdwm")]
+position = Vector2(2.94484, -169.472)
+
+[node name="Tree" parent="gui/tree/Tree/Tree" instance=ExtResource("2_kxdwm")]
+position = Vector2(-2.37241, -160.414)
+
+[node name="Tree" parent="gui/tree/Tree/Tree/Tree" instance=ExtResource("2_kxdwm")]
+position = Vector2(-4.69474, -121.139)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="gui/tree"]
+root_node = NodePath("../..")
+
+[node name="menuParticipants" parent="gui" instance=ExtResource("4_jq3h8")]
+modulate = Color(1, 1, 1, 0.00392157)
+metadata/_edit_use_anchors_ = true
+
+[node name="menuHome" parent="gui" instance=ExtResource("1_02isb")]
+
+[node name="menuSystem" parent="gui" instance=ExtResource("5_iih8f")]
+
+[node name="menuBracket" parent="gui" instance=ExtResource("6_mpegv")]
+position_in_place = null
+position_away = null
+
+[connection signal="ChangeRules" from="gui/menuHome" to="gui" method="_on_home_changeRules"]
+[connection signal="GenerateBracket" from="gui/menuHome" to="gui" method="_on_home_generateBracket"]
+[connection signal="ManageParticipants" from="gui/menuHome" to="gui" method="_on_home_manageParticipants"]
+[connection signal="onBack" from="gui/menuSystem" to="gui" method="_on_system_onBack"]
+[connection signal="onEnd" from="gui/menuSystem" to="gui" method="_on_system_onEnd"]

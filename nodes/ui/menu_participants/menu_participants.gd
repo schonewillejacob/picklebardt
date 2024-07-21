@@ -11,9 +11,13 @@ func _ready():
 	lerp_direction = -1
 	
 	var dummy_list = []
+	
+	
 	for i in range (20):
-		dummy_list.append("pickleball player "+str(i+1))
+		var inst_Player : PickleballPlayer = PickleballPlayer.new("player "+str(i+1))
+		dummy_list.append(inst_Player)
 	set_players(dummy_list)
+	print("menu_participants.gd:\n"+str(dummy_list)+"\n")
 
 # Helpers #####################################################
 func set_players(new_list):

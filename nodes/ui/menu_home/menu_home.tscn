@@ -115,9 +115,9 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="vbox"]
+[node name="version" type="Label" parent="vbox"]
 layout_mode = 2
-text = "v0.1.0"
+text = "v0.2.0"
 label_settings = SubResource("LabelSettings_npeq0")
 horizontal_alignment = 2
 
