@@ -1,13 +1,18 @@
-extends HBoxContainer
+extends LerpContainer
 
-@onready var exitBufferTimer = $End/endTimer
-@onready var endSound = $endSound
+@onready var exitBufferTimer = $VBoxContainer/systemButtons/End/endTimer
+@onready var endSound = $VBoxContainer/systemButtons/endSound
 
-@onready var endButton : BaseButton = $End
-@onready var backButton : BaseButton = $Back
+@onready var acceptButton : BaseButton = $VBoxContainer/systemButtons/Accept
+@onready var backButton : BaseButton = $VBoxContainer/systemButtons/Back
+@onready var endButton : BaseButton = $VBoxContainer/systemButtons/End
 
+signal onAccept
 signal onBack
 signal onEnd
+
+func _ready():
+	lerp_direction = 1
 
 # Signals #####################################################
 func _on_end_pressed():
@@ -17,14 +22,23 @@ func _on_back_pressed():
 	to_end()
 	onBack.emit()
 
+func _on_accept_pressed():
+	to_end()
+
 func _on_end_timer_timeout():
 	get_tree().quit()
 
 
 # Helpers #####################################################
+func to_accept():
+	backButton.visible = false
+	endButton.visible = false
+	acceptButton.visible = true
 func to_back():
+	acceptButton.visible = false
 	endButton.visible = false
 	backButton.visible = true
 func to_end():
-	endButton.visible = true
+	acceptButton.visible = false
 	backButton.visible = false
+	endButton.visible = true
