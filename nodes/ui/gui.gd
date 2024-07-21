@@ -7,6 +7,10 @@ extends CanvasLayer
 
 
 # Signals #####################################################
+func _on_home_changeRules():
+	menu_system.endSound.play()
+	
+
 func _on_home_manageParticipants():
 	swap_to(menu_participants)
 	menu_system.to_back()
