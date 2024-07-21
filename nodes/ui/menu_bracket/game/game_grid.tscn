@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgc7nm50ce5gw"]
+
+[ext_resource type="Script" path="res://nodes/ui/menu_bracket/game/game_grid.gd" id="1_a35yu"]
+[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="2_062xj"]
+
+[node name="GamesGrid" type="ColorRect"]
+size_flags_vertical = 3
+color = Color(0.203922, 0.360784, 0.321569, 0.207843)
+script = ExtResource("1_a35yu")
+
+[node name="GamesGridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+offset_top = 4.0
+offset_right = 1008.0
+offset_bottom = 830.0
+size_flags_vertical = 3
+theme = ExtResource("2_062xj")
+columns = 2
+
+[node name="templateGame" type="GridContainer" parent="GamesGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="player_1" type="Label" parent="GamesGridContainer/templateGame"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "player_1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="player_2" type="Label" parent="GamesGridContainer/templateGame"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "player_2"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="player_3" type="Label" parent="GamesGridContainer/templateGame"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "player_3"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="player_4" type="Label" parent="GamesGridContainer/templateGame"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "player_4"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

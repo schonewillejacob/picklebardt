@@ -2,6 +2,7 @@ extends LerpContainer
 # Splash menus
 
 signal ManageParticipants
+signal GenerateBracket
 
 func _ready():
 	lerp_direction = 1
@@ -11,14 +12,12 @@ func _ready():
 func _on_change_rules_pressed():
 	pass # Replace with function body.
 
-
 func _on_generate_bracket_pressed():
-	pass # Replace with function body.
+	emit_signal("GenerateBracket")
+	
 
 func _on_manage_participants_pressed():
-	lerp_direction = -1
 	emit_signal("ManageParticipants")
-	emit_signal("FadeOut")
 
 func _on_options_pressed():
 	pass # Replace with function body.

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://kqsxcarsialw"]
 
-[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_home/menu_theme.tres" id="1_1qjpu"]
 [ext_resource type="Script" path="res://nodes/ui/menu_participants/menu_participants.gd" id="1_fw60b"]
+[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="2_2q6vp"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -47,7 +47,7 @@ layout_mode = 2
 [node name="add_player" type="Button" parent="menu_participants/TabContainer/set_1/VBoxContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
-theme = ExtResource("1_1qjpu")
+theme = ExtResource("2_2q6vp")
 text = "ADD PLAYER"
 
 [node name="_" type="Control" parent="menu_participants/TabContainer"]
