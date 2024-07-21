@@ -1,4 +1,10 @@
 extends Node
+class_name RuleSet
 
-@export var player_count = 20
-enum shuffleModes {RoundRobin_BestEffort}
+
+enum modes {RoundRobin_BestEffort}
+@export var _player_count = 4
+
+func _init(player_count : int):
+	_player_count = player_count
+	print(str(player_count))

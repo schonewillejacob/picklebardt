@@ -16,7 +16,11 @@ func _on_home_manageParticipants():
 	menu_system.to_back()
 
 func _on_home_generateBracket():
-	menu_bracket.set_players(menu_participants.participant_list) # pulls players from participant list to generation alogrithm
+	if menu_participants.participant_list:
+		menu_bracket.set_players(menu_participants.participant_list) # pulls players from participant list to generation alogrithm
+	
+	print("gui.gd:\n"+str(menu_participants.participant_list)+"\n")
+	
 	swap_to(menu_bracket)
 	menu_system.to_back()
 
@@ -38,7 +42,10 @@ func swap_to(swapped_to_lerpcontainer : LerpContainer):
 	match(swapped_to_lerpcontainer):
 		menu_home:
 			menu_home.lerp_direction = 1
+			pass
 		menu_bracket:
 			menu_bracket.lerp_direction = 1
+			pass
 		menu_participants:
 			menu_participants.lerp_direction = 1
+			pass
