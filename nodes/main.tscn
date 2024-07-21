@@ -32,6 +32,7 @@ position = Vector2(-4.69474, -121.139)
 root_node = NodePath("../..")
 
 [node name="menuParticipants" parent="gui" instance=ExtResource("4_jq3h8")]
+modulate = Color(1, 1, 1, 0.00392157)
 metadata/_edit_use_anchors_ = true
 
 [node name="menuHome" parent="gui" instance=ExtResource("1_02isb")]
@@ -43,4 +44,6 @@ position_in_place = Vector2(0, 0)
 position_away = Vector2(0, 0)
 
 [connection signal="GenerateBracket" from="gui/menuHome" to="gui" method="_on_home_generateBracket"]
+[connection signal="ManageParticipants" from="gui/menuHome" to="gui" method="_on_home_manageParticipants"]
+[connection signal="onBack" from="gui/menuSystem" to="gui" method="_on_system_onBack"]
 [connection signal="onEnd" from="gui/menuSystem" to="gui" method="_on_system_onEnd"]

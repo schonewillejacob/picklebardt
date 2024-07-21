@@ -4,24 +4,39 @@
 [ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="2_nvy86"]
 [ext_resource type="AudioStream" uid="uid://pdy2d5wo4qcc" path="res://sounds/end.wav" id="2_xcheg"]
 
-[node name="systemButtons" type="HBoxContainer"]
+[node name="MenuSystem" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
 script = ExtResource("1_d3771")
 
-[node name="Accept" type="Button" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="systemButtons" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Accept" type="Button" parent="VBoxContainer/systemButtons"]
+visible = false
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme = ExtResource("2_nvy86")
 theme_override_font_sizes/font_size = 125
 text = "✔"
 
-[node name="Back" type="Button" parent="."]
+[node name="Back" type="Button" parent="VBoxContainer/systemButtons"]
+visible = false
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme = ExtResource("2_nvy86")
 theme_override_font_sizes/font_size = 125
 text = "←"
 
-[node name="End" type="Button" parent="."]
+[node name="End" type="Button" parent="VBoxContainer/systemButtons"]
 modulate = Color(1, 0, 0.0156863, 1)
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
@@ -29,18 +44,22 @@ theme = ExtResource("2_nvy86")
 theme_override_font_sizes/font_size = 72
 text = "×"
 
-[node name="endTimer" type="Timer" parent="End"]
+[node name="endTimer" type="Timer" parent="VBoxContainer/systemButtons/End"]
 wait_time = 0.9
 
-[node name="spacer4" type="Control" parent="."]
+[node name="spacer4" type="Control" parent="VBoxContainer/systemButtons"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="endSound" type="AudioStreamPlayer" parent="."]
+[node name="endSound" type="AudioStreamPlayer" parent="VBoxContainer/systemButtons"]
 stream = ExtResource("2_xcheg")
 
-[connection signal="pressed" from="Accept" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="End" to="." method="_on_end_pressed"]
-[connection signal="timeout" from="End/endTimer" to="." method="_on_end_timer_timeout"]
+[node name="Control" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[connection signal="pressed" from="VBoxContainer/systemButtons/Accept" to="." method="_on_accept_pressed"]
+[connection signal="pressed" from="VBoxContainer/systemButtons/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/systemButtons/End" to="." method="_on_end_pressed"]
+[connection signal="timeout" from="VBoxContainer/systemButtons/End/endTimer" to="." method="_on_end_timer_timeout"]
