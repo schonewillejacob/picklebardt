@@ -13,6 +13,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_kwt6o")
 script = ExtResource("1_hidsa")
+position_in_place = null
+position_away = null
 
 [node name="sideMargin" type="HBoxContainer" parent="."]
 layout_mode = 1

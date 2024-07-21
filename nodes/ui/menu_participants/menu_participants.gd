@@ -14,11 +14,11 @@ func _ready():
 	
 	
 	for i in range (20):
-		var inst_Player : PickleballPlayer = PickleballPlayer.new("player "+str(i+1))
+		var inst_Player : PickleballPlayer = PickleballPlayer.new()
 		dummy_list.append(inst_Player)
 	set_players(dummy_list)
-	print("menu_participants.gd:\n"+str(dummy_list)+"\n")
 
 # Helpers #####################################################
 func set_players(new_list):
+	print("menu_participants.gd:\n"+str(new_list)+"\n")
 	participant_list = new_list

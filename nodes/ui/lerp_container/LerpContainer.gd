@@ -4,7 +4,7 @@ class_name LerpContainer
 @export var position_in_place : Vector2
 @export var position_away : Vector2
 var position_target : Vector2
-var lerp_direction : int = 0 # [-1,1]
+var lerp_direction : int = -1 # [-1,1]
 
 const FADE_OUT_RATE : float = 0.99
 const FADE_IN_RATE : float = 0.8

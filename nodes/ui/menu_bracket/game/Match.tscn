@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://if4726uqp2ow"]
+
+[node name="Match" type="GridContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+
+[node name="player_1" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "player_1"
+
+[node name="player_2" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "player_2"
+
+[node name="player_3" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "player_3"
+
+[node name="player_4" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "player_4"
