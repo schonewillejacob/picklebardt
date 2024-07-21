@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfppi3nrdy77"]
+
+[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="1_tdyvv"]
+[ext_resource type="Script" path="res://nodes/ui/menu_rules/menu_rules.gd" id="2_8nuvx"]
+
+[node name="MenuChangeRules" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tdyvv")
+script = ExtResource("2_8nuvx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.203922, 0.360784, 0.321569, 0.207843)

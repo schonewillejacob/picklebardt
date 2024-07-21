@@ -1,8 +1,9 @@
 extends CanvasLayer
 
+@onready var menu_bracket      : LerpContainer = $menuBracket
 @onready var menu_home         : LerpContainer = $menuHome
 @onready var menu_participants : LerpContainer = $menuParticipants
-@onready var menu_bracket      : LerpContainer = $menuBracket
+@onready var menu_rules        : LerpContainer = $menuRules
 @onready var menu_system       : LerpContainer = $menuSystem
 
 
@@ -16,10 +17,13 @@ func _on_home_manageParticipants():
 	menu_system.to_back()
 
 func _on_home_generateBracket():
-	if menu_participants.participant_list:
-		menu_bracket.set_players(menu_participants.participant_list) # pulls players from participant list to generation alogrithm
-	
+	if !menu_participants.participant_list:
+		print("empty list")
+		pass
+	menu_bracket.set_players(menu_participants.participant_list) # pulls players from participant list to generation alogrithm
+	menu_bracket.ruleset = menu_rules.rule_export
 	print("gui.gd:\n"+str(menu_participants.participant_list)+"\n")
+	menu_bracket.generate_game()
 	
 	swap_to(menu_bracket)
 	menu_system.to_back()
@@ -38,6 +42,7 @@ func swap_to(swapped_to_lerpcontainer : LerpContainer):
 	menu_home.lerp_direction = -1
 	menu_bracket.lerp_direction = -1
 	menu_participants.lerp_direction = -1
+	menu_rules.lerp_direction = -1
 	
 	match(swapped_to_lerpcontainer):
 		menu_home:
@@ -47,5 +52,8 @@ func swap_to(swapped_to_lerpcontainer : LerpContainer):
 			menu_bracket.lerp_direction = 1
 			pass
 		menu_participants:
+			menu_participants.lerp_direction = 1
+			pass
+		menu_rules:
 			menu_participants.lerp_direction = 1
 			pass
