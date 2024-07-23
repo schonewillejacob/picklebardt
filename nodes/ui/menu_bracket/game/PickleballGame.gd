@@ -1,15 +1,22 @@
 extends Control
 class_name PickleballGame
 
-@onready matchContainer = $MatchContainer
-var _matchCount : int = 1
+# These nodes are placed into the GameColumn node in menu_bracket
+@onready var matchContainer : GridContainer = $MatchContainer
+const PATH_MATCH : String = "res://nodes/ui/menu_bracket/game/Match.tscn"
+var matchCount : int
 
-func _init(matchCount : int) -> void:
-	_matchCount = matchCount
+func _init(_matchCount : int = 1) -> void:
+	matchCount = _matchCount
 
 func _ready() -> void:
-	custom_minimum_size = Vector2(get_viewport_rect().size.x / 2,256)
-	for i in _matchCount:
-		var child_match = preload("res://nodes/ui/menu_bracket/game/Match.tscn").instantiate()
-		print(child_match)
-		matchContainer.add_child(child_match)
+	ResourceLoader.load_threaded_request(PATH_MATCH)
+	
+	create_matches()
+
+func create_matches():
+	var packedMatch = ResourceLoader.load_threaded_get(PATH_MATCH)
+	# TODO MatchContainer doesn't exist, figure out how to reference downwards w/in a child
+	for i in matchCount:
+		var instMatch = packedMatch.instantiate()
+		matchContainer.add_child(instMatch) 

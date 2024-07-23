@@ -5,20 +5,20 @@ extends LerpContainer
 
 
 
-var participant_list = []
+var participantList = []
 
 func _ready():
 	lerp_direction = -1
 	
-	var dummy_list = []
+	var dummyList = []
 	
 	
 	for i in range (20):
-		var inst_Player : PickleballPlayer = PickleballPlayer.new()
-		dummy_list.append(inst_Player)
-	set_players(dummy_list)
+		var instPlayer : PickleballPlayer = PickleballPlayer.new()
+		dummyList.append(instPlayer)
+	set_players(dummyList)
 
 # Helpers #####################################################
 func set_players(new_list):
 	print("menu_participants.gd:\n"+str(new_list)+"\n")
-	participant_list = new_list
+	participantList = new_list

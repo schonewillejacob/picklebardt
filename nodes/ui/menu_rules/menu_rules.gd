@@ -1,6 +1,6 @@
 extends LerpContainer
 
-var rule_export : RuleSet
+var ruleExport : RuleSet
 
 func _ready():
-	rule_export = RuleSet.new(30,4)
+	ruleExport = RuleSet.new(4)
