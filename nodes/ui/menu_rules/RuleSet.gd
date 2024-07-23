@@ -1,11 +1,13 @@
 extends Node
 class_name RuleSet
 
+const COURT_SIZE : int = 4
 
-@export var _player_count = 0
-@export var _team_size = 0
+@export var courtsAvailable = 0
+var playerSlots = 0
 
 
-func _init(player_count : int, team_size : int):
-	_player_count = player_count
-	_team_size = team_size
+
+func _init(_courtsAvailable : int):
+	courtsAvailable = _courtsAvailable
+	playerSlots = _courtsAvailable * COURT_SIZE

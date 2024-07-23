@@ -3,14 +3,9 @@ extends LerpContainer
 # Root players > Permutation 1 > Permutation 2 > ... > Permutation n
 # Takes a ruleset and players, then makes an effort to distribute play equally
 
-var recieved_players = []
-var game = []
-var matches_count : int = 0
-
+@onready var nodeGameColumn : VBoxContainer = $sideMargin/VBoxContainer/GameScroller/GameColumn
+var listPlayers = []
 @export var ruleset : RuleSet = null
-@onready var scrollContainer : ScrollContainer = $sideMargin/VBoxContainer/GameScroller
-@onready var scrollContainerColummn : VBoxContainer = $sideMargin/VBoxContainer/GameScroller/GameColumn
-var packed_match = preload("res://nodes/ui/menu_bracket/game/Match.tscn")
 
 
 # Signals #####################################################
@@ -20,22 +15,22 @@ func _on_next_game_pressed() -> void:
 
 
 # Helpers #####################################################
-func set_players(new_list):
-	recieved_players = new_list
-
 func generate_game():
-#	Type safety in rules
-	if !(ruleset is RuleSet || ruleset == null ):
-		print("ERROR: Bad ruleset")
-		pass
-#	Checking player count
-	if (recieved_players.size() != ruleset._player_count):
-		print("ERROR: player array size not declared count\nrecieved_players.size(): "+str(recieved_players.size())+"\nruleset._player_count: ",str(ruleset._player_count))
-		pass
-	matches_count = floor((ruleset._player_count - (ruleset._player_count % 4)) / 4.0)
-	if !matches_count:
-		print("ERROR: 0 matches")
-		pass
+	if !validate_game(): return
+	nodeGameColumn.add_child(PickleballGame.new(ruleset.courtsAvailable))
 	
-	for m in matches_count:
-		scrollContainerColummn.add_child(packed_match.instantiate())
+func set_players(new_list):
+	listPlayers = new_list
+
+# All manner of RuleSet, Player, etc. validation
+func validate_game():
+	# Type safety in rules
+	if !(ruleset is RuleSet || ruleset == null ):
+		push_error("Bad ruleset")
+		return false
+	# Checking player count
+	if (listPlayers.size() < ruleset.COURT_SIZE):
+		push_error("Not enough players to fill a court, <"+str(ruleset.COURT_SIZE))
+		return false
+		
+	return true
