@@ -5,10 +5,12 @@ signal ManageParticipants
 signal GenerateBracket
 signal ChangeRules
 
+
+
+# Virtuals ####################################################
 func _ready():
 	lerp_direction = 1
 	position_target = position_in_place
-
 
 
 # Signals #####################################################
@@ -20,7 +22,5 @@ func _on_generate_bracket_pressed():
 
 func _on_manage_participants_pressed():
 	emit_signal("ManageParticipants")
-
-
 
 # Helpers #####################################################

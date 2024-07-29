@@ -1,12 +1,14 @@
-extends LerpContainer
-
-var ruleExport : RuleSet
+extends Node
+#class_name 
 
 
 # Virtuals ####################################################
-func _ready():
-	ruleExport = RuleSet.new(4)
+#func _init() -> void:
+#func _ready() -> void:
+#func _process(delta: float) -> void:
 
 
 # Signals #####################################################
+
+
 # Helpers #####################################################

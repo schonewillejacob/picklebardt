@@ -10,15 +10,20 @@ var participantList = []
 func _ready():
 	lerp_direction = -1
 	
-	var dummyList = []
-	
-	
-	for i in range (20):
-		var instPlayer : PickleballPlayer = PickleballPlayer.new()
-		dummyList.append(instPlayer)
+	#TEMP
+	var dummyList = make_dummy_list(20)
 	set_players(dummyList)
+	#TEMP
 
 # Helpers #####################################################
 func set_players(new_list):
 	print("menu_participants.gd:\n"+str(new_list)+"\n")
 	participantList = new_list
+
+func make_dummy_list(length):
+	var list = []
+	for i in range (length):
+		var instPlayer : PickleballPlayer = PickleballPlayer.new("player_" + str(i))
+		list.append(instPlayer)
+	
+	return list

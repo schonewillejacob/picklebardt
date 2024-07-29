@@ -13,7 +13,6 @@ func _on_next_game_pressed() -> void:
 	pass # Replace with function body.
 
 
-
 # Helpers #####################################################
 func generate_game():
 	if !validate_game(): return
