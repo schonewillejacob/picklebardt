@@ -7,6 +7,9 @@ extends CanvasLayer
 @onready var menu_system       : LerpContainer = $menuSystem
 
 
+# Virtuals ####################################################
+#func _ready() -> void:
+
 # Signals #####################################################
 func _on_home_changeRules():
 	menu_system.endSound.play()
@@ -17,8 +20,7 @@ func _on_home_manageParticipants():
 
 func _on_home_generateBracket():
 	if !menu_participants.participantList:
-		print("empty list")
-		pass
+		push_error("menu_participants.participantList empty")
 	menu_bracket.set_players(menu_participants.participantList) # pulls players from participant list to generation alogrithm
 	menu_bracket.ruleset = menu_rules.ruleExport
 	print("gui.gd:\n"+str(menu_participants.participantList)+"\n")
@@ -26,6 +28,7 @@ func _on_home_generateBracket():
 	
 	swap_to(menu_bracket)
 	menu_system.to_back()
+	#print_tree_pretty()
 
 func _on_system_onEnd():
 	menu_system.endSound.play()
