@@ -11,6 +11,8 @@ signal ChangeRules
 func _ready():
 	lerp_direction = 1
 	position_target = position_in_place
+	var newText = "version "+ProjectSettings.get_setting("application/config/version")
+	$vbox/version.set_text(newText)
 
 
 # Signals #####################################################

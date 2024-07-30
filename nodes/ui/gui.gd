@@ -21,9 +21,9 @@ func _on_home_manageParticipants():
 func _on_home_generateBracket():
 	if !menu_participants.participantList:
 		push_error("menu_participants.participantList empty")
+	
 	menu_bracket.set_players(menu_participants.participantList) # pulls players from participant list to generation alogrithm
 	menu_bracket.ruleset = menu_rules.ruleExport
-	print("gui.gd:\n"+str(menu_participants.participantList)+"\n")
 	menu_bracket.generate_game()
 	
 	swap_to(menu_bracket)
