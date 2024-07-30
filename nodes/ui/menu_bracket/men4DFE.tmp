@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdup2ka6o4cv0"]
+
+[ext_resource type="Script" path="res://nodes/ui/menu_bracket/menu_bracket.gd" id="1_hidsa"]
+[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="2_kwt6o"]
+
+[node name="MenuBracket" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_kwt6o")
+script = ExtResource("1_hidsa")
+position_in_place = null
+position_away = null
+
+[node name="sideMargin" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="spacer" type="Control" parent="sideMargin"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="sideMargin"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GameScroller" type="ScrollContainer" parent="sideMargin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GameColumn" type="VBoxContainer" parent="sideMargin/VBoxContainer/GameScroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="nextGame" type="Button" parent="sideMargin/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme = ExtResource("2_kwt6o")
+theme_override_font_sizes/font_size = 128
+text = "+"
+
+[node name="spacer2" type="Control" parent="sideMargin"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[node name="spacer3" type="Control" parent="sideMargin"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="sideMargin/VBoxContainer/nextGame" to="." method="_on_next_game_pressed"]
