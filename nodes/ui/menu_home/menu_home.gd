@@ -1,5 +1,9 @@
 extends LerpContainer
-# Splash menus
+# TODO enable manageParticipants and changeRules
+
+
+# Menus for navigating between submenus
+# Loosely coupled with main/gui
 
 signal ManageParticipants
 signal GenerateBracket
@@ -11,7 +15,7 @@ signal ChangeRules
 func _ready():
 	lerp_direction = 1
 	position_target = position_in_place
-	var newText = "version "+ProjectSettings.get_setting("application/config/version")
+	var newText = "version " + ProjectSettings.get_setting("application/config/version")
 	$vbox/version.set_text(newText)
 
 
