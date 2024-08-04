@@ -35,7 +35,6 @@ func _on_home_generateBracket():
 	
 	swap_to(menu_bracket)
 	menu_system.to_back()
-	#print_tree_pretty()
 
 func _on_system_onEnd():
 	menu_system.endSound.play()
@@ -45,6 +44,8 @@ func _on_system_onEnd():
 func _on_system_onBack():
 	swap_to(menu_home)
 	menu_system.to_end()
+	menu_bracket.clear_games()
+
 
 
 

@@ -12,7 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fw60b")
-position_away = Vector2(500, 500)
 
 [node name="menu_participants" type="VBoxContainer" parent="."]
 layout_mode = 1

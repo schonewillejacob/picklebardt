@@ -23,7 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="spacer" type="Control" parent="sideMargin"]
+[node name="spacerL" type="Control" parent="sideMargin"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
@@ -35,6 +35,8 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
 [node name="GameColumn" type="VBoxContainer" parent="sideMargin/VBoxContainer/GameScroller"]
 layout_mode = 2
@@ -52,7 +54,7 @@ text = "NEXT GAME"
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="spacer2" type="Control" parent="sideMargin"]
+[node name="spacerR" type="Control" parent="sideMargin"]
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
