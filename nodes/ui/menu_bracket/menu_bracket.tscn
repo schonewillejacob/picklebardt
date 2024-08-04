@@ -49,8 +49,8 @@ theme_override_font_sizes/font_size = 128
 text = "NEXT GAME"
 
 [node name="spacer" type="Control" parent="sideMargin/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="spacer2" type="Control" parent="sideMargin"]
 custom_minimum_size = Vector2(32, 0)

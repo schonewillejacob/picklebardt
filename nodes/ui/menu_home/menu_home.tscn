@@ -74,11 +74,13 @@ alignment = 1
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
 theme = ExtResource("2_115q6")
+disabled = true
 text = "MANAGE PARTICIPANTS"
 
 [node name="changeRules" type="Button" parent="vbox/buttons" groups=["menu_buttons"]]
 custom_minimum_size = Vector2(0, 256)
 layout_mode = 2
+disabled = true
 text = "CHANGE RULESET"
 
 [node name="expandingSpacer2" type="Control" parent="vbox"]
