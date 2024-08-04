@@ -3,13 +3,13 @@ extends LerpContainer
 # Root players > Permutation 1 > Permutation 2 > ... > Permutation n
 # Takes a ruleset and players, then makes an effort to distribute play equally
 
-# instancing
+# Instancing
 const PATH_PICKLEBALLGAME : String = "res://nodes/ui/menu_bracket/game/PickleballGame.tscn"
 var packedPickleballGame : PackedScene
 # PickleballGame target destination
 @onready var nodeGameColumn : VBoxContainer = $sideMargin/VBoxContainer/GameScroller/GameColumn
 # Rules
-@export var ruleset : RuleSet = null
+var ruleset : RuleSet = null
 var listPlayers = []
 var gameCount : int = 0
 
@@ -23,11 +23,18 @@ func _on_nextGame_pressed() -> void:
 
 
 # Helpers #####################################################
+func clear_games():
+	var children_ = nodeGameColumn.get_children()
+	for game_ in children_:
+		game_.queue_free()
+	gameCount = 0
+
 func generate_game() -> void:
 	
-	# guard clauses
+	# Guard clauses
+	# Safe ruleset
 	if !validate_rules(): return
-	
+	# Creates 
 	if !validate_and_start_request(): return
 	
 	if !packedPickleballGame: # runs, once, if there's no packed scene
@@ -36,9 +43,9 @@ func generate_game() -> void:
 		else:
 			push_error("ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME) != THREAD_LOAD_LOADED")
 	else:
-		push_error("packedPickleballGame exists")
+		print("packedPickleballGame exists")
 	
-	# Probably successful, this is for naming.
+	# Probably successful, this is a shortcut for naming.
 	gameCount += 1
 	
 	var nextGame : PickleballGame = packedPickleballGame.instantiate()
