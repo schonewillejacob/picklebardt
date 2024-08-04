@@ -8,6 +8,7 @@ var playerSlots : int = 0
 
 
 
+# Virtuals ####################################################
 func _init(_courtsAvailable : int):
 	courtsAvailable = _courtsAvailable
 	playerSlots = _courtsAvailable * CourtSize

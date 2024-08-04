@@ -1,5 +1,9 @@
 extends LerpContainer
 
+# Stays present menu-to-menu
+# via swap_to method in gui.gd
+
+
 @onready var exitBufferTimer = $VBoxContainer/systemButtons/End/endTimer
 @onready var endSound = $VBoxContainer/systemButtons/endSound
 
@@ -11,8 +15,13 @@ signal onAccept
 signal onBack
 signal onEnd
 
+
+
+# Virtuals ####################################################
 func _ready():
 	lerp_direction = 1
+
+
 
 # Signals #####################################################
 func _on_end_pressed():
@@ -27,6 +36,7 @@ func _on_accept_pressed():
 
 func _on_end_timer_timeout():
 	get_tree().quit()
+
 
 
 # Helpers #####################################################

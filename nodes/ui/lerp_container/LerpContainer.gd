@@ -13,13 +13,15 @@ const MODULATE_VISIBLE_THRESHOLD : float = 0.1
 signal FadeOut
 signal FadeIn
 
+
+
+# Virtuals ####################################################
 func _ready():
 	# positioning logic
 	# Holds UI imn position.
 	position_in_place = get_position()
 	position_target = position_away
 	modulate.a = -1
-	
 
 func _process(delta):
 	if lerp_direction > 0:
@@ -32,3 +34,8 @@ func _process(delta):
 		visible = false
 	else:
 		visible = true
+
+
+
+# Signals #####################################################
+# Helpers #####################################################
