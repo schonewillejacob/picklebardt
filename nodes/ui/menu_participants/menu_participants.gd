@@ -1,19 +1,16 @@
 extends LerpContainer
-# This should be empty, we simply use a dummy list for the teams at the moment.
-#
-# This script/node is here for future use, implementing a dynamic list of member names.
 
+# This script/node is here for future use, implementing a dynamic list of member names
 
-
+# Holds 
 var participantList = []
 
 func _ready():
-	lerp_direction = -1
-	
-	#TEMP
+	# This should be empty, we simply use a dummy list for the teams at the moment
 	var dummyList = make_dummy_list(20)
+	
+	lerp_direction = -1
 	set_players(dummyList)
-	#TEMP
 
 # Helpers #####################################################
 func set_players(new_list):

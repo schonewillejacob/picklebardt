@@ -1,5 +1,9 @@
 extends CanvasLayer
 
+# Manages the user experience within the app
+# Behaviour is used here, but is defined on a per-node basis
+
+# Menu Control nodes
 @onready var menu_bracket      : LerpContainer = $menuBracket
 @onready var menu_home         : LerpContainer = $menuHome
 @onready var menu_participants : LerpContainer = $menuParticipants
@@ -7,8 +11,11 @@ extends CanvasLayer
 @onready var menu_system       : LerpContainer = $menuSystem
 
 
+
 # Virtuals ####################################################
 #func _ready() -> void:
+
+
 
 # Signals #####################################################
 func _on_home_changeRules():
@@ -38,6 +45,8 @@ func _on_system_onEnd():
 func _on_system_onBack():
 	swap_to(menu_home)
 	menu_system.to_end()
+
+
 
 # Helpers #####################################################
 func swap_to(swapped_to_lerpcontainer : LerpContainer):

@@ -15,6 +15,7 @@ func _ready():
 	$vbox/version.set_text(newText)
 
 
+
 # Signals #####################################################
 func _on_change_rules_pressed():
 	emit_signal("ChangeRules")
@@ -24,5 +25,7 @@ func _on_generate_bracket_pressed():
 
 func _on_manage_participants_pressed():
 	emit_signal("ManageParticipants")
+
+
 
 # Helpers #####################################################
