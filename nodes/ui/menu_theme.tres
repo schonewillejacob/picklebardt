@@ -1,50 +1,65 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://qkvjcwtwjvf7"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://qkvjcwtwjvf7"]
 
 [ext_resource type="FontFile" uid="uid://dshnsx4ueiv2b" path="res://nodes/fonts/ttfs/LBRITE.TTF" id="1_0710q"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tk62m"]
+bg_color = Color(0.0470588, 0.101961, 0.0901961, 1)
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.027451, 0.0666667, 0.0588235, 1)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21t0v"]
-bg_color = Color(0.219608, 0.352941, 0.329412, 1)
-skew = Vector2(0.2, 0)
+bg_color = Color(0.219608, 0.352941, 0.329412, 0)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.627451, 0.807843, 0.768627, 1)
 corner_radius_top_left = 32
+corner_radius_top_right = 32
 corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3d2pk"]
 bg_color = Color(0.25098, 0.396078, 0.368627, 1)
-skew = Vector2(0.1, 0)
 border_width_right = 6
 border_width_bottom = 6
 border_color = Color(0.184314, 0.301961, 0.278431, 1)
 corner_radius_top_left = 32
+corner_radius_top_right = 32
 corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5l7q"]
 bg_color = Color(0.219608, 0.352941, 0.329412, 1)
-skew = Vector2(0.1, 0)
 border_width_right = 6
 border_width_bottom = 6
 border_color = Color(0.184314, 0.301961, 0.278431, 1)
 corner_radius_top_left = 32
+corner_radius_top_right = 32
 corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6jqy"]
 bg_color = Color(0.172549, 0.286275, 0.266667, 1)
-skew = Vector2(0.2, 0)
 border_width_left = 6
 border_width_top = 6
 border_color = Color(0.219608, 0.352941, 0.329412, 1)
 border_blend = true
 corner_radius_top_left = 32
+corner_radius_top_right = 32
 corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
 
 [resource]
 default_font = ExtResource("1_0710q")
 Button/font_sizes/font_size = 64
 Button/fonts/font = ExtResource("1_0710q")
+Button/styles/disabled = SubResource("StyleBoxFlat_tk62m")
 Button/styles/focus = SubResource("StyleBoxFlat_21t0v")
 Button/styles/hover = SubResource("StyleBoxFlat_3d2pk")
 Button/styles/normal = SubResource("StyleBoxFlat_y5l7q")

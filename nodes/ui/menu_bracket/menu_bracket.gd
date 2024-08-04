@@ -28,39 +28,44 @@ func generate_game() -> void:
 	# guard clauses
 	if !validate_rules(): return
 	
-	# guard clauses
-	if !validate_and_request(): return
+	if !validate_and_start_request(): return
+	
 	if !packedPickleballGame: # runs, once, if there's no packed scene
 		if ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME) == 3: # Success
 			packedPickleballGame = ResourceLoader.load_threaded_get(PATH_PICKLEBALLGAME)
 		else:
 			push_error("ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME) != THREAD_LOAD_LOADED")
+	else:
+		push_error("packedPickleballGame exists")
 	
+	# Probably successful, this is for naming.
 	gameCount += 1
 	
 	var nextGame : PickleballGame = packedPickleballGame.instantiate()
-	
 	nextGame.name = "Game-"+str(gameCount)
+	nextGame.matchCount = 4
 	nodeGameColumn.add_child(nextGame)
 
 func set_players(new_list) -> void:
 	listPlayers = new_list
 
-func validate_and_request() -> bool:
+func validate_and_start_request() -> bool:
 	# Start threaded request
 	ResourceLoader.load_threaded_request(PATH_PICKLEBALLGAME)
 	
-	# validate pickleball game resource
+	# processing request
 	var loadstatus_pickleballGamePacked = ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME)
+	while loadstatus_pickleballGamePacked != 3:
+		loadstatus_pickleballGamePacked = ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME)
+		# validate pickleball game resource
+		if loadstatus_pickleballGamePacked == 0:
+			push_error("ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME) == THREAD_LOAD_INVALID_RESOURCE")
+			return false
+		if loadstatus_pickleballGamePacked == 2:
+			push_error("ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME) == THREAD_LOAD_FAILED")
+			return false
 	
-	if loadstatus_pickleballGamePacked == 0:
-		push_error("ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME) == THREAD_LOAD_INVALID_RESOURCE")
-		return false
-	
-	if ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME) == 2:
-		push_error("ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME) == THREAD_LOAD_FAILED")
-		return false
-	
+	# loadstatus_pickleballGamePacked must be == 3
 	return true
 
 func validate_rules() -> bool:
