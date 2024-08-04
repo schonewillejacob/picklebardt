@@ -1,4 +1,5 @@
 extends CanvasLayer
+# TODO assess assigning menu_* buttons exclusive ButtonGroups
 
 # Manages the user experience within the app
 # Behaviour is used here, but is defined on a per-node basis
@@ -9,7 +10,6 @@ extends CanvasLayer
 @onready var menu_participants : LerpContainer = $menuParticipants
 @onready var menu_rules        : LerpContainer = $menuRules
 @onready var menu_system       : LerpContainer = $menuSystem
-
 
 
 # Virtuals ####################################################
