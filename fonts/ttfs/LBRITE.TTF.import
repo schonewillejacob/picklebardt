@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dshnsx4ueiv2b"
-path="res://.godot/imported/LBRITE.TTF-9868e8b539ae5138a214bed29ebf7ff1.fontdata"
+path="res://.godot/imported/LBRITE.TTF-9367f17b6368f9453709cbba9d6a4c83.fontdata"
 
 [deps]
 
-source_file="res://nodes/fonts/ttfs/LBRITE.TTF"
-dest_files=["res://.godot/imported/LBRITE.TTF-9868e8b539ae5138a214bed29ebf7ff1.fontdata"]
+source_file="res://fonts/ttfs/LBRITE.TTF"
+dest_files=["res://.godot/imported/LBRITE.TTF-9367f17b6368f9453709cbba9d6a4c83.fontdata"]
 
 [params]
 

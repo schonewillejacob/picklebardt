@@ -14,7 +14,7 @@ signal ChangeRules
 # Virtuals ####################################################
 func _ready():
 	lerp_direction = 1
-	position_target = positionInPlace
+	positionTarget = positionInPlace
 	var newText = "version " + ProjectSettings.get_setting("application/config/version")
 	$vbox/version.set_text(newText)
 

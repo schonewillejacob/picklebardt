@@ -36,3 +36,4 @@ window/vsync/vsync_mode=0
 
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.156863, 0.156863, 0.156863, 1)

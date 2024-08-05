@@ -4,14 +4,14 @@
 [ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="2_kwt6o"]
 
 [node name="MenuBracket" type="Control"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 200.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = ExtResource("2_kwt6o")
 script = ExtResource("1_hidsa")
 
@@ -31,6 +31,10 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="spacer" type="Control" parent="sideMargin/VBoxContainer"]
+custom_minimum_size = Vector2(0, 232)
+layout_mode = 2
+
 [node name="GameScroller" type="ScrollContainer" parent="sideMargin/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -43,14 +47,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="nextGame" type="Button" parent="sideMargin/VBoxContainer"]
+[node name="nextRound" type="Button" parent="sideMargin/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme = ExtResource("2_kwt6o")
 theme_override_font_sizes/font_size = 128
-text = "NEXT GAME"
+text = "NEXT ROUND"
 
-[node name="spacer" type="Control" parent="sideMargin/VBoxContainer"]
+[node name="spacer2" type="Control" parent="sideMargin/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
@@ -58,4 +62,4 @@ layout_mode = 2
 custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 
-[connection signal="pressed" from="sideMargin/VBoxContainer/nextGame" to="." method="_on_nextGame_pressed"]
+[connection signal="pressed" from="sideMargin/VBoxContainer/nextRound" to="." method="_on_nextRound_pressed"]

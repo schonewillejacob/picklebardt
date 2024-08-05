@@ -17,7 +17,7 @@ var gameCount : int = 0
 
 # Virtuals ####################################################
 # Signals #####################################################
-func _on_nextGame_pressed() -> void:
+func _on_nextRound_pressed() -> void:
 	generate_game()
 
 
@@ -48,10 +48,10 @@ func generate_game() -> void:
 	# Probably successful, this is a shortcut for naming.
 	gameCount += 1
 	
-	var nextGame : PickleballGame = packedPickleballGame.instantiate()
-	nextGame.name = "Game-"+str(gameCount)
-	nextGame.matchCount = 4
-	nodeGameColumn.add_child(nextGame)
+	var nextRound : PickleballGame = packedPickleballGame.instantiate()
+	nextRound.name = "Game-"+str(gameCount)
+	nextRound.matchCount = 4
+	nodeGameColumn.add_child(nextRound)
 
 func set_players(new_list) -> void:
 	listPlayers = new_list

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://byiibonho3vmb"
-path="res://.godot/imported/OLDENGL.TTF-39132af81150465faca465a2d1723b70.fontdata"
+path="res://.godot/imported/OLDENGL.TTF-812136160a0ba317f7d722f5e7d37b44.fontdata"
 
 [deps]
 
-source_file="res://nodes/fonts/ttfs/OLDENGL.TTF"
-dest_files=["res://.godot/imported/OLDENGL.TTF-39132af81150465faca465a2d1723b70.fontdata"]
+source_file="res://fonts/ttfs/OLDENGL.TTF"
+dest_files=["res://.godot/imported/OLDENGL.TTF-812136160a0ba317f7d722f5e7d37b44.fontdata"]
 
 [params]
 
