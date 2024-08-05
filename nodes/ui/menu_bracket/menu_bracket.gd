@@ -1,5 +1,4 @@
 extends LerpContainer
-# TODO figure GameColumn scaling issues
 
 # Root players > Permutation 1 > Permutation 2 > ... > Permutation n
 # takes a ruleset and players, then makes an effort to distribute play equally and pseudorandomly
@@ -47,14 +46,14 @@ func generate_game() -> void:
 	
 	# creating PickleballGame instance
 	gameCount += 1 # shortcut for naming
-	var round_ : PickleballGame = packedPickleballGame.instantiate()
-	round_.name = "Game-"+str(gameCount)
-	round_.matchCount = 4
+	var game_ : PickleballGame = packedPickleballGame.instantiate()
+	game_.name = "Game-"+str(gameCount)
+	game_.matchCount = 4
 	# Parenting PickleballGame instance 
-	if round_.get_parent():
-		round_.get_parent().remove_child(round_)
-	nodeGameColumn.add_child(round_)
-	round_.set_owner(nodeGameColumn)
+	if game_.get_parent():
+		game_.get_parent().remove_child(game_)
+	nodeGameColumn.add_child(game_)
+	game_.set_owner(nodeGameColumn)
 
 func set_players(new_list) -> void:
 	listPlayers = new_list

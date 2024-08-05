@@ -10,6 +10,9 @@ const PATH_MATCH : String = "res://nodes/ui/menu_bracket/game/Match.tscn"
 var packedMatch : PackedScene
 # Match target destination
 @onready var nodeMatchContainer : GridContainer = $VBoxContainer/MatchContainer
+@onready var nodeBuyRoundLabel : Label = $VBoxContainer/BuyRound/VBoxContainer/BuyRoundTitle
+@onready var nodeMatchTitle : Label = $VBoxContainer/MatchTitle
+
 
 # How many matches to place per game
 var matchCount : int
@@ -24,11 +27,16 @@ func _ready() -> void:
 	# setting up threaded loading
 	ResourceLoader.load_threaded_request(PATH_MATCH)
 	
+	var game_number_string_ : String = str(get_parent().get_children().size())
+	nodeMatchTitle.text =  "Game " + game_number_string_
+	nodeBuyRoundLabel.text = "Buy Round"
+	
 	# finding grid for the matches
 	if nodeMatchContainer == null: 
 		push_error("create_matches() failed: nodeMatchContainer == null")
 	else:
 		create_matches()
+
 
 
 # Helpers #####################################################
