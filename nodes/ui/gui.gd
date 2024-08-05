@@ -1,5 +1,6 @@
 extends CanvasLayer
 # TODO assess assigning menu_* buttons exclusive ButtonGroups
+# TODO refactor control nodes naming scheme: menu_<id> -> nodeMenu<Id>
 
 # Manages the user experience within the app
 # Behaviour is used here, but is defined on a per-node basis
@@ -55,6 +56,7 @@ func swap_to(swapped_to_lerpcontainer : LerpContainer):
 	menu_bracket.lerp_direction = -1
 	menu_participants.lerp_direction = -1
 	menu_rules.lerp_direction = -1
+#	menu_system.lerp_direction = -1 is never called, as the menu is persistant
 	
 	match(swapped_to_lerpcontainer):
 		menu_home:

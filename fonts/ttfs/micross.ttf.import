@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bqpc54kwlsemi"
-path="res://.godot/imported/LBRITEI.TTF-2497794faa0794dac30fa342b3b42cc0.fontdata"
+uid="uid://c7xsy1psk1pxi"
+path="res://.godot/imported/micross.ttf-9978b78b2bf1c7afae97ed3f247d6271.fontdata"
 
 [deps]
 
-source_file="res://nodes/fonts/ttfs/LBRITEI.TTF"
-dest_files=["res://.godot/imported/LBRITEI.TTF-2497794faa0794dac30fa342b3b42cc0.fontdata"]
+source_file="res://fonts/ttfs/micross.ttf"
+dest_files=["res://.godot/imported/micross.ttf-9978b78b2bf1c7afae97ed3f247d6271.fontdata"]
 
 [params]
 

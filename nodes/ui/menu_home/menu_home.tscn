@@ -3,16 +3,16 @@
 [ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="2_115q6"]
 [ext_resource type="Script" path="res://nodes/ui/menu_home/menu_home.gd" id="2_o4ovo"]
 [ext_resource type="AudioStream" uid="uid://c7f6td0l0h1fo" path="res://sounds/select.wav" id="3_15ojn"]
+[ext_resource type="FontFile" uid="uid://bqpc54kwlsemi" path="res://fonts/ttfs/LBRITEI.TTF" id="3_pa4p3"]
+[ext_resource type="FontFile" uid="uid://byiibonho3vmb" path="res://fonts/ttfs/OLDENGL.TTF" id="4_3rir7"]
 [ext_resource type="AudioStream" uid="uid://buncr3abmxsi6" path="res://sounds/hover.wav" id="4_gbhxy"]
-[ext_resource type="FontFile" uid="uid://bqpc54kwlsemi" path="res://nodes/fonts/ttfs/LBRITEI.TTF" id="6_7m6ao"]
-[ext_resource type="FontFile" uid="uid://byiibonho3vmb" path="res://nodes/fonts/ttfs/OLDENGL.TTF" id="7_l14xd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_84tu0"]
-font = ExtResource("6_7m6ao")
+font = ExtResource("3_pa4p3")
 font_size = 180
 
 [sub_resource type="LabelSettings" id="LabelSettings_0ekuy"]
-font = ExtResource("7_l14xd")
+font = ExtResource("4_3rir7")
 font_size = 256
 
 [node name="menu_home" type="Control"]
@@ -24,6 +24,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_o4ovo")
+positionInPlace = null
+positionAway = null
 
 [node name="vbox" type="VBoxContainer" parent="."]
 layout_mode = 1

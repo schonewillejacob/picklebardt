@@ -9,7 +9,7 @@ class_name PickleballGame
 const PATH_MATCH : String = "res://nodes/ui/menu_bracket/game/Match.tscn"
 var packedMatch : PackedScene
 # Match target destination
-@onready var nodeMatchContainer : GridContainer = $MatchContainer
+@onready var nodeMatchContainer : GridContainer = $VBoxContainer/MatchContainer
 
 # How many matches to place per game
 var matchCount : int

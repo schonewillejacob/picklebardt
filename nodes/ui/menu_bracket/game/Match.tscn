@@ -1,6 +1,26 @@
-[gd_scene format=3 uid="uid://if4726uqp2ow"]
+[gd_scene load_steps=3 format=3 uid="uid://if4726uqp2ow"]
 
-[node name="Match" type="GridContainer"]
+[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="1_fj2ce"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dxppy"]
+line_spacing = 1.0
+font_size = 32
+
+[node name="Match" type="ColorRect"]
+custom_minimum_size = Vector2(0, 800)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1120.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_fj2ce")
+color = Color(0, 0.258824, 0.192157, 0.337255)
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,34 +30,50 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="player_1" type="Label" parent="."]
+[node name="player_1" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 6
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0.0352941, 0.0196078, 1)
 text = "player_1"
+label_settings = SubResource("LabelSettings_dxppy")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="player_2" type="Label" parent="."]
+[node name="player_2" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 6
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0.0352941, 0.0196078, 1)
 text = "player_2"
+label_settings = SubResource("LabelSettings_dxppy")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="player_3" type="Label" parent="."]
+[node name="player_3" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 6
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0.0352941, 0.0196078, 1)
 text = "player_3"
+label_settings = SubResource("LabelSettings_dxppy")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="player_4" type="Label" parent="."]
+[node name="player_4" type="Label" parent="GridContainer"]
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 6
-text = "player_4"
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0.0352941, 0.0196078, 1)
+text = "Hubert Blaine Wolfeschlegelsteinhausenbergerdorff Sr."
+label_settings = SubResource("LabelSettings_dxppy")
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3

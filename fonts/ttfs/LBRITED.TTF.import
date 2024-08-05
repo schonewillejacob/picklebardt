@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b8kssocxg4lks"
-path="res://.godot/imported/LBRITEDI.TTF-9bccf2c241d3d625d0edf730f780e4c7.fontdata"
+uid="uid://cjdig3mp0ls6k"
+path="res://.godot/imported/LBRITED.TTF-4561cc72e51a590e1b92362ea2ba5e80.fontdata"
 
 [deps]
 
-source_file="res://nodes/fonts/ttfs/LBRITEDI.TTF"
-dest_files=["res://.godot/imported/LBRITEDI.TTF-9bccf2c241d3d625d0edf730f780e4c7.fontdata"]
+source_file="res://fonts/ttfs/LBRITED.TTF"
+dest_files=["res://.godot/imported/LBRITED.TTF-4561cc72e51a590e1b92362ea2ba5e80.fontdata"]
 
 [params]
 
