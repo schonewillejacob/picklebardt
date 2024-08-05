@@ -30,11 +30,10 @@ func clear_games():
 	gameCount = 0
 
 func generate_game() -> void:
-	
 	# Guard clauses
 	# Safe ruleset
 	if !validate_rules(): return
-	# Creates 
+	# Readies packedPickleballGame loading
 	if !validate_and_start_request(): return
 	
 	if !packedPickleballGame: # runs, once, if there's no packed scene
@@ -45,13 +44,16 @@ func generate_game() -> void:
 	else:
 		print("packedPickleballGame exists")
 	
-	# Probably successful, this is a shortcut for naming.
-	gameCount += 1
-	
-	var nextRound : PickleballGame = packedPickleballGame.instantiate()
-	nextRound.name = "Game-"+str(gameCount)
-	nextRound.matchCount = 4
-	nodeGameColumn.add_child(nextRound)
+	# Creating PickleballGame instance
+	gameCount += 1 # shortcut for naming
+	var round_ : PickleballGame = packedPickleballGame.instantiate()
+	round_.name = "Game-"+str(gameCount)
+	round_.matchCount = 4
+	# Parenting PickleballGame instance 
+	if round_.get_parent():
+		round_.get_parent().remove_child(round_)
+	round_.set_owner(nodeGameColumn)
+	nodeGameColumn.add_child(round_)
 
 func set_players(new_list) -> void:
 	listPlayers = new_list
@@ -61,7 +63,7 @@ func validate_and_start_request() -> bool:
 	ResourceLoader.load_threaded_request(PATH_PICKLEBALLGAME)
 	
 	# processing request
-	var loadstatus_pickleballGamePacked = ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME)
+	var loadstatus_pickleballGamePacked = null
 	while loadstatus_pickleballGamePacked != 3:
 		loadstatus_pickleballGamePacked = ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME)
 		# validate pickleball game resource

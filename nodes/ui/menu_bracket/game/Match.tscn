@@ -6,16 +6,22 @@
 line_spacing = 1.0
 font_size = 32
 
-[node name="Match" type="ColorRect"]
-custom_minimum_size = Vector2(0, 800)
+[node name="Match" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -1120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 theme = ExtResource("1_fj2ce")
 color = Color(0, 0.258824, 0.192157, 0.337255)
 
