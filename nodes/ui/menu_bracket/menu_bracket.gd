@@ -1,14 +1,15 @@
 extends LerpContainer
+# TODO figure GameColumn scaling issues
 
 # Root players > Permutation 1 > Permutation 2 > ... > Permutation n
-# Takes a ruleset and players, then makes an effort to distribute play equally
+# takes a ruleset and players, then makes an effort to distribute play equally and pseudorandomly
 
-# Instancing
+# instancing
 const PATH_PICKLEBALLGAME : String = "res://nodes/ui/menu_bracket/game/PickleballGame.tscn"
 var packedPickleballGame : PackedScene
 # PickleballGame target destination
 @onready var nodeGameColumn : VBoxContainer = $sideMargin/VBoxContainer/GameScroller/GameColumn
-# Rules
+# rules
 var ruleset : RuleSet = null
 var listPlayers = []
 var gameCount : int = 0
@@ -30,10 +31,10 @@ func clear_games():
 	gameCount = 0
 
 func generate_game() -> void:
-	# Guard clauses
-	# Safe ruleset
+	# guard clauses
+	# safe ruleset
 	if !validate_rules(): return
-	# Readies packedPickleballGame loading
+	# readies packedPickleballGame loading
 	if !validate_and_start_request(): return
 	
 	if !packedPickleballGame: # runs, once, if there's no packed scene
@@ -44,7 +45,7 @@ func generate_game() -> void:
 	else:
 		print("packedPickleballGame exists")
 	
-	# Creating PickleballGame instance
+	# creating PickleballGame instance
 	gameCount += 1 # shortcut for naming
 	var round_ : PickleballGame = packedPickleballGame.instantiate()
 	round_.name = "Game-"+str(gameCount)
@@ -52,14 +53,14 @@ func generate_game() -> void:
 	# Parenting PickleballGame instance 
 	if round_.get_parent():
 		round_.get_parent().remove_child(round_)
-	round_.set_owner(nodeGameColumn)
 	nodeGameColumn.add_child(round_)
+	round_.set_owner(nodeGameColumn)
 
 func set_players(new_list) -> void:
 	listPlayers = new_list
 
 func validate_and_start_request() -> bool:
-	# Start threaded request
+	# start threaded request
 	ResourceLoader.load_threaded_request(PATH_PICKLEBALLGAME)
 	
 	# processing request
@@ -73,8 +74,8 @@ func validate_and_start_request() -> bool:
 		if loadstatus_pickleballGamePacked == 2:
 			push_error("ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME) == THREAD_LOAD_FAILED")
 			return false
-	
 	# loadstatus_pickleballGamePacked must be == 3
+	
 	return true
 
 func validate_rules() -> bool:
