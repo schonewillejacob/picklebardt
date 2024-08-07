@@ -18,3 +18,5 @@ class_name Match
 
 
 # Helpers #####################################################
+func get_player_labels_nodes() -> Array:
+	return [nodePlayerLabel_0,nodePlayerLabel_1,nodePlayerLabel_2,nodePlayerLabel_3]

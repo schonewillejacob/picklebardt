@@ -40,13 +40,15 @@ func _on_home_generateBracket():
 func _on_system_onEnd():
 	menu_system.endSound.play()
 	menu_system.exitBufferTimer.start()
+	
+	menu_system.lerp_direction = -1
 	swap_to(null) # fades all menus away, as the above timer closes the program
+	
 
 func _on_system_onBack():
 	swap_to(menu_home)
 	menu_system.to_end()
 	menu_bracket.clear_games()
-
 
 
 

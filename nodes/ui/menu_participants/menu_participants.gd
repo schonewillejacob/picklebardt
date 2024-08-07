@@ -2,7 +2,7 @@ extends LerpContainer
 
 # This script/node is here for future use, implementing a dynamic list of member names
 
-# Holds 
+# Holds a list of Players.
 var participantList = []
 
 func _ready():
@@ -14,7 +14,6 @@ func _ready():
 
 # Helpers #####################################################
 func set_players(new_list):
-	print("menu_participants.gd:\n"+str(new_list)+"\n")
 	participantList = new_list
 
 func make_dummy_list(length):
