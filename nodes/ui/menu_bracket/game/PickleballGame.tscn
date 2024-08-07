@@ -15,16 +15,27 @@ size_flags_vertical = 3
 theme = ExtResource("1_c4eb6")
 script = ExtResource("2_b1vlq")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="background" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="gamespacer" type="Control" parent="background"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="background"]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
-color = Color(0, 0, 0, 0.0156863)
+color = Color(0.0156863, 0.0823529, 0.0823529, 0.627451)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 mouse_filter = 2
 alignment = 1
+
+[node name="gamespacer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
 
 [node name="MatchTitle" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 96)
@@ -78,6 +89,6 @@ text = "TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TE
 autowrap_mode = 3
 
 [node name="spacer" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 128)
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 mouse_filter = 2
