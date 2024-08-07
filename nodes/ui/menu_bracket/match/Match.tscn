@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://if4726uqp2ow"]
+[gd_scene load_steps=7 format=3 uid="uid://2bq6rhpk22ne"]
 
 [ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="1_7dnji"]
-[ext_resource type="Script" path="res://nodes/ui/menu_bracket/match/Match.gd" id="2_2q8c0"]
+[ext_resource type="Script" path="res://nodes/ui/menu_bracket/game/Match.gd" id="2_q6ifq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_amoi2"]
 line_spacing = 2.0
@@ -41,7 +41,7 @@ theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
-script = ExtResource("2_2q8c0")
+script = ExtResource("2_q6ifq")
 
 [node name="background" type="ColorRect" parent="."]
 layout_mode = 2

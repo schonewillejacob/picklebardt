@@ -41,11 +41,20 @@ func _ready() -> void:
 
 # Helpers #####################################################
 func create_matches():
-	# validate matches
-	if nodeMatchContainer == null:
-		push_error("nodeMatchContainer == null")
+	if !validate_matches(): return
 	
 	packedMatch = ResourceLoader.load_threaded_get(PATH_MATCH)
 	for i in matchCount:
 		var instMatch = packedMatch.instantiate()
 		nodeMatchContainer.add_child(instMatch) 
+
+
+func validate_matches() -> bool:
+	if nodeMatchContainer == null:
+		push_error("nodeMatchContainer == null")
+		return false
+	
+	ResourceLoader.load_threaded_get_status(PATH_MATCH)
+	
+	
+	return true
