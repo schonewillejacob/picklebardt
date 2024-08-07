@@ -7,7 +7,7 @@ var participantList : Array = []
 
 func _ready() -> void:
 	# This should be empty, we simply use a dummy list for the teams at the moment
-	var dummyList = make_dummy_list(20)
+	var dummyList = make_dummy_list(32)
 	
 	lerp_direction = -1
 	set_participantList(dummyList)
@@ -19,7 +19,7 @@ func set_participantList(new_list) -> void:
 func make_dummy_list(length) -> Array:
 	var list : Array = []
 	for i in range (length):
-		var instPlayer : PickleballPlayer = PickleballPlayer.new("player_" + str(i))
+		var instPlayer : PickleballPlayer = PickleballPlayer.new("Player #" + str(i))
 		list.append(instPlayer)
 	
 	return list

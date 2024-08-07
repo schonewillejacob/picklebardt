@@ -11,7 +11,7 @@ const PATH_MATCH : String = "res://nodes/ui/menu_bracket/game/Match.tscn"
 var packedMatch : PackedScene
 # Match target destination
 @onready var nodeMatchContainer : GridContainer = $VBoxContainer/MatchContainer
-@onready var nodeBuyRoundLabel : Label = $VBoxContainer/BuyRound/VBoxContainer/BuyRoundTitle
+@onready var nodeBuyRoundLabel : Label = $VBoxContainer/BuyRound/VBoxContainer/BuyRoundList
 @onready var nodeMatchTitle : Label = $VBoxContainer/MatchTitle
 
 
@@ -27,7 +27,6 @@ func _init(match_count : int = 1) -> void:
 func _ready() -> void:
 	var game_number_string_ : String = str(get_parent().get_children().size())
 	nodeMatchTitle.text =  "Game " + game_number_string_
-	nodeBuyRoundLabel.text = "Buy Round"
 	
 	# finding grid for the matches
 	if nodeMatchContainer == null: 
@@ -52,7 +51,6 @@ func get_all_playerLabels() -> Array:
 		if child is Label:
 			playerLabels_.append(child)
 	
-	print(playerLabels_)
 	return playerLabels_
 
 func load_valid_pathhashed_threadresource(_path) -> bool:
