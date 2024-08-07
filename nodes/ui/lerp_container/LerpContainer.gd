@@ -1,7 +1,7 @@
 extends Control
 class_name LerpContainer
 
-# makes a contianers not visible if modulate.a is under MODULATE_VISIBLE_THRESHOLD
+## makes a containers not visible if modulate.a is under MODULATE_VISIBLE_THRESHOLD
 
 # lerping
 @export var positionInPlace : Vector2

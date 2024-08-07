@@ -1,9 +1,9 @@
 extends CanvasLayer
+## Manages the user experience within the app
+## Behaviour is used here, but is defined on a per-node basis
+
 # TODO assess assigning menu_* buttons exclusive ButtonGroups
 # TODO refactor control nodes naming scheme: menu_<id> -> nodeMenu<Id>
-
-# Manages the user experience within the app
-# Behaviour is used here, but is defined on a per-node basis
 
 # Menu Control nodes
 @onready var menu_bracket      : LerpContainer = $menuBracket
@@ -30,7 +30,7 @@ func _on_home_generateBracket():
 	if !menu_participants.participantList:
 		push_error("menu_participants.participantList empty")
 	
-	menu_bracket.set_players(menu_participants.participantList) # pulls players from participant list to generation alogrithm
+	menu_bracket.listPlayers = menu_participants.participantList.duplicate() # gets fresh Array copy, to be manipulated.
 	menu_bracket.ruleset = menu_rules.ruleExport
 	menu_bracket.generate_game()
 	
