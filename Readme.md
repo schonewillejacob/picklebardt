@@ -9,4 +9,4 @@
 ```
 # Jacob Schonewille © 2024
 <br/>
-Side + team-based sporting match organizational app. Designed for Pickleball.
+Pickleball match organizational app. Designed for Pickleball.

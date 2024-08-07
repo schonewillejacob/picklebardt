@@ -83,9 +83,16 @@ func inject_simple_listPlayers(game_ : PickleballGame):
 		for player_label_ : Label in match_.get_player_label_nodes():
 			var player_ : PickleballPlayer = listPlayers.pop_front()
 			player_label_.text = player_.playerName
+			
 			playerQueue_.append(player_)
-	# Match is full at this point, replenish listPlayers
+	# fill buy round box
+	var buyRound_text : String = ""
+	for buy_players_ in listPlayers:
+		buyRound_text += buy_players_.playerName + ", "
 	
+	game_.nodeBuyRoundLabel.text = buyRound_text
+	
+	# Match is full at this point, replenish listPlayers
 	for active_player_ in playerQueue_:
 		listPlayers.append(active_player_)
 
