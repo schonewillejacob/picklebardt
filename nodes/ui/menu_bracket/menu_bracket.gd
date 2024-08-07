@@ -1,7 +1,8 @@
 extends LerpContainer
+## Root players > swaps > Permutation 1 > swaps > Permutation 2 > swaps > ... > Permutation n
+## takes a RuleSet and list of Player(s)
 
-# Root players > swaps > Permutation 1 > swaps > Permutation 2 > swaps > ... > Permutation n
-# takes a RuleSet and list of Player(s)
+signal GenerateGame
 
 # instancing
 const PATH_PICKLEBALLGAME : String = "res://nodes/ui/menu_bracket/game/PickleballGame.tscn"
@@ -29,23 +30,21 @@ func clear_games():
 		game_.queue_free()
 	gameCount = 0
 
-func generate_game() -> void:
-	# Pack Pickleball PackedScene
+func generate_game():
+	# Packing Pickleball PackedScene
 	if !validate_rules(): return
 	# readies packedPickleballGame loading
-	if !get_valid_pathhashed_threadresource(PATH_PICKLEBALLGAME): return
-	# runs, once, if there's no packed scene
+	if !load_valid_pathhashed_threadresource(PATH_PICKLEBALLGAME): return
+	# instantiate a game, loads if there's no packed scene
 	if !packedPickleballGame: 
-		if ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME) == 3: # Success
-			packedPickleballGame = ResourceLoader.load_threaded_get(PATH_PICKLEBALLGAME)
-		else:
-			push_error("ResourceLoader.load_threaded_get_status(PATH_PICKLEBALLGAME) != THREAD_LOAD_LOADED")
+		packedPickleballGame = ResourceLoader.load_threaded_get(PATH_PICKLEBALLGAME)
 	else:
 		push_warning("packedPickleballGame exists")
 	
+	var game_ : PickleballGame = packedPickleballGame.instantiate()
+	
 	# creating PickleballGame instance
 	gameCount += 1 # shortcut for naming
-	var game_ : PickleballGame = packedPickleballGame.instantiate()
 	game_.name = "Game-"+str(gameCount)
 	game_.matchCount = 4
 	
@@ -54,16 +53,16 @@ func generate_game() -> void:
 		game_.get_parent().remove_child(game_)
 	nodeGameColumn.add_child(game_)
 	game_.set_owner(nodeGameColumn)
-
-func set_players(new_list) -> void:
-	listPlayers = new_list
-
-func get_valid_pathhashed_threadresource(_path) -> bool:
-	var loadstatus = null
 	
+	# inserting list
+	inject_simple_listPlayers(game_)
+	
+	return game_
+
+func load_valid_pathhashed_threadresource(_path) -> bool:
+	var loadstatus = null
 	# start threaded request
 	ResourceLoader.load_threaded_request(_path)
-	
 	# processing request
 	while loadstatus != 3:
 		loadstatus = ResourceLoader.load_threaded_get_status(_path)
@@ -75,8 +74,37 @@ func get_valid_pathhashed_threadresource(_path) -> bool:
 			push_error("ResourceLoader.load_threaded_get_status("+_path+") == THREAD_LOAD_FAILED")
 			return false
 	# loadstatus must be == 3
-	
 	return true
+
+func inject_simple_listPlayers(game_ : PickleballGame):
+	var playerQueue_ : Array = []
+	
+	for match_ in game_.nodeMatchContainer.get_children():
+		for player_label_ : Label in match_.get_player_label_nodes():
+			var player_ : PickleballPlayer = listPlayers.pop_front()
+			player_label_.text = player_.playerName
+			playerQueue_.append(player_)
+	# Match is full at this point, replenish listPlayers
+	
+	for active_player_ in playerQueue_:
+		listPlayers.append(active_player_)
+
+func inject_shuffle_listPlayers(game_ : PickleballGame):
+	var playerQueue_ : Array = []
+	
+	for match_ in game_.nodeMatchContainer.get_children():
+		for player_label_ : Label in match_.get_player_label_nodes():
+			var player_ : PickleballPlayer = listPlayers.pop_front()
+			player_label_.text = player_.playerName
+			playerQueue_.append(player_)
+	# Match is full at this point, replenish listPlayers
+	
+	for active_player_ in playerQueue_:
+		listPlayers.append(active_player_)
+	
+
+func set_playerList(new_list) -> void:
+	listPlayers = new_list
 
 func validate_rules() -> bool:
 	# type safety in rules
@@ -85,10 +113,8 @@ func validate_rules() -> bool:
 		return false
 	
 	# checking player count, must fill a court
-	if (listPlayers.size() < ruleset.CourtSize):
-		push_error("Not enough players to fill a court, <"+str(ruleset.CourtSize))
+	if (listPlayers.size() < ruleset.courtSize):
+		push_error("Not enough players to fill a court, <"+str(ruleset.courtSize))
 		return false
-	
-
 	
 	return true

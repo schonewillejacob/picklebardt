@@ -5,11 +5,11 @@ extends LerpContainer
 
 
 @onready var exitBufferTimer = $VBoxContainer/systemButtons/End/endTimer
-@onready var endSound = $VBoxContainer/systemButtons/endSound
+@onready var endSound        = $VBoxContainer/systemButtons/endSound
 
 @onready var acceptButton : BaseButton = $VBoxContainer/systemButtons/Accept
-@onready var backButton : BaseButton = $VBoxContainer/systemButtons/Back
-@onready var endButton : BaseButton = $VBoxContainer/systemButtons/End
+@onready var backButton :   BaseButton = $VBoxContainer/systemButtons/Back
+@onready var endButton :    BaseButton = $VBoxContainer/systemButtons/End
 
 signal onAccept
 signal onBack
@@ -25,6 +25,7 @@ func _ready():
 
 # Signals #####################################################
 func _on_end_pressed():
+	endButton.disabled = true
 	onEnd.emit()
 
 func _on_back_pressed():

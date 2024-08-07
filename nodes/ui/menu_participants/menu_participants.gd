@@ -1,23 +1,23 @@
 extends LerpContainer
 
-# This script/node is here for future use, implementing a dynamic list of member names
+## This script/node is here for future use, implementing a dynamic list of member names
 
-# Holds a list of Players.
-var participantList = []
+# served list of Players.
+var participantList : Array = []
 
-func _ready():
+func _ready() -> void:
 	# This should be empty, we simply use a dummy list for the teams at the moment
 	var dummyList = make_dummy_list(20)
 	
 	lerp_direction = -1
-	set_players(dummyList)
+	set_participantList(dummyList)
 
 # Helpers #####################################################
-func set_players(new_list):
+func set_participantList(new_list) -> void:
 	participantList = new_list
 
-func make_dummy_list(length):
-	var list = []
+func make_dummy_list(length) -> Array:
+	var list : Array = []
 	for i in range (length):
 		var instPlayer : PickleballPlayer = PickleballPlayer.new("player_" + str(i))
 		list.append(instPlayer)

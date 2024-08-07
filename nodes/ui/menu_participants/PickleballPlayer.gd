@@ -1,16 +1,16 @@
 extends Node
 class_name PickleballPlayer
 
-@export var _playerName : String
+@export var playerName : String
 
 
 
 # Virtuals ####################################################
-func _init(playerName : String = "player") -> void:
-	_playerName = playerName
+func _init(player_name : String = "player") -> void:
+	playerName = player_name
 
 func _to_string() -> String:
-	return _playerName
+	return playerName
 
 # Signals #####################################################
 # Helpers #####################################################
