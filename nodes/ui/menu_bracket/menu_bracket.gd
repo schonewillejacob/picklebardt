@@ -1,7 +1,7 @@
 extends LerpContainer
 
-# Root players > Permutation 1 > Permutation 2 > ... > Permutation n
-# takes a ruleset and players, then makes an effort to distribute play equally and pseudorandomly
+# Root players > swaps > Permutation 1 > swaps > Permutation 2 > swaps > ... > Permutation n
+# takes a RuleSet and list of Player(s)
 
 # instancing
 const PATH_PICKLEBALLGAME : String = "res://nodes/ui/menu_bracket/game/PickleballGame.tscn"
