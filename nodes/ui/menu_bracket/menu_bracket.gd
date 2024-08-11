@@ -38,8 +38,7 @@ func generate_game():
 	# instantiate a game, loads if there's no packed scene
 	if !packedPickleballGame: 
 		packedPickleballGame = ResourceLoader.load_threaded_get(PATH_PICKLEBALLGAME)
-	else:
-		push_warning("packedPickleballGame exists")
+		print("packedPickleballGame packed")
 	
 	var game_ : PickleballGame = packedPickleballGame.instantiate()
 	

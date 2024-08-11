@@ -1,6 +1,6 @@
 extends LerpContainer
 
-## This script/node is here for future use, implementing a dynamic list of member names
+
 
 # served list of Players.
 var participantList : Array = []
@@ -13,13 +13,17 @@ func _ready() -> void:
 	set_participantList(dummyList_)
 
 # Helpers #####################################################
-func set_participantList(new_list) -> void:
-	participantList = new_list
-
 func make_dummy_list(length) -> Array:
 	var list_ : Array = []
+	var id_interations_ : int = 0b1
 	for i in range (length):
-		var instPlayer_ : PickleballPlayer = PickleballPlayer.new("Player #" + str(i))
+		var instPlayer_ : PickleballPlayer = PickleballPlayer.new("Player #" + str(i+1),id_interations_)
+		id_interations_ *= 2
+		
+		print("playerName = " + instPlayer_.playerName + ", playerBinaryID = " + str(instPlayer_.playerBinaryID) + " / 0b"+ String.num_int64(instPlayer_.playerBinaryID,2))
 		list_.append(instPlayer_)
 	
 	return list_
+
+func set_participantList(new_list) -> void:
+	participantList = new_list
