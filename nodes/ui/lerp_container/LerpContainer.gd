@@ -7,7 +7,7 @@ class_name LerpContainer
 @export var positionInPlace : Vector2
 @export var positionAway : Vector2
 var positionTarget : Vector2
-var lerp_direction : int = -1 # [-1,1]
+var lerpDirection : int = -1 # [-1,1]
 # modulation
 const FADE_OUT_RATE : float = 0.99
 const FADE_IN_RATE : float = 0.8
@@ -29,11 +29,11 @@ func _ready():
 
 func _process(delta):
 	
-	if lerp_direction > 0:
+	if lerpDirection > 0:
 		#set_position(lerp(get_position(), positionTarget, .99))
-		modulate.a = clamp( modulate.a + (FADE_IN_RATE * lerp_direction * delta), 0.0, 1)
-	elif lerp_direction < 0:
-		modulate.a = clamp( modulate.a + (FADE_OUT_RATE * lerp_direction * delta), 0, 0.66)
+		modulate.a = clamp( modulate.a + (FADE_IN_RATE * lerpDirection * delta), 0.0, 1)
+	elif lerpDirection < 0:
+		modulate.a = clamp( modulate.a + (FADE_OUT_RATE * lerpDirection * delta), 0, 0.66)
 	
 	if modulate.a < MODULATE_VISIBLE_THRESHOLD:
 		visible = false

@@ -19,7 +19,7 @@ signal onEnd
 
 # Virtuals ####################################################
 func _ready():
-	lerp_direction = 1
+	lerpDirection = 1
 
 
 
