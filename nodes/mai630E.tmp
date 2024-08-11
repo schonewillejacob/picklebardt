@@ -36,8 +36,6 @@ root_node = NodePath("../..")
 
 [node name="menuBracket" parent="gui" instance=ExtResource("6_mpegv")]
 modulate = Color(1, 1, 1, 0)
-positionInPlace = Vector2(0, 0)
-positionAway = Vector2(0, 0)
 
 [node name="menuParticipants" parent="gui" instance=ExtResource("4_jq3h8")]
 modulate = Color(1, 1, 1, 0.00392157)
@@ -45,6 +43,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="menuRules" parent="gui" instance=ExtResource("6_ifxuh")]
 modulate = Color(1, 1, 1, 0)
+positionInPlace = null
+positionAway = null
 
 [node name="menuSystem" parent="gui" instance=ExtResource("5_iih8f")]
 anchors_preset = 0

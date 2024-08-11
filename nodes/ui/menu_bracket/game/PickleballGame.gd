@@ -53,21 +53,21 @@ func get_all_playerLabels() -> Array:
 	
 	return playerLabels_
 
-func load_valid_pathhashed_threadresource(_path) -> bool:
-	var loadstatus = null
+func load_valid_pathhashed_threadresource(resource_path) -> bool:
+	var loadStatus_ = null
 	# start threaded request
-	ResourceLoader.load_threaded_request(_path)
+	ResourceLoader.load_threaded_request(resource_path)
 	# processing request
-	while loadstatus != 3:
-		loadstatus = ResourceLoader.load_threaded_get_status(_path)
+	while loadStatus_ != 3:
+		loadStatus_ = ResourceLoader.load_threaded_get_status(resource_path)
 		# validate pickleball game resource
-		if loadstatus == 0:
-			push_error("ResourceLoader.load_threaded_get_status("+_path+") == THREAD_LOAD_INVALID_RESOURCE")
+		if loadStatus_ == 0:
+			push_error("ResourceLoader.load_threaded_get_status("+resource_path+") == THREAD_LOAD_INVALID_RESOURCE")
 			return false
-		if loadstatus == 2:
-			push_error("ResourceLoader.load_threaded_get_status("+_path+") == THREAD_LOAD_FAILED")
+		if loadStatus_ == 2:
+			push_error("ResourceLoader.load_threaded_get_status("+resource_path+") == THREAD_LOAD_FAILED")
 			return false
-	# loadstatus must be == 3
+	# loadStatus_ must be == 3
 	return true
 
 func validate_matches() -> bool:
