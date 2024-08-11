@@ -59,27 +59,27 @@ func generate_game():
 	
 	return game_
 
-func load_valid_pathhashed_threadresource(_path) -> bool:
+func load_valid_pathhashed_threadresource(resource_path) -> bool:
 	var loadstatus = null
 	# start threaded request
-	ResourceLoader.load_threaded_request(_path)
+	ResourceLoader.load_threaded_request(resource_path)
 	# processing request
 	while loadstatus != 3:
-		loadstatus = ResourceLoader.load_threaded_get_status(_path)
+		loadstatus = ResourceLoader.load_threaded_get_status(resource_path)
 		# validate pickleball game resource
 		if loadstatus == 0:
-			push_error("ResourceLoader.load_threaded_get_status("+_path+") == THREAD_LOAD_INVALID_RESOURCE")
+			push_error("ResourceLoader.load_threaded_get_status("+resource_path+") == THREAD_LOAD_INVALID_RESOURCE")
 			return false
 		if loadstatus == 2:
-			push_error("ResourceLoader.load_threaded_get_status("+_path+") == THREAD_LOAD_FAILED")
+			push_error("ResourceLoader.load_threaded_get_status("+resource_path+") == THREAD_LOAD_FAILED")
 			return false
 	# loadstatus must be == 3
 	return true
 
-func inject_simple_listPlayers(game_ : PickleballGame):
+func inject_simple_listPlayers(game : PickleballGame):
 	var playerQueue_ : Array = []
 	
-	for match_ in game_.nodeMatchContainer.get_children():
+	for match_ in game.nodeMatchContainer.get_children():
 		for player_label_ : Label in match_.get_player_label_nodes():
 			var player_ : PickleballPlayer = listPlayers.pop_front()
 			player_label_.text = player_.playerName
@@ -90,16 +90,16 @@ func inject_simple_listPlayers(game_ : PickleballGame):
 	for buy_players_ in listPlayers:
 		buyRound_text += buy_players_.playerName + ", "
 	
-	game_.nodeBuyRoundLabel.text = buyRound_text
+	game.nodeBuyRoundLabel.text = buyRound_text
 	
 	# Match is full at this point, replenish listPlayers
 	for active_player_ in playerQueue_:
 		listPlayers.append(active_player_)
 
-func inject_shuffle_listPlayers(game_ : PickleballGame):
+func inject_shuffle_listPlayers(game : PickleballGame):
 	var playerQueue_ : Array = []
 	
-	for match_ in game_.nodeMatchContainer.get_children():
+	for match_ in game.nodeMatchContainer.get_children():
 		for player_label_ : Label in match_.get_player_label_nodes():
 			var player_ : PickleballPlayer = listPlayers.pop_front()
 			player_label_.text = player_.playerName

@@ -39,6 +39,8 @@ modulate = Color(1, 1, 1, 0)
 
 [node name="menuParticipants" parent="gui" instance=ExtResource("4_jq3h8")]
 modulate = Color(1, 1, 1, 0.00392157)
+positionInPlace = null
+positionAway = null
 metadata/_edit_use_anchors_ = true
 
 [node name="menuRules" parent="gui" instance=ExtResource("6_ifxuh")]
@@ -49,6 +51,8 @@ anchors_preset = 0
 anchor_right = 0.0
 grow_horizontal = 1
 size_flags_horizontal = 3
+positionInPlace = null
+positionAway = null
 
 [connection signal="ChangeRules" from="gui/menuHome" to="gui" method="_on_home_changeRules"]
 [connection signal="GenerateBracket" from="gui/menuHome" to="gui" method="_on_home_generateBracket"]

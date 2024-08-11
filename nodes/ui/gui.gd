@@ -41,7 +41,7 @@ func _on_system_onEnd():
 	menu_system.endSound.play()
 	menu_system.exitBufferTimer.start()
 	
-	menu_system.lerp_direction = -1
+	menu_system.lerpDirection = -1
 	swap_to(null) # fades all menus away, as the above timer closes the program
 	
 
@@ -54,22 +54,22 @@ func _on_system_onBack():
 
 # Helpers #####################################################
 func swap_to(swapped_to_lerpcontainer : LerpContainer):
-	menu_home.lerp_direction = -1
-	menu_bracket.lerp_direction = -1
-	menu_participants.lerp_direction = -1
-	menu_rules.lerp_direction = -1
-#	menu_system.lerp_direction = -1 is never called, as the menu is persistant
+	menu_home.lerpDirection = -1
+	menu_bracket.lerpDirection = -1
+	menu_participants.lerpDirection = -1
+	menu_rules.lerpDirection = -1
+#	menu_system.lerpDirection = -1 is never called, as the menu is persistant
 	
 	match(swapped_to_lerpcontainer):
 		menu_home:
-			menu_home.lerp_direction = 1
+			menu_home.lerpDirection = 1
 			pass
 		menu_bracket:
-			menu_bracket.lerp_direction = 1
+			menu_bracket.lerpDirection = 1
 			pass
 		menu_participants:
-			menu_participants.lerp_direction = 1
+			menu_participants.lerpDirection = 1
 			pass
 		menu_rules:
-			menu_participants.lerp_direction = 1
+			menu_participants.lerpDirection = 1
 			pass
