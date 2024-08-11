@@ -32,6 +32,7 @@ func _on_home_generateBracket():
 	
 	menu_bracket.listPlayers = menu_participants.participantList.duplicate() # gets fresh Array copy, to be manipulated.
 	menu_bracket.ruleset = menu_rules.ruleExport
+	seed(menu_bracket.ruleset.shuffleSeed)	
 	menu_bracket.generate_game()
 	
 	swap_to(menu_bracket)

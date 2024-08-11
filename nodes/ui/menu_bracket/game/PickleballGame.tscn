@@ -42,8 +42,7 @@ custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 64
-text = "TESTSET
-"
+text = "MatchTitle<Label>"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -76,7 +75,7 @@ custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 64
-text = "BUY ROUND"
+text = "Buy Round:"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -86,6 +85,7 @@ custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 32
+text = "BuyRoundList<Label>"
 horizontal_alignment = 1
 autowrap_mode = 3
 

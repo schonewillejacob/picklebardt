@@ -6,7 +6,8 @@ var ruleExport : RuleSet
 
 # Virtuals ####################################################
 func _ready():
-	ruleExport = RuleSet.new(4)
+	# making a dummy ruleset
+	ruleExport = RuleSet.new(4,4,100)
 
 
 

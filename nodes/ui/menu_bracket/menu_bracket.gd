@@ -12,6 +12,7 @@ var packedPickleballGame : PackedScene
 # rules
 var ruleset : RuleSet = null
 var listPlayers = []
+var listBuyround = []
 var gameCount : int = 0
 
 
@@ -35,15 +36,16 @@ func generate_game():
 	if !validate_rules(): return
 	# readies packedPickleballGame loading
 	if !load_valid_pathhashed_threadresource(PATH_PICKLEBALLGAME): return
-	# instantiate a game, loads if there's no packed scene
+	
+	# instantiate a game, get resource if there's no packed scene
 	if !packedPickleballGame: 
 		packedPickleballGame = ResourceLoader.load_threaded_get(PATH_PICKLEBALLGAME)
 		print("packedPickleballGame packed")
 	
-	var game_ : PickleballGame = packedPickleballGame.instantiate()
 	
 	# creating PickleballGame instance
 	gameCount += 1 # shortcut for naming
+	var game_ : PickleballGame = packedPickleballGame.instantiate()
 	game_.name = "Game-"+str(gameCount)
 	game_.matchCount = 4
 	
@@ -54,60 +56,100 @@ func generate_game():
 	game_.set_owner(nodeGameColumn)
 	
 	# inserting list
-	inject_simple_listPlayers(game_)
+	queued_injection_from_listPlayers(game_)
 	
-	return game_
+	# setup next permutation
+	mediatedFisherYates_playerShuffle()
 
-func load_valid_pathhashed_threadresource(resource_path) -> bool:
-	var loadstatus = null
-	# start threaded request
-	ResourceLoader.load_threaded_request(resource_path)
-	# processing request
-	while loadstatus != 3:
-		loadstatus = ResourceLoader.load_threaded_get_status(resource_path)
-		# validate pickleball game resource
-		if loadstatus == 0:
-			push_error("ResourceLoader.load_threaded_get_status("+resource_path+") == THREAD_LOAD_INVALID_RESOURCE")
-			return false
-		if loadstatus == 2:
-			push_error("ResourceLoader.load_threaded_get_status("+resource_path+") == THREAD_LOAD_FAILED")
-			return false
-	# loadstatus must be == 3
-	return true
-
-func inject_simple_listPlayers(game : PickleballGame):
+func queued_injection_from_listPlayers(game : PickleballGame):
 	var playerQueue_ : Array = []
 	
+	# search a PickleballGame for Match(es)...
 	for match_ in game.nodeMatchContainer.get_children():
+		# search a Match for Labels...
 		for player_label_ : Label in match_.get_player_label_nodes():
 			var player_ : PickleballPlayer = listPlayers.pop_front()
 			player_label_.text = player_.playerName
 			
 			playerQueue_.append(player_)
-	# fill buy round box
-	var buyRound_text : String = ""
-	for buy_players_ in listPlayers:
-		buyRound_text += buy_players_.playerName + ", "
 	
-	game.nodeBuyRoundLabel.text = buyRound_text
+	# fill buy round label
+	# TODO swap to button generation
+	var buyRound_text_ : String = ""
+	for buy_players_ in listPlayers:
+		buyRound_text_ += buy_players_.playerName + ", "
+	game.nodeBuyRoundLabel.text = buyRound_text_
 	
 	# Match is full at this point, replenish listPlayers
 	for active_player_ in playerQueue_:
 		listPlayers.append(active_player_)
 
-func inject_shuffle_listPlayers(game : PickleballGame):
-	var playerQueue_ : Array = []
+func mediatedFisherYates_playerShuffle():
+	#var deferredQueue_ = []
+	var shuffledListPlayers_ = []
 	
-	for match_ in game.nodeMatchContainer.get_children():
-		for player_label_ : Label in match_.get_player_label_nodes():
-			var player_ : PickleballPlayer = listPlayers.pop_front()
-			player_label_.text = player_.playerName
-			playerQueue_.append(player_)
-	# Match is full at this point, replenish listPlayers
+	# arranges playerList in a seeded pattern
+	# tries to prevent players from playing together repeatedly by preventing an odd slot from being the same as it's previous
+	for gameSlot_ in range(ruleset.playerSlots):
+		# Even Slots take random playerfrom the player List
+		if gameSlot_ % 2 == 0:
+			var popTarget_ = floor(randf()*( listPlayers.size()-1 ))
+			shuffledListPlayers_.append(listPlayers.pop_at(popTarget_))
+		else:
+			for next_player_ in listPlayers:
+				if not (shuffledListPlayers_.back().playerBinaryLedger & next_player_.playerBinaryID):
+					# Not in ledger, valid pair
+					shuffledListPlayers_.back().playerBinaryLedger += next_player_.playerBinaryID
+					next_player_.playerBinaryLedger += shuffledListPlayers_.back().playerBinaryID
+					shuffledListPlayers_.append(listPlayers.pop_at(listPlayers.find(next_player_)))
+					break
+				# In ledger, invalid pair
+				
 	
-	for active_player_ in playerQueue_:
-		listPlayers.append(active_player_)
-	
+	#for gameSlot_ in range(ruleset.playerSlots):
+		## every even slot we simply insert
+		#if gameSlot_ % 2 == 0:
+			#if !(deferredQueue_.is_empty()):
+				#shuffledListPlayers_.append(deferredQueue_.pop_front())
+			#else:
+				#var popTarget_ = floor(randf() * listPlayers.size())
+				#shuffledListPlayers_.append(listPlayers.pop_at(popTarget_))
+		#else: # odd slots are mediated
+			#for deferred_player_ in deferredQueue_:
+				#if shuffledListPlayers_.back().playerBinaryLedger & deferred_player_.playerBinaryID:
+					## player is in the ledger
+					#continue
+				#else:
+					## player is in NOT the ledger, valid!
+					#shuffledListPlayers_.back().playerBinaryLedger ++ deferred_player_.playerBinaryID
+					#shuffledListPlayers_.append(deferredQueue_[deferredQueue_.find(deferred_player_)].pop())
+					#break
+			#for next_player_ in listPlayers:
+				#if shuffledListPlayers_.back().playerBinaryLedger & next_player_.playerBinaryID:
+					## player is in the ledger
+					#continue
+				#else:
+					## player is in NOT the ledger, valid!
+					#shuffledListPlayers_.back().playerBinaryLedger ++ next_player_.playerBinaryID
+					#shuffledListPlayers_.append(deferredQueue_[deferredQueue_.find(next_player_)].pop())
+					#break
+
+func load_valid_pathhashed_threadresource(resource_path) -> bool:
+	var loadStatus_ = null
+	# start threaded request
+	ResourceLoader.load_threaded_request(resource_path)
+	# processing request
+	while loadStatus_ != 3:
+		loadStatus_ = ResourceLoader.load_threaded_get_status(resource_path)
+		# validate pickleball game resource
+		if loadStatus_ == 0:
+			push_error("ResourceLoader.load_threaded_get_status("+resource_path+") == THREAD_LOAD_INVALID_RESOURCE")
+			return false
+		if loadStatus_ == 2:
+			push_error("ResourceLoader.load_threaded_get_status("+resource_path+") == THREAD_LOAD_FAILED")
+			return false
+	# loadStatus_ must be == 3
+	return true
 
 func set_playerList(new_list) -> void:
 	listPlayers = new_list

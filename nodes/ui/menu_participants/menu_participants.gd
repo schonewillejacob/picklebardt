@@ -1,16 +1,22 @@
 extends LerpContainer
 
-
+## Uses a gui to solicite player names.
+# 	uses this to provide an Array of PickleballPlayer objects
+#   PickleballPlayer objects must be assigned an int that has a unique binary representation w/ constructor.
 
 # served list of Players.
 var participantList : Array = []
 
+
+
+# Virtuals ####################################################
 func _ready() -> void:
-	# This should be empty, we simply use a dummy list for the teams at the moment
-	var dummyList_ = make_dummy_list(23)
-	
 	lerpDirection = -1
+	
+	var dummyList_ : Array = make_dummy_list(23)
 	set_participantList(dummyList_)
+
+
 
 # Helpers #####################################################
 func make_dummy_list(length) -> Array:
