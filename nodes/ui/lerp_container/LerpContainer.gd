@@ -9,8 +9,8 @@ class_name LerpContainer
 var positionTarget          : Vector2
 var lerpDirection           : int = -1 # [-1,1]
 # modulation
-const FADE_OUT_RATE              : float = 0.99
-const FADE_IN_RATE               : float = 0.8
+const FADE_OUT_RATE              : float = 3.0
+const FADE_IN_RATE               : float = 1.0
 const MODULATE_VISIBLE_THRESHOLD : float = 0.1
 
 signal FadeOut
@@ -32,9 +32,9 @@ func _process(delta):
 	
 	if lerpDirection > 0:
 		#set_position(lerp(get_position(), positionTarget, .99))
-		modulate.a = clamp( modulate.a + (FADE_IN_RATE * lerpDirection * delta), 0.0, 1)
+		modulate.a = clamp( modulate.a + (FADE_IN_RATE * lerpDirection)*delta, 0.0, 1)
 	elif lerpDirection < 0:
-		modulate.a = clamp( modulate.a + (FADE_OUT_RATE * lerpDirection * delta), 0, 0.66)
+		modulate.a = clamp( modulate.a + (FADE_OUT_RATE * lerpDirection)*delta, 0, 0.66)
 	
 	if modulate.a < MODULATE_VISIBLE_THRESHOLD:
 		visible = false
