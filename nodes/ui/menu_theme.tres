@@ -64,3 +64,4 @@ Button/styles/focus = SubResource("StyleBoxFlat_21t0v")
 Button/styles/hover = SubResource("StyleBoxFlat_3d2pk")
 Button/styles/normal = SubResource("StyleBoxFlat_y5l7q")
 Button/styles/pressed = SubResource("StyleBoxFlat_p6jqy")
+LineEdit/font_sizes/font_size = 64

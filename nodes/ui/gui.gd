@@ -75,3 +75,7 @@ func swap_to(swapped_to_lerpcontainer : LerpContainer):
 		menu_rules:
 			menu_rules.lerpDirection = 1
 			pass
+
+
+func _on_system_onAccept() -> void:
+	pass # Replace with function body.

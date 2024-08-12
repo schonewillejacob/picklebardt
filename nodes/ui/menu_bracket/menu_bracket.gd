@@ -94,7 +94,7 @@ func mediatedFisherYates_playerShuffle():
 	# v this keeps track of the front of the list. Hitting 0 means the buy round size is lower then the court's capacity.
 	var sizeBuyPlayers_ = clamp(listPlayers.size() - ruleset.playerSlots, 0, ruleset.playerSlots) # Safety against Buyrounds greater then # court slots
 	var popTarget_ : int
-	const BINARY_FULL_LISTPLAYERS = 0
+	#const BINARY_FULL_LISTPLAYERS = 0
 	
 	
 	for gameSlot_ in range(ruleset.playerSlots):
@@ -135,20 +135,19 @@ func mediatedFisherYates_playerShuffle():
 		# Odd slots search at shuffledListPlayers_.back() for a pair
 		var flag_pairFound : bool = false
 		for next_player_ in listPlayers: # this checking from the front will naturally bias towards Buy Round players injection...
-			if shuffledListPlayers_.back().playerBinaryLedger & next_player_.playerBinaryID != 0:
+			if shuffledListPlayers_.back().playerBinaryLedger & next_player_.playerBinaryID == 0:
 				print("pair found: "+str(shuffledListPlayers_.back().playerName)+" & "+str(next_player_.playerName))
 				# Not in ledger, valid pair
 				shuffledListPlayers_.back().push_to_playerBinaryLedger(next_player_.playerBinaryID)
 				next_player_.push_to_playerBinaryLedger(shuffledListPlayers_.back().playerBinaryID)
 				shuffledListPlayers_.append(listPlayers.pop_at(listPlayers.find(next_player_)))           # INJECTION
-				
+				flag_pairFound = true
 				break
 		if flag_pairFound: 
 			continue
 		
 		# No valid pair found, gets more likely with higher Game counts, nodeGameColumn.size()
 		# so pick one at random
-		
 		popTarget_ = floor((randf())*( listPlayers.size()-1 ))
 		popTarget_ = clamp(popTarget_,0,abs(popTarget_))
 		
@@ -156,8 +155,7 @@ func mediatedFisherYates_playerShuffle():
 		shuffledListPlayers_.back().push_to_playerBinaryLedger(listPlayers[popTarget_].playerBinaryID)
 		listPlayers[popTarget_].push_to_playerBinaryLedger(shuffledListPlayers_.back().playerBinaryID)
 		shuffledListPlayers_.append(listPlayers.pop_at(popTarget_))                                       # INJECTION
-		print("No pair found for "+shuffledListPlayers_.back().playerName+", playerBinaryID: 0b"+ String.num_int64(shuffledListPlayers_.back().playerBinaryID,2))
-		push_warning("\""+shuffledListPlayers_.back().playerName+"\" has played available players")
+		push_warning("No pair found for "+shuffledListPlayers_.back().playerName+", playerBinaryID: 0b"+ String.num_int64(shuffledListPlayers_.back().playerBinaryID,2))
 		
 		#check to see if everyone has been pulled.
 	
