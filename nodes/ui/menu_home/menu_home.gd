@@ -21,13 +21,13 @@ func _ready():
 
 # Signals #####################################################
 func _on_change_rules_pressed():
-	emit_signal("ChangeRules")
+	ChangeRules.emit()
 
 func _on_generate_bracket_pressed():
-	emit_signal("GenerateBracket")
+	GenerateBracket.emit()
 
 func _on_manage_participants_pressed():
-	emit_signal("ManageParticipants")
+	ManageParticipants.emit()
 
 
 

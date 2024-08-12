@@ -53,5 +53,6 @@ size_flags_horizontal = 3
 [connection signal="ChangeRules" from="gui/menuHome" to="gui" method="_on_home_changeRules"]
 [connection signal="GenerateBracket" from="gui/menuHome" to="gui" method="_on_home_generateBracket"]
 [connection signal="ManageParticipants" from="gui/menuHome" to="gui" method="_on_home_manageParticipants"]
-[connection signal="onBack" from="gui/menuSystem" to="gui" method="_on_system_onBack"]
-[connection signal="onEnd" from="gui/menuSystem" to="gui" method="_on_system_onEnd"]
+[connection signal="OnAccept" from="gui/menuSystem" to="gui" method="_on_system_onAccept"]
+[connection signal="OnBack" from="gui/menuSystem" to="gui" method="_on_system_onBack"]
+[connection signal="OnEnd" from="gui/menuSystem" to="gui" method="_on_system_onEnd"]
