@@ -16,6 +16,9 @@ func _to_string() -> String:
 
 # Signals #####################################################
 # Helpers #####################################################
+func clear_ledger():
+	playerBinaryLedger = 0
+
 func push_to_playerBinaryLedger(inserted_player_playerBinaryID : int):
 	playerBinaryLedger = playerBinaryLedger | inserted_player_playerBinaryID # binary OR
 

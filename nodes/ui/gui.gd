@@ -33,11 +33,23 @@ func _on_home_generateBracket():
 	
 	menu_bracket.listPlayers = menu_participants.participantList.duplicate() # gets fresh Array copy, to be manipulated.
 	menu_bracket.ruleset = menu_rules.ruleExport
+	
 	seed(menu_bracket.ruleset.shuffleSeed)	
 	menu_bracket.generate_game()
 	
 	swap_to(menu_bracket)
 	menu_system.to_back()
+
+func _on_system_onAccept() -> void:
+	menu_rules.set_export_ruleset()
+	
+	menu_system.to_end()
+	swap_to(menu_home)
+
+func _on_system_onBack():
+	menu_system.to_end()
+	swap_to(menu_home)
+	menu_bracket.clear_games()
 
 func _on_system_onEnd():
 	menu_system.endSound.play()
@@ -45,14 +57,9 @@ func _on_system_onEnd():
 	
 	menu_system.lerpDirection = -1
 	swap_to(null) # fades all menus away, as the above timer closes the program
-	
 
-func _on_system_onBack():
-	swap_to(menu_home)
-	menu_system.to_end()
-	menu_bracket.clear_games()
-
-
+func _on_rules_ruleChanged():
+	menu_system.acceptButton.visible = true
 
 # Helpers #####################################################
 func swap_to(swapped_to_lerpcontainer : LerpContainer):
@@ -77,5 +84,3 @@ func swap_to(swapped_to_lerpcontainer : LerpContainer):
 			pass
 
 
-func _on_system_onAccept() -> void:
-	pass # Replace with function body.

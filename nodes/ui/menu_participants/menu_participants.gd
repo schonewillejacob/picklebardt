@@ -13,7 +13,7 @@ signal AddPlayer
 # Virtuals ####################################################
 func _ready() -> void:
 	lerpDirection = -1
-	var dummyList_ : Array = make_dummy_list(23)
+	var dummyList_ : Array = make_dummy_list(40)
 	set_participantList(dummyList_)
 
 

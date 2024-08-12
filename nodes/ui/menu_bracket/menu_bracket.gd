@@ -27,16 +27,18 @@ func _on_nextRound_pressed() -> void:
 
 # Helpers #####################################################
 func clear_games():
-	var children_ = nodeGameColumn.get_children()
-	for game_ in children_:
-		game_.queue_free()
 	gameCount = 0
+	var children_ = nodeGameColumn.get_children()
+	for game_ in children_: game_.queue_free()
+	for player_ in listPlayers: player_.clear_ledger()
 
 func generate_game():
 	# Packing Pickleball PackedScene
 	if !validate_rules(): return
 	# readies packedPickleballGame loading
 	if !load_valid_pathhashed_threadresource(PATH_PICKLEBALLGAME): return
+	
+	print(ruleset)
 	
 	# instantiate a game, get resource if there's no packed scene
 	if !packedPickleballGame: 
@@ -51,7 +53,7 @@ func generate_game():
 	gameCount += 1 # shortcut for naming
 	var game_ : PickleballGame = packedPickleballGame.instantiate()
 	game_.name = "Game-"+str(gameCount)
-	game_.matchCount = 4
+	game_.matchCount = min(ruleset.courtsAvailable,floor(listPlayers.size()/4.0))
 	
 	# Parenting PickleballGame instance 
 	if game_.get_parent():
@@ -96,8 +98,8 @@ func mediatedFisherYates_playerShuffle():
 	var popTarget_ : int
 	#const BINARY_FULL_LISTPLAYERS = 0
 	
-	
-	for gameSlot_ in range(ruleset.playerSlots):
+	var totalSlots_ = min(ruleset.playerSlots,listPlayers.size())
+	for gameSlot_ in range(totalSlots_):
 		sizeBuyPlayers_ = clamp(sizeBuyPlayers_-1,0,abs(sizeBuyPlayers_))
 		
 		popTarget_ = 0

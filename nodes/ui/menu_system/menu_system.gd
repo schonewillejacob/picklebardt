@@ -4,7 +4,8 @@ extends LerpContainer
 # via swap_to method in gui.gd
 
 
-@onready var exitBufferTimer = $VBoxContainer/systemButtons/End/endTimer
+@onready var exitBufferTimer = $VBoxContainer/systemButtons/End/quitTimer
+@onready var backBufferTimer = $VBoxContainer/systemButtons/End/disableTimer
 @onready var endSound        = $VBoxContainer/systemButtons/endSound
 
 @onready var acceptButton : BaseButton = $VBoxContainer/systemButtons/Accept
@@ -29,16 +30,17 @@ func _on_end_pressed():
 	OnEnd.emit()
 
 func _on_back_pressed():
-	to_end()
 	OnBack.emit()
 
 func _on_accept_pressed():
-	to_end()
 	OnAccept.emit()
 
-func _on_end_timer_timeout():
-	get_tree().quit()
 
+func _on_disable_timer_timeout() -> void:
+	endButton.disabled = false
+
+func _on_quit_timer_timeout() -> void:
+	get_tree().quit()
 
 
 # Helpers #####################################################
@@ -54,3 +56,5 @@ func to_end():
 	acceptButton.visible = false
 	backButton.visible = false
 	endButton.visible = true
+
+

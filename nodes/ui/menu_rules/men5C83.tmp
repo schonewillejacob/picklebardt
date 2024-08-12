@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfppi3nrdy77"]
+[gd_scene load_steps=5 format=3 uid="uid://cfppi3nrdy77"]
 
 [ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="1_tdyvv"]
 [ext_resource type="Script" path="res://nodes/ui/menu_rules/menu_rules.gd" id="2_8nuvx"]
@@ -7,17 +7,6 @@
 [sub_resource type="LabelSettings" id="LabelSettings_uw34r"]
 font = ExtResource("3_ppqw7")
 font_size = 64
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpvu7"]
-bg_color = Color(0.270588, 0.427451, 0.4, 1)
-border_width_left = 6
-border_width_top = 6
-border_color = Color(0.219608, 0.352941, 0.329412, 1)
-border_blend = true
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
 
 [node name="MenuChangeRules" type="Control"]
 layout_mode = 3
@@ -28,6 +17,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_tdyvv")
 script = ExtResource("2_8nuvx")
+positionInPlace = null
+positionAway = null
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -73,18 +64,15 @@ label_settings = SubResource("LabelSettings_uw34r")
 [node name="seedLineEdit" type="LineEdit" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxSeed"]
 layout_mode = 2
 size_flags_horizontal = 3
-focus_mode = 0
 theme = ExtResource("1_tdyvv")
 placeholder_text = "<random>"
 alignment = 1
-editable = false
 
 [node name="randomSeedButton" type="Button" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxSeed"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme = ExtResource("1_tdyvv")
 theme_override_font_sizes/font_size = 128
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wpvu7")
 toggle_mode = true
 button_pressed = true
 text = "⎇"
@@ -130,7 +118,5 @@ value = 4.0
 alignment = 1
 suffix = "courts available"
 
-[connection signal="text_changed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxSeed/seedLineEdit" to="." method="_on_seedLineEdit_text_changed"]
-[connection signal="toggled" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxSeed/randomSeedButton" to="." method="_on_randomSeedButton_toggled"]
-[connection signal="value_changed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize/spinnerCourtSize" to="." method="_on_spinnerCourtSize_value_changed"]
-[connection signal="value_changed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable/spinnerCourtsAvailable" to="." method="_on_spinnerCourtsAvailable_value_changed"]
+[connection signal="text_changed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxSeed/seedLineEdit" to="." method="_on_seed_text_changed"]
+[connection signal="value_changed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize/spinnerCourtSize" to="." method="_on_spinner_court_size_changed"]
