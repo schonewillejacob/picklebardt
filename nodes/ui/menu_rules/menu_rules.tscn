@@ -79,6 +79,7 @@ theme = ExtResource("1_tdyvv")
 placeholder_text = "<random>"
 alignment = 1
 editable = false
+select_all_on_focus = true
 
 [node name="randomSeedButton" type="Button" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxSeed"]
 custom_minimum_size = Vector2(200, 200)
@@ -112,6 +113,7 @@ value = 4.0
 alignment = 1
 update_on_text_changed = true
 suffix = "players per court"
+select_all_on_focus = true
 
 [node name="hboxCourtsAvailable" type="HBoxContainer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 250)
@@ -131,6 +133,7 @@ min_value = 1.0
 value = 4.0
 alignment = 1
 suffix = "courts available"
+select_all_on_focus = true
 
 [connection signal="text_changed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxSeed/seedLineEdit" to="." method="_on_seedLineEdit_text_changed"]
 [connection signal="toggled" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxSeed/randomSeedButton" to="." method="_on_randomSeedButton_toggled"]
