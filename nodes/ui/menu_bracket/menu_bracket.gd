@@ -1,6 +1,6 @@
+## Takes a RuleSet and list of Player(s) and outputs a seeded pickleball game
 extends LerpContainer
-## Root players > swaps > Permutation 1 > swaps > Permutation 2 > swaps > ... > Permutation n
-## takes a RuleSet and list of Player(s)
+
 
 signal GenerateGame
 signal BadPairing
@@ -43,7 +43,7 @@ func generate_game():
 	# instantiate a game, get resource if there's no packed scene
 	if !packedPickleballGame: 
 		packedPickleballGame = ResourceLoader.load_threaded_get(PATH_PICKLEBALLGAME)
-		print("packedPickleballGame packed")
+		("packedPickleballGame packed")
 	
 	# SHUFFLING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	mediatedFisherYates_playerShuffle() 
