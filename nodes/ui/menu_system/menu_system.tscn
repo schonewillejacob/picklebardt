@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b17wpmhyxw1ag"]
+[gd_scene load_steps=5 format=3 uid="uid://b17wpmhyxw1ag"]
 
 [ext_resource type="Script" path="res://nodes/ui/menu_system/menu_system.gd" id="1_d3771"]
 [ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="2_nvy86"]
 [ext_resource type="AudioStream" uid="uid://pdy2d5wo4qcc" path="res://sounds/end.wav" id="2_xcheg"]
+
+[sub_resource type="FontVariation" id="FontVariation_hupyy"]
+spacing_top = 50
 
 [node name="MenuSystem" type="Control"]
 layout_mode = 3
@@ -27,15 +30,16 @@ visible = false
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme = ExtResource("2_nvy86")
-theme_override_font_sizes/font_size = 125
-text = "✔"
+theme_override_fonts/font = SubResource("FontVariation_hupyy")
+theme_override_font_sizes/font_size = 128
+text = "✓"
 
 [node name="Back" type="Button" parent="VBoxContainer/systemButtons"]
 visible = false
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme = ExtResource("2_nvy86")
-theme_override_font_sizes/font_size = 125
+theme_override_font_sizes/font_size = 128
 text = "←"
 
 [node name="End" type="Button" parent="VBoxContainer/systemButtons"]
@@ -43,7 +47,7 @@ self_modulate = Color(0.905882, 0.0313726, 0.235294, 1)
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme = ExtResource("2_nvy86")
-theme_override_font_sizes/font_size = 72
+theme_override_font_sizes/font_size = 128
 text = "×"
 
 [node name="endTimer" type="Timer" parent="VBoxContainer/systemButtons/End"]

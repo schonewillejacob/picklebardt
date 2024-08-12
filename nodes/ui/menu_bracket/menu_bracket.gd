@@ -21,7 +21,6 @@ var gameCount : int = 0
 # Signals #####################################################
 func _on_nextRound_pressed() -> void:
 	# Seeded permutate to a new game
-	mediatedFisherYates_playerShuffle()
 	generate_game()
 
 
@@ -43,6 +42,10 @@ func generate_game():
 	if !packedPickleballGame: 
 		packedPickleballGame = ResourceLoader.load_threaded_get(PATH_PICKLEBALLGAME)
 		print("packedPickleballGame packed")
+	
+	# SHUFFLING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	mediatedFisherYates_playerShuffle() 
+	# SHUFFLING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	
 	# creating PickleballGame instance
 	gameCount += 1 # shortcut for naming
