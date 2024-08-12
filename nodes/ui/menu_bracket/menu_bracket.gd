@@ -3,6 +3,7 @@ extends LerpContainer
 ## takes a RuleSet and list of Player(s)
 
 signal GenerateGame
+signal BadPairing
 
 # instancing
 const PATH_PICKLEBALLGAME : String = "res://nodes/ui/menu_bracket/game/PickleballGame.tscn"
@@ -12,7 +13,6 @@ var packedPickleballGame : PackedScene
 # rules
 var ruleset : RuleSet = null
 var listPlayers = []
-var listBuyround = []
 var gameCount : int = 0
 
 
@@ -20,6 +20,8 @@ var gameCount : int = 0
 # Virtuals ####################################################
 # Signals #####################################################
 func _on_nextRound_pressed() -> void:
+	# Seeded permutate to a new game
+	mediatedFisherYates_playerShuffle()
 	generate_game()
 
 
@@ -42,7 +44,6 @@ func generate_game():
 		packedPickleballGame = ResourceLoader.load_threaded_get(PATH_PICKLEBALLGAME)
 		print("packedPickleballGame packed")
 	
-	
 	# creating PickleballGame instance
 	gameCount += 1 # shortcut for naming
 	var game_ : PickleballGame = packedPickleballGame.instantiate()
@@ -57,10 +58,8 @@ func generate_game():
 	
 	# inserting list
 	queued_injection_from_listPlayers(game_)
-	
-	# setup next permutation
-	mediatedFisherYates_playerShuffle()
 
+# Takes listPlayers, injects into the matches and buyround, maintaining order
 func queued_injection_from_listPlayers(game : PickleballGame):
 	var playerQueue_ : Array = []
 	
@@ -70,69 +69,99 @@ func queued_injection_from_listPlayers(game : PickleballGame):
 		for player_label_ : Label in match_.get_player_label_nodes():
 			var player_ : PickleballPlayer = listPlayers.pop_front()
 			player_label_.text = player_.playerName
-			
 			playerQueue_.append(player_)
 	
 	# fill buy round label
 	# TODO swap to button generation
 	var buyRound_text_ : String = ""
 	for buy_players_ in listPlayers:
-		buyRound_text_ += buy_players_.playerName + ", "
+		if buyRound_text_ != "": buyRound_text_ += ", "
+		buyRound_text_ += buy_players_.playerName
 	game.nodeBuyRoundLabel.text = buyRound_text_
 	
 	# Match is full at this point, replenish listPlayers
 	for active_player_ in playerQueue_:
 		listPlayers.append(active_player_)
 
+# Arranges playerList in a (seeded) Fisher-Yates Shuffle, with lax replacements on repeat partnership detection
+# BEST-EFFORT prevent ODD players  repeatedly via binary operators
+# Destructive
 func mediatedFisherYates_playerShuffle():
-	#var deferredQueue_ = []
 	var shuffledListPlayers_ = []
+	# v this keeps track of the front of the list. Hitting 0 means the buy round size is lower then the court's capacity.
+	var sizeBuyPlayers_ = clamp(listPlayers.size() - ruleset.playerSlots, 0, ruleset.playerSlots) # Safety against Buyrounds greater then # court slots
+	var popTarget_ : int
+	const BINARY_FULL_LISTPLAYERS = 0
 	
-	# arranges playerList in a seeded pattern
-	# tries to prevent players from playing together repeatedly by preventing an odd slot from being the same as it's previous
+	
 	for gameSlot_ in range(ruleset.playerSlots):
-		# Even Slots take random playerfrom the player List
+		sizeBuyPlayers_ = clamp(sizeBuyPlayers_-1,0,abs(sizeBuyPlayers_))
+		
+		popTarget_ = 0
+		
+		# Slot Zero is simply filled
+		if gameSlot_ == 0:
+			if sizeBuyPlayers_:
+				popTarget_ = floor((randf())*(sizeBuyPlayers_))
+			else:
+				popTarget_ = floor((randf())*(listPlayers.size()-1))
+			popTarget_ = clamp(popTarget_,0,abs(popTarget_))
+			
+			shuffledListPlayers_.append(listPlayers.pop_at(popTarget_))                                       # INJECTION
+			
+			continue
+		
+		# Even Slots take random player from the player List
 		if gameSlot_ % 2 == 0:
-			var popTarget_ = floor(randf()*( listPlayers.size()-1 ))
-			shuffledListPlayers_.append(listPlayers.pop_at(popTarget_))
-		else:
-			for next_player_ in listPlayers:
-				if not (shuffledListPlayers_.back().playerBinaryLedger & next_player_.playerBinaryID):
-					# Not in ledger, valid pair
-					shuffledListPlayers_.back().playerBinaryLedger += next_player_.playerBinaryID
-					next_player_.playerBinaryLedger += shuffledListPlayers_.back().playerBinaryID
-					shuffledListPlayers_.append(listPlayers.pop_at(listPlayers.find(next_player_)))
-					break
-				# In ledger, invalid pair
+			if sizeBuyPlayers_: # Restricts to previous buy round 
+				popTarget_ = floor((randf())*(sizeBuyPlayers_-1))
+				popTarget_ = clamp(popTarget_,0,abs(popTarget_))
 				
+				shuffledListPlayers_.back().push_to_playerBinaryLedger(listPlayers[popTarget_].playerBinaryID)
+				listPlayers[popTarget_].push_to_playerBinaryLedger(shuffledListPlayers_.back().playerBinaryID)
+				shuffledListPlayers_.append(listPlayers.pop_at(popTarget_))                                   # INJECTION
+			else: # full player list
+				popTarget_ = floor((randf())*(listPlayers.size()-1))
+				popTarget_ = clamp(popTarget_,0,abs(popTarget_))
+				
+				shuffledListPlayers_.back().push_to_playerBinaryLedger(listPlayers[popTarget_].playerBinaryID)
+				listPlayers[popTarget_].push_to_playerBinaryLedger(shuffledListPlayers_.back().playerBinaryID)
+				shuffledListPlayers_.append(listPlayers.pop_at(popTarget_))                                   # INJECTION
+			continue
+		
+		# Odd slots search at shuffledListPlayers_.back() for a pair
+		var flag_pairFound : bool = false
+		for next_player_ in listPlayers: # this checking from the front will naturally bias towards Buy Round players injection...
+			if shuffledListPlayers_.back().playerBinaryLedger & next_player_.playerBinaryID != 0:
+				print("pair found: "+str(shuffledListPlayers_.back().playerName)+" & "+str(next_player_.playerName))
+				# Not in ledger, valid pair
+				shuffledListPlayers_.back().push_to_playerBinaryLedger(next_player_.playerBinaryID)
+				next_player_.push_to_playerBinaryLedger(shuffledListPlayers_.back().playerBinaryID)
+				shuffledListPlayers_.append(listPlayers.pop_at(listPlayers.find(next_player_)))           # INJECTION
+				
+				break
+		if flag_pairFound: 
+			continue
+		
+		# No valid pair found, gets more likely with higher Game counts, nodeGameColumn.size()
+		# so pick one at random
+		
+		popTarget_ = floor((randf())*( listPlayers.size()-1 ))
+		popTarget_ = clamp(popTarget_,0,abs(popTarget_))
+		
+		
+		shuffledListPlayers_.back().push_to_playerBinaryLedger(listPlayers[popTarget_].playerBinaryID)
+		listPlayers[popTarget_].push_to_playerBinaryLedger(shuffledListPlayers_.back().playerBinaryID)
+		shuffledListPlayers_.append(listPlayers.pop_at(popTarget_))                                       # INJECTION
+		print("No pair found for "+shuffledListPlayers_.back().playerName+", playerBinaryID: 0b"+ String.num_int64(shuffledListPlayers_.back().playerBinaryID,2))
+		push_warning("\""+shuffledListPlayers_.back().playerName+"\" has played available players")
+		
+		#check to see if everyone has been pulled.
 	
-	#for gameSlot_ in range(ruleset.playerSlots):
-		## every even slot we simply insert
-		#if gameSlot_ % 2 == 0:
-			#if !(deferredQueue_.is_empty()):
-				#shuffledListPlayers_.append(deferredQueue_.pop_front())
-			#else:
-				#var popTarget_ = floor(randf() * listPlayers.size())
-				#shuffledListPlayers_.append(listPlayers.pop_at(popTarget_))
-		#else: # odd slots are mediated
-			#for deferred_player_ in deferredQueue_:
-				#if shuffledListPlayers_.back().playerBinaryLedger & deferred_player_.playerBinaryID:
-					## player is in the ledger
-					#continue
-				#else:
-					## player is in NOT the ledger, valid!
-					#shuffledListPlayers_.back().playerBinaryLedger ++ deferred_player_.playerBinaryID
-					#shuffledListPlayers_.append(deferredQueue_[deferredQueue_.find(deferred_player_)].pop())
-					#break
-			#for next_player_ in listPlayers:
-				#if shuffledListPlayers_.back().playerBinaryLedger & next_player_.playerBinaryID:
-					## player is in the ledger
-					#continue
-				#else:
-					## player is in NOT the ledger, valid!
-					#shuffledListPlayers_.back().playerBinaryLedger ++ next_player_.playerBinaryID
-					#shuffledListPlayers_.append(deferredQueue_[deferredQueue_.find(next_player_)].pop())
-					#break
+	# Game slots are filled at this point, replenish listPlayers
+	for buy_player_ in listPlayers:
+		shuffledListPlayers_.append(buy_player_)
+	set_playerList(shuffledListPlayers_)
 
 func load_valid_pathhashed_threadresource(resource_path) -> bool:
 	var loadStatus_ = null

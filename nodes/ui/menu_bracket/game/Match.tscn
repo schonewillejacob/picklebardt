@@ -5,7 +5,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_dxppy"]
 line_spacing = 2.0
-font_size = 32
+font_size = 48
 font_color = Color(0.752941, 0.752941, 0.752941, 1)
 outline_color = Color(0.0823529, 0.0823529, 0.0823529, 1)
 
