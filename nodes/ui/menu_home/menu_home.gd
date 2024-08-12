@@ -1,5 +1,4 @@
 extends LerpContainer
-# TODO enable manageParticipants and changeRules
 
 
 # Menus for navigating between submenus

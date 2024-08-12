@@ -20,7 +20,8 @@ extends CanvasLayer
 
 # Signals #####################################################
 func _on_home_changeRules():
-	menu_system.endSound.play()
+	swap_to(menu_rules)
+	menu_system.to_back()
 
 func _on_home_manageParticipants():
 	swap_to(menu_participants)
@@ -72,5 +73,5 @@ func swap_to(swapped_to_lerpcontainer : LerpContainer):
 			menu_participants.lerpDirection = 1
 			pass
 		menu_rules:
-			menu_participants.lerpDirection = 1
+			menu_rules.lerpDirection = 1
 			pass

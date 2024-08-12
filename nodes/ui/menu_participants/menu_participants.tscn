@@ -23,6 +23,28 @@ grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="menu_participants"]
+layout_mode = 2
+
+[node name="expandingSpacer" type="Control" parent="menu_participants/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="+" type="Button" parent="menu_participants/HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme = ExtResource("2_2q6vp")
+theme_override_font_sizes/font_size = 128
+text = "+"
+
+[node name="x" type="Button" parent="menu_participants/HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme = ExtResource("2_2q6vp")
+theme_override_font_sizes/font_size = 128
+disabled = true
+text = "×"
+
 [node name="staticSpacer" type="Control" parent="menu_participants"]
 custom_minimum_size = Vector2(200, 138)
 layout_mode = 2
@@ -37,31 +59,29 @@ tab_alignment = 2
 all_tabs_in_front = true
 tabs_rearrange_group = 1
 
-[node name="Players 1" type="ScrollContainer" parent="menu_participants/TabContainer"]
+[node name="Player List 1" type="ScrollContainer" parent="menu_participants/TabContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="menu_participants/TabContainer/Players 1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="menu_participants/TabContainer/Player List 1"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 32
 
-[node name="staticSpacer" type="Control" parent="menu_participants/TabContainer/Players 1/VBoxContainer"]
+[node name="staticSpacer" type="Control" parent="menu_participants/TabContainer/Player List 1/VBoxContainer"]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 2
 
-[node name="add_player" type="Button" parent="menu_participants/TabContainer/Players 1/VBoxContainer"]
+[node name="add_player" type="Button" parent="menu_participants/TabContainer/Player List 1/VBoxContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme = ExtResource("2_2q6vp")
 text = "ADD PLAYER"
-
-[node name="+" type="Button" parent="menu_participants/TabContainer"]
-visible = false
-layout_mode = 2
 
 [node name="staticSpacer2" type="Control" parent="menu_participants"]
 custom_minimum_size = Vector2(45, 45)

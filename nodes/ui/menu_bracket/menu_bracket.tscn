@@ -50,7 +50,6 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme = ExtResource("2_kwt6o")
-theme_override_font_sizes/font_size = 128
 text = "NEXT ROUND"
 
 [node name="spacer2" type="Control" parent="sideMargin/VBoxContainer"]

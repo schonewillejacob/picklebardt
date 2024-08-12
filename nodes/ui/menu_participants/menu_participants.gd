@@ -7,14 +7,20 @@ extends LerpContainer
 # served list of Players.
 var participantList : Array = []
 
+signal AddPlayer
 
 
 # Virtuals ####################################################
 func _ready() -> void:
 	lerpDirection = -1
-	
 	var dummyList_ : Array = make_dummy_list(23)
 	set_participantList(dummyList_)
+
+
+
+# Signals #####################################################
+func _on_addPlayer_pressed():
+	pass
 
 
 
