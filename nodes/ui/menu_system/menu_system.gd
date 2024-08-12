@@ -9,8 +9,8 @@ extends LerpContainer
 @onready var endSound        = $VBoxContainer/systemButtons/endSound
 
 @onready var acceptButton : BaseButton = $VBoxContainer/systemButtons/Accept
-@onready var backButton :   BaseButton = $VBoxContainer/systemButtons/Back
-@onready var endButton :    BaseButton = $VBoxContainer/systemButtons/End
+@onready var backButton   : BaseButton = $VBoxContainer/systemButtons/Back
+@onready var endButton    : BaseButton = $VBoxContainer/systemButtons/End
 
 signal OnAccept
 signal OnBack

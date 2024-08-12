@@ -2,18 +2,18 @@ extends Control
 class_name PickleballGame
 
 ## Holds a number of matches to be rendered by menu_bracket
-##    menu_bracket/sideMargin/VBoxContainer/GameScroller/GameColumn
-## menu_bracket orchestrates behaviour here.
+# menu_bracket/sideMargin/VBoxContainer/GameScroller/GameColumn
 
-# Match.tscn instancing
-# We don't adjust these in real time, so pooling isn't needed
-const PATH_MATCH : String = "res://nodes/ui/menu_bracket/game/Match.tscn"
-var packedMatch : PackedScene
+# match.tscn threaded instancing
+
+
+var packedMatch  : PackedScene													# we don't adjust these in real time, so pooling isn't needed
+const PATH_MATCH : String = "res://nodes/ui/menu_bracket/game/Match.tscn" 		# in fact, this doesn't even need to be threaded. Not subthreaded either.
+
 # Match target destination
 @onready var nodeMatchContainer : GridContainer = $VBoxContainer/MatchContainer
-@onready var nodeBuyRoundLabel : Label = $VBoxContainer/BuyRound/VBoxContainer/BuyRoundList
-@onready var nodeMatchTitle : Label = $VBoxContainer/MatchTitle
-
+@onready var nodeBuyRoundLabel  : Label = $VBoxContainer/BuyRound/VBoxContainer/BuyRoundList
+@onready var nodeMatchTitle     : Label = $VBoxContainer/MatchTitle
 
 # How many matches to place per game
 var matchCount : int
