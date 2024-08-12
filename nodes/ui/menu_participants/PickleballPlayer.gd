@@ -16,16 +16,11 @@ func _to_string() -> String:
 
 # Signals #####################################################
 # Helpers #####################################################
-func add_to_playerBinaryLedger(inserted_player_playerBinaryID : int) -> bool:
-	if !exists_in_playerBinaryLedger(inserted_player_playerBinaryID):
-		playerBinaryLedger += inserted_player_playerBinaryID
-		return true
-	
-	push_error(str(inserted_player_playerBinaryID) + " is already in ledger")
-	return false
+func push_to_playerBinaryLedger(inserted_player_playerBinaryID : int):
+	playerBinaryLedger = playerBinaryLedger | inserted_player_playerBinaryID # binary OR
 
 func exists_in_playerBinaryLedger(requesting_player_id : int) -> bool:
-	if playerBinaryLedger & requesting_player_id != 0:
+	if not playerBinaryLedger & requesting_player_id == 0:
 		return true
 	
 	return false
