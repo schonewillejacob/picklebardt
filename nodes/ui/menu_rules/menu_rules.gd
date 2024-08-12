@@ -15,6 +15,7 @@ signal RuleChanged
 
 # Virtuals ####################################################
 func _ready():
+	nodeSeedLineEdit.text = str(hash(randf()))
 	set_export_ruleset()
 
 
@@ -24,7 +25,7 @@ func _on_randomSeedButton_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		nodeSeedLineEdit.editable = false
 		nodeSeedLineEdit.focus_mode = 0
-		nodeSeedLineEdit.text = ""
+		nodeSeedLineEdit.text = str(hash(randf()))
 	else:
 		nodeSeedLineEdit.editable = true
 		nodeSeedLineEdit.focus_mode = 2
