@@ -10,14 +10,16 @@ extends LerpContainer
 
 
 var ruleExport : RuleSet
-var buttonRandomSeedPressed : bool
+var randomSeedButtonToggled : bool
 signal RuleChanged
 
 
 # Virtuals ####################################################
 func _ready():
 	nodeSeedLineEdit.text = str(hash(randf()))
-	buttonRandomSeedPressed = nodeRandomSeedButton.is_pressed()
+	randomSeedButtonToggled = nodeRandomSeedButton.is_pressed()
+	nodeSpinnerCourtSize.get_line_edit().set_virtual_keyboard_type(4)
+	nodeSpinnerCourtsAvailable.get_line_edit().set_virtual_keyboard_type(4)
 	set_export_ruleset()
 
 
@@ -27,7 +29,6 @@ func _on_randomSeedButton_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		nodeSeedLineEdit.editable = false
 		nodeSeedLineEdit.focus_mode = 0
-		nodeSeedLineEdit.text = str(hash(randf()))
 	else:
 		nodeSeedLineEdit.editable = true
 		nodeSeedLineEdit.focus_mode = 2
@@ -48,19 +49,16 @@ func _on_seedLineEdit_text_changed(_new_text: String) -> void:
 
 # rules -> export slot
 func set_export_ruleset():
-	var courtSize_ : int = int(nodeSpinnerCourtSize.get_line_edit().text)
+	var courtSize_       : int = int(nodeSpinnerCourtSize.get_line_edit().text)
 	var courtsAvailable_ : int = int(nodeSpinnerCourtsAvailable.get_line_edit().text)
-	var seedButton_ : bool = nodeRandomSeedButton.is_pressed()
-	var seed_ : int
+	var seed_            : int
+	randomSeedButtonToggled = nodeRandomSeedButton.is_pressed()
 	
-	# this basically checks if the seed is all numbers
-	if  str(int(nodeSeedLineEdit.text)) == nodeSeedLineEdit.text:
-		pass
-	
-	
-	# Randomizes seed if randomSeedButton is toggled
-	if seedButton_: seed_ = hash(randf())
-	else: pass
+	# runs if the seed has text instead of just integers
+	if  str(int(nodeSeedLineEdit.text)) != nodeSeedLineEdit.text:
+		seed_ = hash(nodeSeedLineEdit.text)
+	else:
+		seed_ = int(nodeSeedLineEdit.text)
 	
 	ruleExport = RuleSet.new(courtsAvailable_,courtSize_,seed_)
 
@@ -68,5 +66,5 @@ func set_export_ruleset():
 func set_fields_to_current():
 	nodeSpinnerCourtSize.get_line_edit().text = str(ruleExport.courtSize)
 	nodeSpinnerCourtsAvailable.get_line_edit().text = str(ruleExport.courtsAvailable)
+	nodeRandomSeedButton.button_pressed = randomSeedButtonToggled
 	nodeSeedLineEdit.text = str(ruleExport.shuffleSeed)
-	pass

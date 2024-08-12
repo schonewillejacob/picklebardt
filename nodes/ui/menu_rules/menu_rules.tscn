@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cfppi3nrdy77"]
+[gd_scene load_steps=7 format=3 uid="uid://cfppi3nrdy77"]
 
 [ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="1_tdyvv"]
 [ext_resource type="Script" path="res://nodes/ui/menu_rules/menu_rules.gd" id="2_8nuvx"]
 [ext_resource type="FontFile" uid="uid://dshnsx4ueiv2b" path="res://fonts/ttfs/LBRITE.TTF" id="3_ppqw7"]
+[ext_resource type="Texture2D" uid="uid://djtp2i8jhbmrk" path="res://nodes/ui/menu_rules/updown.png" id="4_1rmxk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uw34r"]
 font = ExtResource("3_ppqw7")
@@ -90,7 +91,7 @@ button_pressed = true
 text = "⎇"
 
 [node name="hboxCourtSize" type="HBoxContainer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 
 [node name="labelCourtSize" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize"]
@@ -103,6 +104,7 @@ label_settings = SubResource("LabelSettings_uw34r")
 [node name="spinnerCourtSize" type="SpinBox" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_icons/updown = ExtResource("4_1rmxk")
 min_value = 2.0
 max_value = 4.0
 step = 2.0
@@ -112,14 +114,14 @@ update_on_text_changed = true
 suffix = "players per court"
 
 [node name="hboxCourtsAvailable" type="HBoxContainer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 
 [node name="labelCourtsAvailable" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable"]
 visible = false
 layout_mode = 2
 theme = ExtResource("1_tdyvv")
-text = "Seed: "
+text = " "
 label_settings = SubResource("LabelSettings_uw34r")
 
 [node name="spinnerCourtsAvailable" type="SpinBox" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable"]
