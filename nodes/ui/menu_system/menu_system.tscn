@@ -25,6 +25,7 @@ size_flags_vertical = 3
 
 [node name="Accept" type="Button" parent="VBoxContainer/systemButtons"]
 visible = false
+modulate = Color(0, 1, 0.196078, 1)
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme = ExtResource("2_nvy86")
@@ -41,14 +42,17 @@ theme_override_font_sizes/font_size = 128
 text = "←"
 
 [node name="End" type="Button" parent="VBoxContainer/systemButtons"]
-self_modulate = Color(0.905882, 0.0313726, 0.235294, 1)
+modulate = Color(1, 0, 0.196078, 1)
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 theme = ExtResource("2_nvy86")
 theme_override_font_sizes/font_size = 128
 text = "×"
 
-[node name="endTimer" type="Timer" parent="VBoxContainer/systemButtons/End"]
+[node name="disableTimer" type="Timer" parent="VBoxContainer/systemButtons/End"]
+wait_time = 0.3
+
+[node name="quitTimer" type="Timer" parent="VBoxContainer/systemButtons/End"]
 wait_time = 0.9
 
 [node name="spacer4" type="Control" parent="VBoxContainer/systemButtons"]
@@ -62,4 +66,5 @@ stream = ExtResource("2_xcheg")
 [connection signal="pressed" from="VBoxContainer/systemButtons/Accept" to="." method="_on_accept_pressed"]
 [connection signal="pressed" from="VBoxContainer/systemButtons/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="VBoxContainer/systemButtons/End" to="." method="_on_end_pressed"]
-[connection signal="timeout" from="VBoxContainer/systemButtons/End/endTimer" to="." method="_on_end_timer_timeout"]
+[connection signal="timeout" from="VBoxContainer/systemButtons/End/disableTimer" to="." method="_on_disable_timer_timeout"]
+[connection signal="timeout" from="VBoxContainer/systemButtons/End/quitTimer" to="." method="_on_quit_timer_timeout"]
