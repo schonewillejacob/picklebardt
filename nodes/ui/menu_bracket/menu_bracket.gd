@@ -53,13 +53,16 @@ func generate_game():
 	gameCount += 1 # shortcut for naming
 	var game_ : PickleballGame = packedPickleballGame.instantiate()
 	game_.name = "Game-"+str(gameCount)
-	game_.matchCount = min(ruleset.courtsAvailable,floor(listPlayers.size()/4.0))
+	game_.matchCount = min(ruleset.courtsAvailable,floor(listPlayers.size()/ruleset.courtSize))
+	game_.courtSize = ruleset.courtSize
 	
 	# Parenting PickleballGame instance 
 	if game_.get_parent():
 		game_.get_parent().remove_child(game_)
 	nodeGameColumn.add_child(game_)
 	game_.set_owner(nodeGameColumn)
+	
+	#game.focus
 	
 	# inserting list
 	queued_injection_from_listPlayers(game_)
@@ -87,6 +90,16 @@ func queued_injection_from_listPlayers(game : PickleballGame):
 	# Match is full at this point, replenish listPlayers
 	for active_player_ in playerQueue_:
 		listPlayers.append(active_player_)
+
+func FisherYates_playerShuffle():
+	# dumb as rocks shuffling function
+	var new_queue = []
+	
+	while(listPlayers.size() != 0):
+		new_queue.append( listPlayers.pop_at(floor(randf()*listPlayers.size())) )
+	
+	listPlayers = new_queue
+
 
 # Arranges playerList in a (seeded) Fisher-Yates Shuffle, with lax replacements on repeat partnership detection
 # BEST-EFFORT prevent ODD players  repeatedly via binary operators

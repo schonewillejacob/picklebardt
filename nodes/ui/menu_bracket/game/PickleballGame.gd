@@ -14,19 +14,25 @@ const PATH_MATCH : String = "res://nodes/ui/menu_bracket/game/Match.tscn" 		# in
 @onready var nodeMatchContainer : GridContainer = $VBoxContainer/MatchContainer
 @onready var nodeBuyRoundLabel  : Label = $VBoxContainer/BuyRound/VBoxContainer/BuyRoundList
 @onready var nodeMatchTitle     : Label = $VBoxContainer/MatchTitle
+@onready var nodeBackgroundRect : ColorRect = $background/ColorRect
 
 # How many matches to place per game
 var matchCount : int
+# How many playesr a court
+var courtSize : int
 
 
 
 # Virtuals ####################################################
-func _init(match_count : int = 1) -> void:
+func _init(match_count : int = 1, court_size : int = 1) -> void:
 	matchCount = match_count
+	courtSize = court_size
 
 func _ready() -> void:
 	var game_number_string_ : String = str(get_parent().get_children().size())
 	nodeMatchTitle.text =  "Game " + game_number_string_
+	
+	nodeBackgroundRect.color.g *= sin((PI * get_parent().get_child_count()) - PI/2 )
 	
 	# finding grid for the matches
 	if nodeMatchContainer == null: 
@@ -43,6 +49,7 @@ func create_matches():
 	packedMatch = ResourceLoader.load_threaded_get(PATH_MATCH)
 	for i in matchCount:
 		var instMatch = packedMatch.instantiate()
+		if courtSize == 2: instMatch.courtSize = 2
 		nodeMatchContainer.add_child(instMatch) 
 
 func get_all_playerLabels() -> Array:

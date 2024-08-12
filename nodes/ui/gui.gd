@@ -31,10 +31,14 @@ func _on_home_generateBracket():
 	if !menu_participants.participantList:
 		push_error("menu_participants.participantList empty")
 	
+	if menu_rules.nodeRandomSeedButton.is_pressed(): 
+		menu_rules.nodeSeedLineEdit.text = str(hash(randf()))
+		menu_rules.set_export_ruleset()
 	menu_bracket.listPlayers = menu_participants.participantList.duplicate() # gets fresh Array copy, to be manipulated.
 	menu_bracket.ruleset = menu_rules.ruleExport
 	
-	seed(menu_bracket.ruleset.shuffleSeed)	
+	seed(menu_bracket.ruleset.shuffleSeed)
+	menu_bracket.FisherYates_playerShuffle()
 	menu_bracket.generate_game()
 	
 	swap_to(menu_bracket)
