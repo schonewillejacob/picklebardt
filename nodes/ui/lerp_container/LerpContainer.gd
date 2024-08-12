@@ -5,13 +5,14 @@ class_name LerpContainer
 
 # lerping
 @export var positionInPlace : Vector2
-@export var positionAway : Vector2
-var positionTarget : Vector2
-var lerpDirection : int = -1 # [-1,1]
+@export var positionAway    : Vector2
+var positionTarget          : Vector2
+var lerpDirection           : int = -1 # [-1,1]
 # modulation
-const FADE_OUT_RATE : float = 0.99
-const FADE_IN_RATE : float = 0.8
+const FADE_OUT_RATE              : float = 0.99
+const FADE_IN_RATE               : float = 0.8
 const MODULATE_VISIBLE_THRESHOLD : float = 0.1
+
 signal FadeOut
 signal FadeIn
 

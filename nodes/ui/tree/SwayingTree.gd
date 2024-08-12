@@ -1,8 +1,8 @@
 extends Node2D
 class_name SwayingTree
 
-var stack_height : int = 0
-const STACK_DELTA : Vector2 = Vector2(0.075,0.075)
+var stack_height        : int = 0
+const STACK_DELTA       : Vector2 = Vector2(0.075,0.075)
 const RAND_OFFSET_SCALE : float = 1.0
 
 # Called when the node enters the scene tree for the first time.

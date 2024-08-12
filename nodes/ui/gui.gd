@@ -47,9 +47,11 @@ func _on_system_onAccept() -> void:
 	swap_to(menu_home)
 
 func _on_system_onBack():
+	menu_bracket.clear_games()
+	# menu_rules reset
+	menu_rules.set_fields_to_current()
 	menu_system.to_end()
 	swap_to(menu_home)
-	menu_bracket.clear_games()
 
 func _on_system_onEnd():
 	menu_system.endSound.play()
