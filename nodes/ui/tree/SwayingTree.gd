@@ -3,13 +3,11 @@ class_name SwayingTree
 
 var stack_height        : int = 0
 const STACK_DELTA       : Vector2 = Vector2(0.075,0.075)
-const RAND_OFFSET_SCALE : float = 1.0
+const RAND_OFFSET_SCALE : float = 5.0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	for st_child in get_children():
-		if st_child is SwayingTree:
-			st_child.try_swaying()
+	for _st_child in get_children():
+		if _st_child is SwayingTree: _st_child.try_swaying()
 
 func try_swaying():
 	stack_height += 1

@@ -88,5 +88,3 @@ func swap_to(swapped_to_lerpcontainer : LerpContainer):
 		menu_rules:
 			menu_rules.lerpDirection = 1
 			pass
-
-

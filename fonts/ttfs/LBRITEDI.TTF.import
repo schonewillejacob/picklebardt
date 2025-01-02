@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/LBRITEDI.TTF-20f81daeab06d50f022daa8bc917f700
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

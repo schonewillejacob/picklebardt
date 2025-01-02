@@ -10,27 +10,48 @@
 
 [node name="main" type="Node2D"]
 
-[node name="gui" type="CanvasLayer" parent="."]
-script = ExtResource("1_ube6d")
+[node name="tree2" parent="." instance=ExtResource("2_kxdwm")]
+modulate = Color(0.85098, 0.862745, 1, 0.941176)
+position = Vector2(279, 2047)
+scale = Vector2(5, 5)
 
-[node name="tree" parent="gui" instance=ExtResource("2_kxdwm")]
-position = Vector2(1022, 2386)
-scale = Vector2(4, 4)
-
-[node name="Tree" parent="gui/tree" instance=ExtResource("2_kxdwm")]
+[node name="Tree" parent="tree2" instance=ExtResource("2_kxdwm")]
 position = Vector2(1.53609, -137.995)
 
-[node name="Tree" parent="gui/tree/Tree" instance=ExtResource("2_kxdwm")]
+[node name="Tree" parent="tree2/Tree" instance=ExtResource("2_kxdwm")]
 position = Vector2(2.94484, -169.472)
 
-[node name="Tree" parent="gui/tree/Tree/Tree" instance=ExtResource("2_kxdwm")]
+[node name="Tree" parent="tree2/Tree/Tree" instance=ExtResource("2_kxdwm")]
 position = Vector2(-2.37241, -160.414)
 
-[node name="Tree" parent="gui/tree/Tree/Tree/Tree" instance=ExtResource("2_kxdwm")]
+[node name="Tree" parent="tree2/Tree/Tree/Tree" instance=ExtResource("2_kxdwm")]
 position = Vector2(-4.69474, -121.139)
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="gui/tree"]
-root_node = NodePath("../..")
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="tree2"]
+root_node = NodePath("../../gui")
+
+[node name="tree" parent="." instance=ExtResource("2_kxdwm")]
+modulate = Color(0.941176, 0.941176, 1, 1)
+position = Vector2(887, 2487)
+scale = Vector2(4, 4)
+
+[node name="Tree" parent="tree" instance=ExtResource("2_kxdwm")]
+position = Vector2(1.53609, -137.995)
+
+[node name="Tree" parent="tree/Tree" instance=ExtResource("2_kxdwm")]
+position = Vector2(2.94484, -169.472)
+
+[node name="Tree" parent="tree/Tree/Tree" instance=ExtResource("2_kxdwm")]
+position = Vector2(-2.37241, -160.414)
+
+[node name="Tree" parent="tree/Tree/Tree/Tree" instance=ExtResource("2_kxdwm")]
+position = Vector2(-4.69474, -121.139)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="tree"]
+root_node = NodePath("../../gui")
+
+[node name="gui" type="CanvasLayer" parent="."]
+script = ExtResource("1_ube6d")
 
 [node name="menuHome" parent="gui" instance=ExtResource("1_02isb")]
 
@@ -49,6 +70,25 @@ anchors_preset = 0
 anchor_right = 0.0
 grow_horizontal = 1
 size_flags_horizontal = 3
+
+[node name="tree3" parent="gui" instance=ExtResource("2_kxdwm")]
+position = Vector2(-30, 3154)
+scale = Vector2(3, 3)
+
+[node name="Tree" parent="gui/tree3" instance=ExtResource("2_kxdwm")]
+position = Vector2(1.53609, -137.995)
+
+[node name="Tree" parent="gui/tree3/Tree" instance=ExtResource("2_kxdwm")]
+position = Vector2(2.94484, -169.472)
+
+[node name="Tree" parent="gui/tree3/Tree/Tree" instance=ExtResource("2_kxdwm")]
+position = Vector2(-2.37241, -160.414)
+
+[node name="Tree" parent="gui/tree3/Tree/Tree/Tree" instance=ExtResource("2_kxdwm")]
+position = Vector2(-4.69474, -121.139)
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="gui/tree3"]
+root_node = NodePath("../..")
 
 [connection signal="ChangeRules" from="gui/menuHome" to="gui" method="_on_home_changeRules"]
 [connection signal="GenerateBracket" from="gui/menuHome" to="gui" method="_on_home_generateBracket"]
