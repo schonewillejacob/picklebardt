@@ -13,6 +13,7 @@ config_version=5
 config/name="Picklebardt"
 config/version="0.6.0"
 run/main_scene="res://nodes/main.tscn"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.219608, 0.352941, 0.329412, 1)
 boot_splash/show_image=false
