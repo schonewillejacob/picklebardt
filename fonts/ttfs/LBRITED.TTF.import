@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/LBRITED.TTF-4561cc72e51a590e1b92362ea2ba5e80.
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

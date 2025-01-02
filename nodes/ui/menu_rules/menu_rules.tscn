@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfppi3nrdy77"]
+[gd_scene load_steps=8 format=3 uid="uid://cfppi3nrdy77"]
 
 [ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="1_tdyvv"]
 [ext_resource type="Script" path="res://nodes/ui/menu_rules/menu_rules.gd" id="2_8nuvx"]
@@ -19,6 +19,9 @@ corner_radius_top_left = 32
 corner_radius_top_right = 32
 corner_radius_bottom_right = 32
 corner_radius_bottom_left = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_pke10"]
+font_size = 72
 
 [node name="MenuChangeRules" type="Control"]
 layout_mode = 3
@@ -76,7 +79,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 theme = ExtResource("1_tdyvv")
-placeholder_text = "<random>"
 alignment = 1
 editable = false
 select_all_on_focus = true
@@ -91,18 +93,28 @@ toggle_mode = true
 button_pressed = true
 text = "⎇"
 
+[node name="Spacer" type="Control" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="CourtSettingsLabel" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_tdyvv")
+text = "Court Settings:"
+label_settings = SubResource("LabelSettings_pke10")
+
 [node name="hboxCourtSize" type="HBoxContainer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 
 [node name="labelCourtSize" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize"]
-visible = false
 layout_mode = 2
 theme = ExtResource("1_tdyvv")
-text = "Size: "
+text = "slots"
 label_settings = SubResource("LabelSettings_uw34r")
 
 [node name="spinnerCourtSize" type="SpinBox" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize"]
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_icons/updown = ExtResource("4_1rmxk")
@@ -112,7 +124,7 @@ step = 2.0
 value = 4.0
 alignment = 1
 update_on_text_changed = true
-suffix = "players per court"
+suffix = "players/court"
 select_all_on_focus = true
 
 [node name="hboxCourtsAvailable" type="HBoxContainer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
@@ -120,19 +132,19 @@ custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 
 [node name="labelCourtsAvailable" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable"]
-visible = false
 layout_mode = 2
 theme = ExtResource("1_tdyvv")
-text = " "
+text = "total"
 label_settings = SubResource("LabelSettings_uw34r")
 
 [node name="spinnerCourtsAvailable" type="SpinBox" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable"]
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_horizontal = 3
 min_value = 1.0
 value = 4.0
 alignment = 1
-suffix = "courts available"
+suffix = "courts"
 select_all_on_focus = true
 
 [connection signal="text_changed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxSeed/seedLineEdit" to="." method="_on_seedLineEdit_text_changed"]
