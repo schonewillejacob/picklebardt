@@ -56,5 +56,3 @@ func to_end():
 	acceptButton.visible = false
 	backButton.visible = false
 	endButton.visible = true
-
-
