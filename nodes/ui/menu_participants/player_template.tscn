@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7pasaksgfktv"]
+
+[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="1_0ylie"]
+[ext_resource type="Script" path="res://nodes/ui/menu_participants/player_template.gd" id="1_k5itj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_37ih1"]
+font_size = 64
+
+[node name="PlayerTemplate" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 128)
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+script = ExtResource("1_k5itj")
+
+[node name="PlayerDecor" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+theme = ExtResource("1_0ylie")
+color = Color(0.101304, 0.179869, 0.166082, 1)
+
+[node name="PlayerTemplateMargin" type="MarginContainer" parent="PlayerDecor"]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="PlayerContainer" type="HBoxContainer" parent="PlayerDecor/PlayerTemplateMargin"]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+alignment = 1
+
+[node name="PlayerNameLabel" type="Label" parent="PlayerDecor/PlayerTemplateMargin/PlayerContainer"]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "player_name"
+label_settings = SubResource("LabelSettings_37ih1")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="RemovePlayer" type="Button" parent="PlayerDecor/PlayerTemplateMargin/PlayerContainer"]
+custom_minimum_size = Vector2(104, 104)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "-"
+
+[connection signal="pressed" from="PlayerDecor/PlayerTemplateMargin/PlayerContainer/RemovePlayer" to="." method="_on_remove_player_pressed"]
