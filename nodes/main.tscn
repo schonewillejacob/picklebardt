@@ -72,7 +72,7 @@ grow_horizontal = 1
 size_flags_horizontal = 3
 
 [node name="tree3" parent="gui" instance=ExtResource("2_kxdwm")]
-position = Vector2(-30, 3154)
+position = Vector2(-90, 3334)
 scale = Vector2(3, 3)
 
 [node name="Tree" parent="gui/tree3" instance=ExtResource("2_kxdwm")]
@@ -93,6 +93,7 @@ root_node = NodePath("../..")
 [connection signal="ChangeRules" from="gui/menuHome" to="gui" method="_on_home_changeRules"]
 [connection signal="GenerateBracket" from="gui/menuHome" to="gui" method="_on_home_generateBracket"]
 [connection signal="ManageParticipants" from="gui/menuHome" to="gui" method="_on_home_manageParticipants"]
+[connection signal="AddPlayer" from="gui/menuParticipants" to="gui" method="_on_participants_add_player"]
 [connection signal="RuleChanged" from="gui/menuRules" to="gui" method="_on_rules_ruleChanged"]
 [connection signal="OnAccept" from="gui/menuSystem" to="gui" method="_on_system_onAccept"]
 [connection signal="OnBack" from="gui/menuSystem" to="gui" method="_on_system_onBack"]

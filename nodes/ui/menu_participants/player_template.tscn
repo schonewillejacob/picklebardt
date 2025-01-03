@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7pasaksgfktv"]
+
+[ext_resource type="Theme" uid="uid://qkvjcwtwjvf7" path="res://nodes/ui/menu_theme.tres" id="1_0ylie"]
+[ext_resource type="Script" path="res://nodes/ui/menu_participants/player_template.gd" id="1_k5itj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_37ih1"]
+font_size = 64
+
+[node name="PlayerTemplate" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 128)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 168.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_k5itj")
+
+[node name="PlayerDecor" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("1_0ylie")
+color = Color(0.101304, 0.179869, 0.166082, 1)
+
+[node name="PlayerTemplateMargin" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+theme = ExtResource("1_0ylie")
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -6
+theme_override_constants/margin_bottom = -8
+
+[node name="PlayerContainer" type="HBoxContainer" parent="PlayerTemplateMargin"]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+alignment = 1
+
+[node name="PlayerNameLabel" type="Label" parent="PlayerTemplateMargin/PlayerContainer"]
+custom_minimum_size = Vector2(0, 104)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "player_name"
+label_settings = SubResource("LabelSettings_37ih1")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="RemovePlayer" type="Button" parent="PlayerTemplateMargin/PlayerContainer"]
+custom_minimum_size = Vector2(152, 152)
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "-"
+
+[connection signal="pressed" from="PlayerTemplateMargin/PlayerContainer/RemovePlayer" to="." method="_on_remove_player_pressed"]
