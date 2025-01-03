@@ -25,7 +25,6 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1080
 window/size/viewport_height=1920
-window/size/resizable=false
 window/size/window_width_override=507
 window/size/window_height_override=900
 window/stretch/mode="canvas_items"
@@ -48,4 +47,4 @@ ui_accept={
 
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(0.156863, 0.156863, 0.156863, 1)
+environment/defaults/default_clear_color=Color(0.0624606, 0.0777178, 0.0642654, 1)

@@ -10,6 +10,7 @@ const PATH_PICKLEBALLGAME : String = "res://nodes/ui/menu_bracket/game/Picklebal
 var packedPickleballGame : PackedScene
 # PickleballGame target destination
 @onready var nodeGameColumn : VBoxContainer = $sideMargin/VBoxContainer/GameScroller/GameColumn
+@onready var node_next_round_button : Button = $sideMargin/VBoxContainer/nextRound
 # rules
 var ruleset : RuleSet = null
 var listPlayers = []
@@ -195,6 +196,9 @@ func load_valid_pathhashed_threadresource(resource_path) -> bool:
 			return false
 	# loadStatus_ must be == 3
 	return true
+
+func request_to_focus_menu():
+	node_next_round_button.grab_focus()
 
 func set_playerList(new_list) -> void:
 	listPlayers = new_list

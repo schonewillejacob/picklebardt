@@ -74,7 +74,6 @@ func create_from_control_nodes():
 		_id_binary_interation *= 2
 		_list.append(_inst_player)
 	participantList = _list
-	
 
 func make_dummy_list(length) -> Array:
 	var list_ : Array = []
@@ -87,6 +86,9 @@ func make_dummy_list(length) -> Array:
 		list_.append(instPlayer_)
 	
 	return list_
+
+func request_to_focus_menu():
+	node_add_player_line_edit.grab_focus()
 
 func set_participantList(new_list) -> void:
 	participantList = new_list
@@ -112,7 +114,6 @@ func quickload_list():
 		slot_ongoing = node_player_list.get_child_count()
 		pass
 	
-
 
 func quicksave_list():
 	var _file = FileAccess.open("user://player_list.dat", FileAccess.WRITE)
