@@ -72,7 +72,7 @@ grow_horizontal = 1
 size_flags_horizontal = 3
 
 [node name="tree3" parent="gui" instance=ExtResource("2_kxdwm")]
-position = Vector2(-30, 3154)
+position = Vector2(-90, 3334)
 scale = Vector2(3, 3)
 
 [node name="Tree" parent="gui/tree3" instance=ExtResource("2_kxdwm")]

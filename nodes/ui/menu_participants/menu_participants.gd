@@ -37,10 +37,10 @@ func _on_add_player_button_pressed() -> void:
 	# Create player from template.
 	var _new_player = packed_player_template.instantiate()
 	if _new_player.get_node_or_null(
-		"PlayerDecor/PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
+		"PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
 		):
 		_new_player.get_node_or_null(
-		"PlayerDecor/PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
+		"PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
 		).text = _new_player_name 
 	_new_player.tree_exited.connect(_on_remove_player_button_pressed)
 	node_player_list.add_child(_new_player)
@@ -64,10 +64,10 @@ func create_from_control_nodes():
 		# Guard clause: type
 		if _player is not PlayerTemplate: continue
 		if _player.get_node_or_null(
-			"PlayerDecor/PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
+			"PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
 			):
 			_name = _player.get_node_or_null(
-			"PlayerDecor/PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
+			"PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
 			).text
 		var _inst_player : PickleballPlayer = PickleballPlayer.new(
 			_name,
@@ -103,10 +103,10 @@ func quickload_list():
 		for _player in _json_data.data:
 			var _inst_player_quickload = packed_player_template.instantiate()
 			if _inst_player_quickload.get_node_or_null(
-				"PlayerDecor/PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
+				"PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
 				):
 				_inst_player_quickload.get_node_or_null(
-				"PlayerDecor/PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
+				"PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
 				).text = str(_player)
 				
 				node_player_list.add_child(_inst_player_quickload)
@@ -125,10 +125,10 @@ func quicksave_list():
 			_name_list.erase(_child)
 			continue
 		if (_child.get_node_or_null(
-			"PlayerDecor/PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
+			"PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
 			) != null ):
 			_name_list.append(_child.get_node_or_null(
-			"PlayerDecor/PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
+			"PlayerTemplateMargin/PlayerContainer/PlayerNameLabel"
 			).text)
 		
 	var _json_data = JSON.stringify(_name_list)

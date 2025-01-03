@@ -19,8 +19,10 @@ func _ready() -> void:
 	menu_participants.quickload_list()
 
 func _notification(what):
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
 		menu_system.emit_signal("OnBack")
+
+
 
 # Signals #####################################################
 func _on_home_changeRules():
