@@ -70,7 +70,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
 placeholder_text = "   player name..."
-select_all_on_focus = true
 
 [node name="AddPlayerButton" type="Button" parent="MarginContainer/VBoxContainer/ColorRect/MarginContainer/menu_participants/HBoxContainer"]
 custom_minimum_size = Vector2(200, 200)
@@ -116,6 +115,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 32
+
+[node name="ExpandingSpacer" type="Control" parent="MarginContainer/VBoxContainer/ColorRect/MarginContainer/menu_participants/TabContainer/Players/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="staticSpacer2" type="Control" parent="MarginContainer/VBoxContainer/ColorRect/MarginContainer/menu_participants"]
 custom_minimum_size = Vector2(45, 45)

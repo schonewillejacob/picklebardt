@@ -14,7 +14,13 @@ extends CanvasLayer
 
 
 # Virtuals ####################################################
-#func _ready() -> void:
+func _ready() -> void:
+	get_tree().set_auto_accept_quit(false)
+	menu_participants.quickload_list()
+
+func _notification(what):
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		menu_system.emit_signal("OnBack")
 
 
 
@@ -44,6 +50,11 @@ func _on_home_generateBracket():
 	swap_to(menu_bracket)
 	menu_system.to_back()
 
+func _on_participants_add_player() -> void: pass
+
+func _on_rules_ruleChanged():
+	menu_system.acceptButton.visible = true
+
 func _on_system_onAccept() -> void:
 	menu_rules.set_export_ruleset()
 	
@@ -52,7 +63,8 @@ func _on_system_onAccept() -> void:
 
 func _on_system_onBack():
 	menu_bracket.clear_games()
-	# menu_rules reset
+	menu_participants.create_from_control_nodes()
+	menu_participants.quicksave_list()
 	menu_rules.set_fields_to_current()
 	menu_system.to_end()
 	swap_to(menu_home)
@@ -64,8 +76,7 @@ func _on_system_onEnd():
 	menu_system.lerpDirection = -1
 	swap_to(null) # fades all menus away, as the above timer closes the program
 
-func _on_rules_ruleChanged():
-	menu_system.acceptButton.visible = true
+
 
 # Helpers #####################################################
 func swap_to(swapped_to_lerpcontainer : LerpContainer):
@@ -78,6 +89,7 @@ func swap_to(swapped_to_lerpcontainer : LerpContainer):
 	match(swapped_to_lerpcontainer):
 		menu_home:
 			menu_home.lerpDirection = 1
+			menu_home.grab_focus()
 			pass
 		menu_bracket:
 			menu_bracket.lerpDirection = 1

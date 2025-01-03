@@ -16,7 +16,7 @@ func _ready():
 	positionTarget = positionInPlace
 	var newText = "version " + ProjectSettings.get_setting("application/config/version")
 	$vbox/version.set_text(newText)
-
+	$vbox/generateBracketHbox/generateBracket.grab_focus()
 
 
 # Signals #####################################################
