@@ -22,14 +22,13 @@ func _ready() -> void:
 	lerpDirection = -1
 
 
-
 # SIGNALS #####################################################
 func _on_add_player_button_pressed() -> void:
 	var _new_player_name
+	slot_ongoing += 1
 	# Manipulate LineEdit.
 	if node_add_player_line_edit.text == "": 
 		_new_player_name = "Player " + str(slot_ongoing)
-		slot_ongoing += 1
 	else:
 		_new_player_name = node_add_player_line_edit.text
 	node_add_player_line_edit.text = ""
