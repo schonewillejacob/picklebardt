@@ -12,10 +12,11 @@ extends CanvasLayer
 @onready var menu_rules        : LerpContainer = $menuRules
 @onready var menu_system       : LerpContainer = $menuSystem
 
+var system_buttons : Array[Button] = []
 
 # Virtuals ####################################################
 func _ready() -> void:
-	get_tree().set_auto_accept_quit(false)
+	connect_system_as_neighbour()
 	menu_participants.quickload_list()
 
 func _notification(what):
@@ -28,14 +29,17 @@ func _notification(what):
 func _on_home_changeRules():
 	swap_to(menu_rules)
 	menu_system.to_back()
+	menu_rules.request_to_focus_menu()
 
 func _on_home_manageParticipants():
 	swap_to(menu_participants)
 	menu_system.to_back()
+	menu_participants.request_to_focus_menu()
 
 func _on_home_generateBracket():
 	if !menu_participants.participantList:
 		push_error("menu_participants.participantList empty")
+	
 	
 	if menu_rules.nodeRandomSeedButton.is_pressed(): 
 		menu_rules.nodeSeedLineEdit.text = str(hash(randf()))
@@ -49,6 +53,7 @@ func _on_home_generateBracket():
 	
 	swap_to(menu_bracket)
 	menu_system.to_back()
+	menu_bracket.request_to_focus_menu()
 
 func _on_participants_add_player() -> void: pass
 
@@ -79,6 +84,18 @@ func _on_system_onEnd():
 
 
 # Helpers #####################################################
+func connect_system_as_neighbour():
+	#Get the back button
+	var _system_back : Button = menu_system.get_node_or_null("VBoxContainer/systemButtons/Back")
+	var _system_end  : Button = menu_system.get_node_or_null("VBoxContainer/systemButtons/End")
+	if _system_back == null || _system_end == null:
+		return false
+	
+	system_buttons.append(_system_back)
+	system_buttons.append(_system_end)
+	
+	return true
+
 func swap_to(swapped_to_lerpcontainer : LerpContainer):
 	menu_home.lerpDirection = -1
 	menu_bracket.lerpDirection = -1
@@ -89,7 +106,7 @@ func swap_to(swapped_to_lerpcontainer : LerpContainer):
 	match(swapped_to_lerpcontainer):
 		menu_home:
 			menu_home.lerpDirection = 1
-			menu_home.grab_focus()
+			menu_home.request_to_focus_menu()
 			pass
 		menu_bracket:
 			menu_bracket.lerpDirection = 1

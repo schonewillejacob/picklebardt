@@ -44,6 +44,12 @@ func _on_quit_timer_timeout() -> void:
 
 
 # Helpers #####################################################
+func request_to_focus_menu():
+	if endButton.visible == false:
+		backBufferTimer.grab_focus()
+	else:
+		endButton.grab_focus()
+
 func to_accept():
 	backButton.visible = false
 	endButton.visible = false

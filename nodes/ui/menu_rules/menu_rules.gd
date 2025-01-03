@@ -46,6 +46,8 @@ func _on_seedLineEdit_text_changed(_new_text: String) -> void:
 
 
 # Helpers #####################################################
+func request_to_focus_menu():
+	nodeRandomSeedButton.grab_focus()
 
 # rules -> export slot
 func set_export_ruleset():

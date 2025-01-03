@@ -11,9 +11,9 @@
 [node name="main" type="Node2D"]
 
 [node name="tree2" parent="." instance=ExtResource("2_kxdwm")]
-modulate = Color(0.497463, 0.569731, 0.614394, 0.941176)
-position = Vector2(341, 1759)
-scale = Vector2(-2.25, 2.15)
+modulate = Color(0.85098, 0.862745, 1, 0.941176)
+position = Vector2(279, 2047)
+scale = Vector2(5, 5)
 
 [node name="Tree" parent="tree2" instance=ExtResource("2_kxdwm")]
 position = Vector2(1.53609, -137.995)
@@ -31,9 +31,9 @@ position = Vector2(-4.69474, -121.139)
 root_node = NodePath("../../gui")
 
 [node name="tree" parent="." instance=ExtResource("2_kxdwm")]
-modulate = Color(0.704229, 0.77142, 0.79012, 1)
-position = Vector2(726, 2892)
-scale = Vector2(4.8, 4.9)
+modulate = Color(0.941176, 0.941176, 1, 1)
+position = Vector2(887, 2487)
+scale = Vector2(4, 4)
 
 [node name="Tree" parent="tree" instance=ExtResource("2_kxdwm")]
 position = Vector2(1.53609, -137.995)
@@ -72,7 +72,7 @@ grow_horizontal = 1
 size_flags_horizontal = 3
 
 [node name="tree3" parent="gui" instance=ExtResource("2_kxdwm")]
-position = Vector2(-144, 2693)
+position = Vector2(-90, 3334)
 scale = Vector2(3, 3)
 
 [node name="Tree" parent="gui/tree3" instance=ExtResource("2_kxdwm")]
