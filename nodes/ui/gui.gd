@@ -51,6 +51,7 @@ func _on_home_generateBracket():
 	menu_system.to_back()
 
 func _on_participants_add_player() -> void: pass
+
 func _on_rules_ruleChanged():
 	menu_system.acceptButton.visible = true
 

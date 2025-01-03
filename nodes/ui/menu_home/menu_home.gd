@@ -19,7 +19,6 @@ func _ready():
 	$vbox/generateBracketHbox/generateBracket.grab_focus()
 
 
-
 # Signals #####################################################
 func _on_change_rules_pressed():
 	ChangeRules.emit()
