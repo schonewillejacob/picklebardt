@@ -1,7 +1,6 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://qkvjcwtwjvf7"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://qkvjcwtwjvf7"]
 
 [ext_resource type="FontFile" uid="uid://dshnsx4ueiv2b" path="res://fonts/ttfs/LBRITE.TTF" id="1_0710q"]
-[ext_resource type="Texture2D" uid="uid://djtp2i8jhbmrk" path="res://nodes/ui/menu_rules/updown.png" id="2_rpeey"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tk62m"]
 bg_color = Color(0.0470588, 0.101961, 0.0901961, 1)
@@ -66,4 +65,4 @@ Button/styles/hover = SubResource("StyleBoxFlat_3d2pk")
 Button/styles/normal = SubResource("StyleBoxFlat_y5l7q")
 Button/styles/pressed = SubResource("StyleBoxFlat_p6jqy")
 LineEdit/font_sizes/font_size = 64
-SpinBox/icons/updown = ExtResource("2_rpeey")
+SpinBox/icons/updown = null
