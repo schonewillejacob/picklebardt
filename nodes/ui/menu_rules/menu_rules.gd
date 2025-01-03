@@ -3,8 +3,8 @@ extends LerpContainer
 ## Lets the user configure rules
 
 
-@onready var nodeSpinnerCourtSize       : SpinBox = $MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize/spinnerCourtSize
-@onready var nodeSpinnerCourtsAvailable : SpinBox = $MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable/spinnerCourtsAvailable
+@onready var nodeCourtSize = $MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize/labelCourtSize
+@onready var nodeCourtsAvailable = $MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable/labelCourtsAvailable
 @onready var nodeRandomSeedButton       : Button = $MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxSeed/randomSeedButton
 @onready var nodeSeedLineEdit           : LineEdit = $MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxSeed/seedLineEdit
 
@@ -18,13 +18,29 @@ signal RuleChanged
 func _ready():
 	nodeSeedLineEdit.text = str(hash(randf()))
 	randomSeedButtonToggled = nodeRandomSeedButton.is_pressed()
-	nodeSpinnerCourtSize.get_line_edit().set_virtual_keyboard_type(4)
-	nodeSpinnerCourtsAvailable.get_line_edit().set_virtual_keyboard_type(4)
 	set_export_ruleset()
 
 
 
 # Signals #####################################################
+func _on_court_size_button_up_pressed() -> void:
+	RuleChanged.emit()
+	nodeCourtSize.text = "4 players per court"
+
+func _on_court_size_button_down_pressed() -> void:
+	RuleChanged.emit()
+	nodeCourtSize.text = "2 players per court"
+
+func _on_courts_available_button_down_pressed() -> void:
+	RuleChanged.emit()
+	var _current = int(nodeCourtsAvailable.text.get_slice(" ", 0))
+	nodeCourtsAvailable.text = str(clamp(_current - 1, 1, 256)) + " courts available"
+
+func _on_courts_available_button_up_pressed() -> void:
+	RuleChanged.emit()
+	var _current = int(nodeCourtsAvailable.text.get_slice(" ", 0))
+	nodeCourtsAvailable.text = str(clamp(_current + 1, 1, 256)) + " courts available"
+	
 func _on_randomSeedButton_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		nodeSeedLineEdit.editable = false
@@ -32,12 +48,6 @@ func _on_randomSeedButton_toggled(toggled_on: bool) -> void:
 	else:
 		nodeSeedLineEdit.editable = true
 		nodeSeedLineEdit.focus_mode = 2
-	RuleChanged.emit()
-
-func _on_spinnerCourtsAvailable_value_changed(_value:float) -> void:
-	RuleChanged.emit()
-
-func _on_spinnerCourtSize_value_changed(_value:float) -> void:
 	RuleChanged.emit()
 
 func _on_seedLineEdit_text_changed(_new_text: String) -> void:
@@ -51,8 +61,8 @@ func request_to_focus_menu():
 
 # rules -> export slot
 func set_export_ruleset():
-	var courtSize_       : int = int(nodeSpinnerCourtSize.get_line_edit().text)
-	var courtsAvailable_ : int = int(nodeSpinnerCourtsAvailable.get_line_edit().text)
+	var courtSize_       : int = int(nodeCourtSize.text.get_slice(" ", 0))
+	var courtsAvailable_ : int = int(nodeCourtsAvailable.text.get_slice(" ", 0))
 	var seed_            : int
 	randomSeedButtonToggled = nodeRandomSeedButton.is_pressed()
 	
@@ -66,7 +76,7 @@ func set_export_ruleset():
 
 # export slot -> rules
 func set_fields_to_current():
-	nodeSpinnerCourtSize.get_line_edit().text = str(ruleExport.courtSize)
-	nodeSpinnerCourtsAvailable.get_line_edit().text = str(ruleExport.courtsAvailable)
+	nodeCourtSize.text = str(ruleExport.courtSize) + " players per court"
+	nodeCourtsAvailable.text = str(ruleExport.courtsAvailable) + " courts available"
 	nodeRandomSeedButton.button_pressed = randomSeedButtonToggled
 	nodeSeedLineEdit.text = str(ruleExport.shuffleSeed)

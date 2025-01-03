@@ -103,48 +103,55 @@ text = "Court Settings:"
 label_settings = SubResource("LabelSettings_pke10")
 
 [node name="hboxCourtSize" type="HBoxContainer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 250)
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
+
+[node name="CourtSizeButtonDown" type="Button" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+text = "-"
 
 [node name="labelCourtSize" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize"]
 layout_mode = 2
-theme = ExtResource("1_tdyvv")
-text = "slots"
-label_settings = SubResource("LabelSettings_uw34r")
-
-[node name="spinnerCourtSize" type="SpinBox" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize"]
-custom_minimum_size = Vector2(0, 400)
-layout_mode = 2
 size_flags_horizontal = 3
-min_value = 2.0
-max_value = 4.0
-step = 2.0
-value = 4.0
-alignment = 1
-update_on_text_changed = true
-suffix = "players/court"
-select_all_on_focus = true
+theme = ExtResource("1_tdyvv")
+text = "4 players per court"
+label_settings = SubResource("LabelSettings_uw34r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CourtSizeButtonUp" type="Button" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+text = "+"
 
 [node name="hboxCourtsAvailable" type="HBoxContainer" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 250)
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
+
+[node name="CourtsAvailableButtonDown" type="Button" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+text = "-"
 
 [node name="labelCourtsAvailable" type="Label" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable"]
 layout_mode = 2
-theme = ExtResource("1_tdyvv")
-text = "total"
-label_settings = SubResource("LabelSettings_uw34r")
-
-[node name="spinnerCourtsAvailable" type="SpinBox" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable"]
-custom_minimum_size = Vector2(0, 400)
-layout_mode = 2
 size_flags_horizontal = 3
-min_value = 1.0
-value = 4.0
-alignment = 1
-suffix = "courts"
+theme = ExtResource("1_tdyvv")
+text = "4 courts available"
+label_settings = SubResource("LabelSettings_uw34r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CourtsAvailableButtonUp" type="Button" parent="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+text = "+
+"
 
 [connection signal="text_changed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxSeed/seedLineEdit" to="." method="_on_seedLineEdit_text_changed"]
 [connection signal="toggled" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxSeed/randomSeedButton" to="." method="_on_randomSeedButton_toggled"]
-[connection signal="value_changed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize/spinnerCourtSize" to="." method="_on_spinnerCourtSize_value_changed"]
-[connection signal="value_changed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable/spinnerCourtsAvailable" to="." method="_on_spinnerCourtsAvailable_value_changed"]
+[connection signal="pressed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize/CourtSizeButtonDown" to="." method="_on_court_size_button_down_pressed"]
+[connection signal="pressed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtSize/CourtSizeButtonUp" to="." method="_on_court_size_button_up_pressed"]
+[connection signal="pressed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable/CourtsAvailableButtonDown" to="." method="_on_courts_available_button_down_pressed"]
+[connection signal="pressed" from="MarginContainer/ColorRect/MarginContainer/VBoxContainer/hboxCourtsAvailable/CourtsAvailableButtonUp" to="." method="_on_courts_available_button_up_pressed"]

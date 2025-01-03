@@ -101,6 +101,9 @@ func quickload_list():
 	var _json_data = JSON.new()
 	var error = _json_data.parse(_file.get_as_text())
 	if error == OK:
+		for _child in node_player_list.get_children():
+			_child.queue_free()
+		
 		for _player in _json_data.data:
 			var _inst_player_quickload = packed_player_template.instantiate()
 			if _inst_player_quickload.get_node_or_null(
@@ -112,8 +115,7 @@ func quickload_list():
 				
 				node_player_list.add_child(_inst_player_quickload)
 		slot_ongoing = node_player_list.get_child_count()
-		pass
-	
+		create_from_control_nodes()
 
 func quicksave_list():
 	var _file = FileAccess.open("user://player_list.dat", FileAccess.WRITE)
