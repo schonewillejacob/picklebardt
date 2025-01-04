@@ -2,14 +2,15 @@
 extends LerpContainer
 
 
-signal GenerateGame
-signal BadPairing
+#signal GenerateGame
+#signal BadPairing
 
 # instancing
 const PATH_PICKLEBALLGAME : String = "res://nodes/ui/menu_bracket/game/PickleballGame.tscn"
 var packedPickleballGame : PackedScene
 # PickleballGame target destination
 @onready var nodeGameColumn : VBoxContainer = $sideMargin/VBoxContainer/GameScroller/GameColumn
+@onready var node_next_round_button : Button = $sideMargin/VBoxContainer/nextRound
 # rules
 var ruleset : RuleSet = null
 var listPlayers = []
@@ -53,7 +54,7 @@ func generate_game():
 	gameCount += 1 # shortcut for naming
 	var game_ : PickleballGame = packedPickleballGame.instantiate()
 	game_.name = "Game-"+str(gameCount)
-	game_.matchCount = min(ruleset.courtsAvailable,floor(listPlayers.size()/ruleset.courtSize))
+	game_.matchCount = min(float(ruleset.courtsAvailable),floor(float(listPlayers.size())/float(ruleset.courtSize)))
 	game_.courtSize = ruleset.courtSize
 	
 	# Parenting PickleballGame instance 
@@ -195,6 +196,9 @@ func load_valid_pathhashed_threadresource(resource_path) -> bool:
 			return false
 	# loadStatus_ must be == 3
 	return true
+
+func request_to_focus_menu():
+	node_next_round_button.grab_focus()
 
 func set_playerList(new_list) -> void:
 	listPlayers = new_list

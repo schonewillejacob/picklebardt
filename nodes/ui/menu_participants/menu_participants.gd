@@ -74,7 +74,6 @@ func create_from_control_nodes():
 		_id_binary_interation *= 2
 		_list.append(_inst_player)
 	participantList = _list
-	
 
 func make_dummy_list(length) -> Array:
 	var list_ : Array = []
@@ -88,6 +87,9 @@ func make_dummy_list(length) -> Array:
 	
 	return list_
 
+func request_to_focus_menu():
+	node_add_player_line_edit.grab_focus()
+
 func set_participantList(new_list) -> void:
 	participantList = new_list
 
@@ -99,6 +101,9 @@ func quickload_list():
 	var _json_data = JSON.new()
 	var error = _json_data.parse(_file.get_as_text())
 	if error == OK:
+		for _child in node_player_list.get_children():
+			_child.queue_free()
+		
 		for _player in _json_data.data:
 			var _inst_player_quickload = packed_player_template.instantiate()
 			if _inst_player_quickload.get_node_or_null(
@@ -110,9 +115,7 @@ func quickload_list():
 				
 				node_player_list.add_child(_inst_player_quickload)
 		slot_ongoing = node_player_list.get_child_count()
-		pass
-	
-
+		create_from_control_nodes()
 
 func quicksave_list():
 	var _file = FileAccess.open("user://player_list.dat", FileAccess.WRITE)

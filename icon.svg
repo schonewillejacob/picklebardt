@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg">
-  <rect width="192" height="192" style="fill: rgb(56, 90, 84);" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"/>
-  <path d="M 138.968 96.001 C 138.968 119.203 119.731 138.012 96 138.012 C 72.27 138.012 53.033 119.203 53.033 96.001 C 53.033 89.722 54.442 83.765 56.967 78.416 C 58.243 78.706 59.627 78.865 61.074 78.865 C 67.455 78.865 72.627 75.774 72.627 71.962 C 72.627 69.242 69.994 66.89 66.169 65.765 C 73.897 58.474 84.414 53.989 96 53.989 C 103.012 53.989 109.63 55.631 115.476 58.543 C 114.896 58.494 114.305 58.469 113.705 58.469 C 106.438 58.469 100.547 62.122 100.547 66.627 C 100.547 71.133 106.438 74.785 113.705 74.785 C 120.896 74.785 126.739 71.21 126.861 66.769 C 134.355 74.331 138.968 84.639 138.968 96.001 Z M 114.347 97.064 C 104.421 97.064 96.375 101.841 96.375 107.733 C 96.375 113.625 104.421 118.401 114.347 118.401 C 124.272 118.401 132.318 113.625 132.318 107.733 C 132.318 101.841 124.272 97.064 114.347 97.064 Z M 71.023 109.301 C 67.122 109.301 63.963 111.971 63.963 115.264 C 63.963 118.557 67.122 121.225 71.023 121.225 C 74.922 121.225 78.082 118.557 78.082 115.264 C 78.082 111.971 74.922 109.301 71.023 109.301 Z" style="fill: rgb(205, 205, 205);" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, 0)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" xmlns:bx="https://boxy-svg.com">
+  <rect width="500" height="500" style="stroke: rgb(32, 51, 51); fill: rgb(31, 31, 31);" rx="122.667" ry="122.667"/>
+  <g>
+    <title>tree</title>
+    <path d="M 313.768 242.742 L 313.768 423.629 L 104.898 423.629 L 313.768 242.742 Z" bx:shape="triangle 104.898 242.742 208.87 180.887 1 0 1@e8c33fd1" style="stroke: rgba(0, 0, 0, 0); fill: rgb(42, 68, 68);" transform="matrix(-0.743544959033, -0.66868594564, 0.66868594564, -0.743544959033, 270.692936162545, 552.133003832891)"/>
+    <path d="M 313.768 242.742 L 313.768 423.629 L 104.898 423.629 L 313.768 242.742 Z" bx:shape="triangle 104.898 242.742 208.87 180.887 1 0 1@e8c33fd1" style="stroke: rgba(0, 0, 0, 0); fill: rgb(42, 68, 68);" transform="matrix(-0.743544959033, -0.66868594564, 0.66868594564, -0.743544959033, 261.518711172323, 644.383188312995)"/>
+    <path d="M 313.768 242.742 L 313.768 423.629 L 104.898 423.629 L 313.768 242.742 Z" bx:shape="triangle 104.898 242.742 208.87 180.887 1 0 1@e8c33fd1" style="stroke: rgba(0, 0, 0, 0); fill: rgb(42, 68, 68);" transform="matrix(-0.743544959033, -0.66868594564, 0.66868594564, -0.743544959033, 254.852069837631, 729.716563607999)"/>
+    <path d="M 270.724 238.31 L 270.724 415.892 L 90.507 415.892 L 270.724 238.31 Z" bx:shape="triangle 90.507 238.31 180.217 177.582 1 0 1@95e3932d" style="stroke: rgba(0, 0, 0, 0); fill: rgb(64, 103, 104);" transform="matrix(-0.743544959033, -0.66868594564, 0.66868594564, -0.743544959033, 244.109958471506, 518.658332923924)"/>
+    <path d="M 270.724 238.31 L 270.724 415.892 L 90.507 415.892 L 270.724 238.31 Z" bx:shape="triangle 90.507 238.31 180.217 177.582 1 0 1@95e3932d" style="stroke: rgba(0, 0, 0, 0); fill: rgb(64, 103, 104);" transform="matrix(-0.743544959033, -0.66868594564, 0.66868594564, -0.743544959033, 230.251834485707, 604.860970927193)"/>
+    <path d="M 270.724 238.31 L 270.724 415.892 L 90.507 415.892 L 270.724 238.31 Z" bx:shape="triangle 90.507 238.31 180.217 177.582 1 0 1@95e3932d" style="stroke: rgba(0, 0, 0, 0); fill: rgb(64, 103, 104);" transform="matrix(-0.743544959033, -0.66868594564, 0.66868594564, -0.743544959033, 219.099597381049, 684.492563910672)"/>
+  </g>
+  <g style="mix-blend-mode: difference;">
+    <title>ball</title>
+    <ellipse style="stroke: rgb(0, 0, 0); fill: rgb(216, 216, 216);" cx="215.333" cy="324.667" rx="148" ry="148"/>
+    <ellipse style="stroke: rgb(0, 0, 0); mix-blend-mode: difference; fill: rgb(216, 216, 216);" cx="348.256" cy="339.477" rx="6" ry="6"/>
+    <ellipse style="stroke: rgb(0, 0, 0); isolation: isolate; filter: none; mix-blend-mode: difference; fill: rgb(216, 216, 216);" cx="214.091" cy="272.242" rx="14" ry="14"/>
+    <ellipse style="stroke: rgb(0, 0, 0); isolation: isolate; filter: none; mix-blend-mode: difference; fill: rgb(216, 216, 216);" cx="114.724" cy="342.478" rx="18.667" ry="18.667"/>
+    <ellipse style="stroke: rgb(0, 0, 0); isolation: isolate; filter: none; mix-blend-mode: difference; fill: rgb(216, 216, 216);" cx="184.379" cy="351.099" rx="22.378" ry="22.378"/>
+    <ellipse style="stroke: rgb(0, 0, 0); isolation: isolate; filter: none; mix-blend-mode: difference; fill: rgb(216, 216, 216);" cx="314.925" cy="257.576" rx="11.334" ry="11.334"/>
+    <ellipse style="stroke: rgb(0, 0, 0); isolation: isolate; filter: none; mix-blend-mode: difference; fill: rgb(216, 216, 216);" cx="271.121" cy="359.477" rx="14" ry="14"/>
+    <ellipse style="stroke: rgb(0, 0, 0); isolation: isolate; filter: none; mix-blend-mode: difference; fill: rgb(216, 216, 216);" cx="136.667" cy="413.609" rx="18.667" ry="18.667"/>
+    <ellipse style="stroke: rgb(0, 0, 0); isolation: isolate; filter: none; mix-blend-mode: difference; fill: rgb(216, 216, 216);" cx="209.424" cy="431.962" rx="18.667" ry="18.667"/>
+    <ellipse style="stroke: rgb(0, 0, 0); isolation: isolate; filter: none; mix-blend-mode: difference; fill: rgb(216, 216, 216);" cx="258.622" cy="216.864" rx="11.334" ry="11.334"/>
+  </g>
 </svg>

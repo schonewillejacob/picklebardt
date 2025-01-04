@@ -32,6 +32,7 @@ func _on_end_pressed():
 func _on_back_pressed():
 	OnBack.emit()
 
+
 func _on_accept_pressed():
 	OnAccept.emit()
 
@@ -44,6 +45,12 @@ func _on_quit_timer_timeout() -> void:
 
 
 # Helpers #####################################################
+func request_to_focus_menu():
+	if endButton.visible == false:
+		backBufferTimer.grab_focus()
+	else:
+		endButton.grab_focus()
+
 func to_accept():
 	backButton.visible = false
 	endButton.visible = false

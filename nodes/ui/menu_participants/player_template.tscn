@@ -48,7 +48,7 @@ text = "player_name"
 label_settings = SubResource("LabelSettings_37ih1")
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 2
 
 [node name="RemovePlayer" type="Button" parent="PlayerTemplateMargin/PlayerContainer"]
 custom_minimum_size = Vector2(152, 152)
