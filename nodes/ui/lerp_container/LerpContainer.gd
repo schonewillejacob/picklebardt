@@ -13,8 +13,8 @@ const FADE_OUT_RATE              : float = 5.0
 const FADE_IN_RATE               : float = 2.0
 const MODULATE_VISIBLE_THRESHOLD : float = 0.1
 
-signal FadeOut
-signal FadeIn
+#signal FadeOut
+#signal FadeIn
 
 
 

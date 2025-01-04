@@ -11,10 +11,11 @@ config_version=5
 [application]
 
 config/name="Picklebardt"
-config/version="0.6.0"
+config/version="0.7.0"
 run/main_scene="res://nodes/main.tscn"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.3", "Forward Plus")
+run/max_fps=120
 boot_splash/bg_color=Color(0.219608, 0.352941, 0.329412, 1)
 boot_splash/show_image=false
 boot_splash/fullsize=false
@@ -47,4 +48,4 @@ ui_accept={
 
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(0.0624606, 0.0777178, 0.0642654, 1)
+environment/defaults/default_clear_color=Color(0.104546, 0.125175, 0.106984, 1)
