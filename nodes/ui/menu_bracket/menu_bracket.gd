@@ -2,8 +2,8 @@
 extends LerpContainer
 
 
-signal GenerateGame
-signal BadPairing
+#signal GenerateGame
+#signal BadPairing
 
 # instancing
 const PATH_PICKLEBALLGAME : String = "res://nodes/ui/menu_bracket/game/PickleballGame.tscn"
@@ -54,7 +54,7 @@ func generate_game():
 	gameCount += 1 # shortcut for naming
 	var game_ : PickleballGame = packedPickleballGame.instantiate()
 	game_.name = "Game-"+str(gameCount)
-	game_.matchCount = min(ruleset.courtsAvailable,floor(listPlayers.size()/ruleset.courtSize))
+	game_.matchCount = min(float(ruleset.courtsAvailable),floor(float(listPlayers.size())/float(ruleset.courtSize)))
 	game_.courtSize = ruleset.courtSize
 	
 	# Parenting PickleballGame instance 

@@ -11,6 +11,7 @@ extends CanvasLayer
 @onready var menu_participants : LerpContainer = $menuParticipants
 @onready var menu_rules        : LerpContainer = $menuRules
 @onready var menu_system       : LerpContainer = $menuSystem
+@onready var fade_in_rect      : ColorRect = $FadeInRect
 
 var system_buttons : Array[Button] = []
 
@@ -77,7 +78,7 @@ func _on_system_onBack():
 func _on_system_onEnd():
 	menu_system.endSound.play()
 	menu_system.exitBufferTimer.start()
-	
+	$FadeInRect.get_node_or_null("AnimationPlayer").play_backwards()
 	menu_system.lerpDirection = -1
 	swap_to(null) # fades all menus away, as the above timer closes the program
 

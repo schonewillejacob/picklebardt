@@ -32,6 +32,7 @@ func _on_end_pressed():
 func _on_back_pressed():
 	OnBack.emit()
 
+
 func _on_accept_pressed():
 	OnAccept.emit()
 

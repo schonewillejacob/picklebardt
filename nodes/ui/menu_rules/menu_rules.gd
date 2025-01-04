@@ -44,10 +44,10 @@ func _on_courts_available_button_up_pressed() -> void:
 func _on_randomSeedButton_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		nodeSeedLineEdit.editable = false
-		nodeSeedLineEdit.focus_mode = 0
+		nodeSeedLineEdit.focus_mode = FocusMode.FOCUS_NONE
 	else:
 		nodeSeedLineEdit.editable = true
-		nodeSeedLineEdit.focus_mode = 2
+		nodeSeedLineEdit.focus_mode = FocusMode.FOCUS_ALL
 	RuleChanged.emit()
 
 func _on_seedLineEdit_text_changed(_new_text: String) -> void:
