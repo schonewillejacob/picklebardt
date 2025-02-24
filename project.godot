@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Picklebardt"
-config/version="0.7.0"
+config/version="0.8.0"
 run/main_scene="res://nodes/main.tscn"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.3", "Forward Plus")
