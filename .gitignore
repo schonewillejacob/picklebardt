@@ -2,7 +2,7 @@
 .godot/
 
 # These are exported to a different format.
-_mdps/
-# _releases/
+_mdp/
+_apk/
 android/
-_docs/.$
+_documentation/.$
