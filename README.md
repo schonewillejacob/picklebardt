@@ -14,7 +14,7 @@ WIP. Android app. Made with Godot v4.3.
 
 ## Installation guide
 
-Download  **_releases/Picklebardt_vX.X.X.apk** to your android device. Run to install.
+Download the latest apk release to your android device. Run to install.
 
 Launch app, then set player names and court settings.
 
